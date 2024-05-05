@@ -1,25 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 import About from "../components/About.astro";
 import Contact from "../components/Contact.astro";
 import Hero from "../components/Hero.astro";
 import Proyects from "../components/Proyects.astro";
 ---
 
-<Layout title="Portfolio Marlon Mora">
-	<main>
+<Layout 
+	title="Portfolio Marlon Mora - Administrador e ingeniero",
+	description="Estudiante de Administración de Empresas y de Ingeniería de Sistemas"
+>
+	<main class="px-16">
 		<Hero />
 		<About />
 		<Proyects />
 		<Contact />
 	</main>
 </Layout>
-
-<style>
-	main {
-		padding: 4rem;
-		margin: auto;
-		width: 100%;
-	}
-</style>
