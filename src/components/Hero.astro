@@ -1,23 +1,56 @@
 ---
 import Section from "./Section.astro";
+import { Image } from "astro:assets";
+import MarlonMoraPhoto from "../../public/assets/Marlon_Photo.webp";
+import LinkedInIcon from "../Icons/LinkedInIcon.astro";
+import GithubIcon from "../Icons/GithubIcon.astro";
+import SocialIcon from "./SocialIcons.astro";
+import ColombiaFlag from "../../public/assets/ColombiaFlag.svg";
 ---
 
 <Section>
     <div class="flex justify-between items-center flex-col md:flex-row">
-        <div class="w-full md:w-2/3 md:self-start">
+        <div class="w-full md:w-2/3">
+            <h3 class="text-2xl font-bold pb-2">
+                Hola, Soy 
+            </h3>
             <h1 class="text-5xl font-bold pb-5">
-                Hola, Soy Marlon Mora
+                Marlon Mora
             </h1>
+
+            <div class="flex items-center">
             <h2 class="text-2xl text-wrap">
-                Estudiante de Administración de Empresas y de Ingeniería de Sistemas.
+                Estudiante de Administración de Empresas y de Ingeniería de
+                Sistemas. De Colombia. Me gusta ofrecer soluciones mediante la tecnología
             </h2>
+        </div>
+
+            <nav class="flex gap-x-4 py-5">
+                <SocialIcon
+                    href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
+                    class="hover:scale-110 transition"
+                    title="LinkedIn"
+                >
+                    <LinkedInIcon class="size-8" />
+                </SocialIcon>
+
+                <SocialIcon
+                    href="https://github.com/MarlonMora23"
+                    class="hover:scale-110 transition"
+                    title="GitHub"
+                >
+                    <GithubIcon class="size-8" />
+                </SocialIcon>
+            </nav>
         </div>
 
         <div class="w-full md:max-w-[600px] flex justify-center md:ml-4">
             <figure>
-                <img class="object-cover w-full md:w-auto"
-                    src="/assets/Marlon_Photo.webp"
+                <Image
+                    class="hero-img fadeInMove"
+                    src={MarlonMoraPhoto}
                     alt="Marlon Mora"
+                    loading="eager"
                 />
             </figure>
         </div>
@@ -25,44 +58,47 @@ import Section from "./Section.astro";
 </Section>
 
 <style>
-    /* .container {
-        display: flex;
-        flex-direction: row;
-        text-align: left;
+    .hero-img{
+        filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.4));
     }
 
-    .info {
-        width: 60%;
+    .fadeInMove {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: moveUp 0.5s linear forwards;
     }
 
-    .figure {
-        display: flex;
-        justify-content: center;
+    h1{
+        background: linear-gradient(
+            to right,
+            #1867ce 10%,
+            #1159b8 20%,
+            #004aad 30%,
+            #002168 40%,
+            #000000 50%,
+            #002168 60%,
+            #004aad 70%,
+            #1159b8 80%,
+            #1867ce 90%,
+            #1867ce 100%
+            );
+        background-size: 200%;
+        color: transparent;
+        background-clip: text;
+        animation: shine 8s linear infinite;
+
     }
 
-    figure {
-        max-width: 400px;
-        max-height: 100%;
-    }
-
-    img {
-        object-fit: cover;
-        max-width: 100%;
-        max-height: 100%;
-        height: auto;
-    }
-
-    h1 {
-        font-size: 3.5rem;
-    }
-
-    @media screen and (max-width: 768px) {
-        .container {
-            flex-direction: column;
+    @keyframes moveUp {
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
         }
+    }
 
-        .info {
-            width: 100%; 
+    @keyframes shine {
+        to {
+            background-position: 200% center;
         }
-    } */
+    }
 </style>

@@ -1,0 +1,24 @@
+---
+import SocialIcons from "./SocialIcons.astro";
+import LinkedInIcon from "../Icons/LinkedInIcon.astro";
+import GithubIcon from "../Icons/GithubIcon.astro";
+---
+
+<footer class="w-full max-w-[1200px] mx-auto mb-4 ">
+    <hr>
+    <div class="flex justify-between items-center mt-4">
+        <p class="text-[#9ca3af]">© 2024 Marlon Mora. Casi todos los derechos reservados</p>
+        <div class="flex gap-4">
+            <SocialIcons
+                href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
+                title="LinkedIn"
+            >
+                <LinkedInIcon class="size-6 hover:fill-[#878c96]" fill="#9ca3af"/>
+            </SocialIcons>
+
+            <SocialIcons href="https://github.com/MarlonMora23" title="GitHub">
+                <GithubIcon class="size-6 hover:fill-[#878c96]" fill="#9ca3af"/>
+            </SocialIcons>
+        </div>
+    </div>
+</footer>
