@@ -5,21 +5,20 @@ import MarlonMoraPhoto from "public/assets/Marlon_Photo.webp";
 import LinkedInIcon from "@/Icons/LinkedInIcon.astro";
 import GithubIcon from "@/Icons/GithubIcon.astro";
 import SocialIcon from "@/components/SocialIcons.astro";
+import { getI18n } from "@/i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18n({ currentLocale });
 ---
 
 <Section>
     <div class="flex justify-between items-center flex-col lg:flex-row">
-        <div>
-            <h3 class="text-3xl font-bold pb-2">Hola, Soy</h3>
-            <h1 class="text-5xl font-bold pb-5">Marlon Mora</h1>
+        <div class="flex flex-col">
+            <h1 class="text-5xl font-bold pb-5 order-2">Marlon Mora</h1>
+            <h2 class="text-3xl font-bold pb-2 order-1">{i18n.HERO.GREETING}</h3>
+            <h3 class="text-2xl text-wrap order-3">{i18n.HERO.DESCRIPTION}</h2>
 
-            <h2 class="text-2xl text-wrap">
-                Estudiante de Administración de Empresas y de Ingeniería de
-                Sistemas. De Colombia. Me gusta ofrecer soluciones mediante la
-                tecnología
-            </h2>
-
-            <nav class="flex justify-start items-center gap-x-4 py-5">
+            <nav class="flex justify-start items-center gap-x-4 py-5 order-4">
                 <SocialIcon
                     href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
                     class="hover:scale-110 transition"
@@ -38,12 +37,12 @@ import SocialIcon from "@/components/SocialIcons.astro";
             </nav>
 
             <div
-                class="flex justify-center items-center pt-10 lg:justify-start"
+                class="flex justify-center items-center pt-10 lg:justify-start order-5"
             >
                 <button
                     type="button"
                     class="text-white bg-blue-700 hover:bg-blue-800 hover:scale-105 transition font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2"
-                    >Ver proyectos</button
+                    >{i18n.HERO.CTA_TEXT}</button
                 >
             </div>
         </div>

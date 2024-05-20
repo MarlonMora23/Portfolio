@@ -1,15 +1,76 @@
 ---
-import { languages } from '@/i18n/ui';
-import { getLangFromUrl, useTranslatedPath } from '@/i18n/utils'
+import { languages } from "@/i18n/ui";
+import { getLangFromUrl, useTranslatedPath } from "@/i18n/utils";
 
-const lang = getLangFromUrl(Astro.url)
-const translatePath = useTranslatedPath(lang)
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
 ---
+
+<!-- <div class="w-20">
+  <div>
+    <a>Opciones</a>
+    <i></i>
+  </div>
+</div>
 
 <ul>
   {Object.entries(languages).map(([lang, label]) => (
     <li>
+      <i></i>
       <a href={translatePath('/', lang)}>{label}</a>
     </li>
   ))}
-</ul>
+</ul> -->
+<div class="dropdown">
+	<button class="dropbtn">{Object.entries(languages)[0][1]}</button>
+	<div class="dropdown-content">
+		<ul>
+			{
+				Object.entries(languages).map(([lang, label]) => (
+					<li>
+						<i />
+						<a href={translatePath("/", lang)}>{label}</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</div>
+
+<style>
+	.dropbtn {
+		cursor: pointer;
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+	}
+
+	.dropdown-content ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.dropdown-content li {
+		padding: 8px 16px;
+	}
+
+	.dropdown-content li a {
+		color: black;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown-content li a:hover {
+		background-color: #f1f1f1;
+	}
+
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+</style>

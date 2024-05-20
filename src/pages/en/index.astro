@@ -1,10 +1,11 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-
-// defaultLocale is "es"
-const aboutURL = getRelativeLocaleUrl("es", "about");
+import Layout from "@/layouts/Layout.astro";
+import App from "@/components/pages/App.astro";
 ---
 
-<a href="/get-started/">Come on!</a>
-<a href={getRelativeLocaleUrl('es', 'blog')}>Blog</a>
-<a href={aboutURL}>About</a>
+<Layout 
+	title="Portfolio Marlon Mora - Administrator and engineer",
+	description="Business Administration and Systems Engineering Student"
+>
+	<App />
+</Layout>
