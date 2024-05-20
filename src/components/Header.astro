@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import MarlonMoraIcon from "public/assets/MarlonMoraLogo.svg";
 import LanguagePicker from "@/components/LenguagePicker.astro";
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
@@ -8,7 +7,7 @@ const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 ---
 
-<header class="px-8">
+<header class="px-8" id="top">
     <div
         class="w-full mx-auto max-w-[1200px] flex justify-between items-center py-6"
     >
@@ -16,10 +15,12 @@ const translation = useTranslations(lang);
         <a href="/">
             <span>
                 <Image
-                    src={MarlonMoraIcon}
+                    src="/assets/MarlonMoraLogo.svg"
                     alt="Marlon Mora Icon"
                     loading="eager"
                     class="w-10"
+                    width={40}  
+                    height={40}
                 />
             </span>
         </a>
@@ -29,10 +30,10 @@ const translation = useTranslations(lang);
         </div>
 
         <nav class="hidden md:flex flex-row gap-x-10 text-xl">
-            <a href="/">{translation('nav.home')}</a>
-            <a href="/about">{translation('nav.about')}</a>
-            <a href="/proyects">{translation('nav.proyects')}</a>
-            <a href="/contact">{translation('nav.contact')}</a>
+            <a href="#top">{translation('nav.home')}</a>
+            <a href="#about">{translation('nav.about')}</a>
+            <a href="#proyects">{translation('nav.proyects')}</a>
+            <a href="#contact">{translation('nav.contact')}</a>
         </nav>
 
         <LanguagePicker />
