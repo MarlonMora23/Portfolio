@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import MarlonMoraIcon from "../../public/assets/MarlonMoraLogo.svg";
+import MarlonMoraIcon from "public/assets/MarlonMoraLogo.svg";
+import LanguagePicker from '@/components/LenguagePicker.astro';
 ---
 
 <header class="px-16">
@@ -25,5 +26,9 @@ import MarlonMoraIcon from "../../public/assets/MarlonMoraLogo.svg";
             <a href="/proyects">Proyectos</a>
             <a href="/contact">Contactos</a>
         </nav>
+
+        <div>
+           <LanguagePicker />
+        </div>
     </div>
 </header>

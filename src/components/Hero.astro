@@ -1,31 +1,25 @@
 ---
-import Section from "./Section.astro";
 import { Image } from "astro:assets";
-import MarlonMoraPhoto from "../../public/assets/Marlon_Photo.webp";
-import LinkedInIcon from "../Icons/LinkedInIcon.astro";
-import GithubIcon from "../Icons/GithubIcon.astro";
-import SocialIcon from "./SocialIcons.astro";
-import ColombiaFlag from "../../public/assets/ColombiaFlag.svg";
+import Section from "@/components/Section.astro";
+import MarlonMoraPhoto from "public/assets/Marlon_Photo.webp";
+import LinkedInIcon from "@/Icons/LinkedInIcon.astro";
+import GithubIcon from "@/Icons/GithubIcon.astro";
+import SocialIcon from "@/components/SocialIcons.astro";
 ---
 
 <Section>
-    <div class="flex justify-between items-center flex-col md:flex-row">
-        <div class="w-full md:w-2/3">
-            <h3 class="text-2xl font-bold pb-2">
-                Hola, Soy 
-            </h3>
-            <h1 class="text-5xl font-bold pb-5">
-                Marlon Mora
-            </h1>
+    <div class="flex justify-between items-center flex-col lg:flex-row">
+        <div>
+            <h3 class="text-3xl font-bold pb-2">Hola, Soy</h3>
+            <h1 class="text-5xl font-bold pb-5">Marlon Mora</h1>
 
-            <div class="flex items-center">
             <h2 class="text-2xl text-wrap">
                 Estudiante de Administración de Empresas y de Ingeniería de
-                Sistemas. De Colombia. Me gusta ofrecer soluciones mediante la tecnología
+                Sistemas. De Colombia. Me gusta ofrecer soluciones mediante la
+                tecnología
             </h2>
-        </div>
 
-            <nav class="flex gap-x-4 py-5">
+            <nav class="flex justify-start items-center gap-x-4 py-5">
                 <SocialIcon
                     href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
                     class="hover:scale-110 transition"
@@ -42,6 +36,16 @@ import ColombiaFlag from "../../public/assets/ColombiaFlag.svg";
                     <GithubIcon class="size-8" />
                 </SocialIcon>
             </nav>
+
+            <div
+                class="flex justify-center items-center pt-10 lg:justify-start"
+            >
+                <button
+                    type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 hover:scale-105 transition font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2"
+                    >Ver proyectos</button
+                >
+            </div>
         </div>
 
         <div class="w-full md:max-w-[600px] flex justify-center md:ml-4">
@@ -58,7 +62,7 @@ import ColombiaFlag from "../../public/assets/ColombiaFlag.svg";
 </Section>
 
 <style>
-    .hero-img{
+    .hero-img {
         filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.4));
     }
 
@@ -68,7 +72,7 @@ import ColombiaFlag from "../../public/assets/ColombiaFlag.svg";
         animation: moveUp 0.5s linear forwards;
     }
 
-    h1{
+    h1 {
         background: linear-gradient(
             to right,
             #1867ce 10%,
@@ -81,12 +85,11 @@ import ColombiaFlag from "../../public/assets/ColombiaFlag.svg";
             #1159b8 80%,
             #1867ce 90%,
             #1867ce 100%
-            );
+        );
         background-size: 200%;
         color: transparent;
         background-clip: text;
         animation: shine 8s linear infinite;
-
     }
 
     @keyframes moveUp {
