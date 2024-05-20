@@ -9,9 +9,13 @@ export const languages = {
     es: {
       'nav.home': 'Inicio',
       'nav.about': 'Sobre mi',
+      'nav.proyects': 'Proyectos',
+      'nav.contact': 'Contacto'
     },
     en: {
       'nav.home': 'Home',
       'nav.about': 'About',
+      'nav.proyects': 'Proyects',
+      'nav.contact': 'Contact'
     },
   } as const;

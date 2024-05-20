@@ -6,71 +6,49 @@ const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<!-- <div class="w-20">
-  <div>
-    <a>Opciones</a>
-    <i></i>
-  </div>
-</div>
+<div class="hidden md:flex relative group md:w-28">
+	<button class="py-2 w-full">
+		<div class="flex justify-between items-center">
+			<img src="/assets/international-svgrepo-com.svg" class="w-5" alt="itenational">
+			<span>{languages[lang]}</span>
+			<img
+				src="/assets/down-arrow-5-svgrepo-com.svg"
+				class="w-6 inline"
+				alt="down-arrow"
+			/>
+		</div>
+	</button>
 
-<ul>
-  {Object.entries(languages).map(([lang, label]) => (
-    <li>
-      <i></i>
-      <a href={translatePath('/', lang)}>{label}</a>
-    </li>
-  ))}
-</ul> -->
-<div class="dropdown">
-	<button class="dropbtn">{Object.entries(languages)[0][1]}</button>
-	<div class="dropdown-content">
-		<ul>
-			{
-				Object.entries(languages).map(([lang, label]) => (
-					<li>
-						<i />
-						<a href={translatePath("/", lang)}>{label}</a>
-					</li>
-				))
-			}
-		</ul>
+	<div
+		class="bg-white text-gray-700 shadow-md rounded text-sm absolute mt-10 top-0 right-0 min-w-full w-40 z-30 hidden group-hover:block"
+	>
+		<span
+			class="absolute top-0 right-0 w-3 h-3 bg-white transform rotate-45 -mt-1 mr-[22px]"
+		></span>
+		<div class="bg-white overflow-auto rounded w-full relative z-10">
+			<ul>
+				{
+					Object.entries(languages).map(([langKey, label]) => (
+						<li>
+							<a
+								href={translatePath("/", langKey)}
+								class="px-4 py-2 flex hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100"
+							>
+								<div class="flex justify-between w-full">
+									<span class="inline-block">{label}</span>
+									{lang === langKey && (
+                                        <img
+                                            src="/assets/check-svgrepo-com.svg"
+                                            class="w-4"
+                                            alt="selected"
+                                        />
+                                    )}
+								</div>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
 	</div>
 </div>
-
-<style>
-	.dropbtn {
-		cursor: pointer;
-	}
-
-	.dropdown-content {
-		display: none;
-		position: absolute;
-		min-width: 160px;
-		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-		z-index: 1;
-	}
-
-	.dropdown-content ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.dropdown-content li {
-		padding: 8px 16px;
-	}
-
-	.dropdown-content li a {
-		color: black;
-		text-decoration: none;
-		display: block;
-	}
-
-	.dropdown-content li a:hover {
-		background-color: #f1f1f1;
-	}
-
-	.dropdown:hover .dropdown-content {
-		display: block;
-	}
-</style>

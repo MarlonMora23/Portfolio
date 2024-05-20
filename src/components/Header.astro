@@ -1,14 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import MarlonMoraIcon from "public/assets/MarlonMoraLogo.svg";
-import LanguagePicker from '@/components/LenguagePicker.astro';
+import LanguagePicker from "@/components/LenguagePicker.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translation = useTranslations(lang);
 ---
 
-<header class="px-16">
+<header class="px-8">
     <div
         class="w-full mx-auto max-w-[1200px] flex justify-between items-center py-6"
     >
-         <!-- Logo -->
+        <!-- Logo -->
         <a href="/">
             <span>
                 <Image
@@ -19,16 +23,18 @@ import LanguagePicker from '@/components/LenguagePicker.astro';
                 />
             </span>
         </a>
-        
+
+        <div class="flex w-12 md:hidden">
+            <img src="/assets/menu-alt-01-svgrepo-com.svg" alt="">
+        </div>
+
         <nav class="hidden md:flex flex-row gap-x-10 text-xl">
-            <a href="/">Inicio</a>
-            <a href="/about">Sobre mí</a>
-            <a href="/proyects">Proyectos</a>
-            <a href="/contact">Contactos</a>
+            <a href="/">{translation('nav.home')}</a>
+            <a href="/about">{translation('nav.about')}</a>
+            <a href="/proyects">{translation('nav.proyects')}</a>
+            <a href="/contact">{translation('nav.contact')}</a>
         </nav>
 
-        <div>
-           <LanguagePicker />
-        </div>
+        <LanguagePicker />
     </div>
 </header>
