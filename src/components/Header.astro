@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import LanguagePicker from "@/components/LenguagePicker.astro";
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
@@ -9,33 +9,38 @@ const translation = useTranslations(lang);
 
 <header class="px-8" id="top">
     <div
-        class="w-full mx-auto max-w-[1200px] flex justify-between items-center py-6"
+        class="flex justify-between items-center w-full mx-auto max-w-[1200px] py-6"
     >
         <!-- Logo -->
-        <a href="/">
-            <span>
-                <Image
-                    src="/assets/MarlonMoraLogo.svg"
-                    alt="Marlon Mora Icon"
-                    loading="eager"
-                    class="w-10"
-                    width={40}  
-                    height={40}
-                />
-            </span>
-        </a>
-
-        <div class="flex w-12 md:hidden">
-            <img src="/assets/menu-alt-01-svgrepo-com.svg" alt="">
+        <div class="flex md:flex-grow md:basis-0">
+            <a href="/">
+                <span>
+                    <Image
+                        src="/assets/MarlonMoraLogo.svg"
+                        alt="Marlon Mora Icon"
+                        loading="eager"
+                        class="w-10"
+                        width={40}
+                        height={40}
+                    />
+                </span>
+            </a>
         </div>
 
-        <nav class="hidden md:flex flex-row gap-x-10 text-xl">
-            <a href="#top">{translation('nav.home')}</a>
-            <a href="#about">{translation('nav.about')}</a>
-            <a href="#proyects">{translation('nav.proyects')}</a>
-            <a href="#contact">{translation('nav.contact')}</a>
+
+        <div class="w-12 md:hidden">
+            <img src="/assets/menu-alt-01-svgrepo-com.svg" alt="" />
+        </div>
+
+        <nav class="hidden md:flex md:flex-row md:gap-x-10 md:text-xl">
+            <a href="#top">{translation("nav.home")}</a>
+            <a href="#about">{translation("nav.about")}</a>
+            <a href="#proyects">{translation("nav.proyects")}</a>
+            <a href="#contact">{translation("nav.contact")}</a>
         </nav>
 
-        <LanguagePicker />
+        <div class="hidden md:flex md:justify-end md:flex-grow md:basis-0">
+            <LanguagePicker />
+        </div>
     </div>
 </header>
