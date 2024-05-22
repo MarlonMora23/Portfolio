@@ -11,14 +11,14 @@ const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
 ---
 
-<Section class="mt-20">
-    <div class="flex justify-between items-center lg:items-start flex-col lg:flex-row gap-0 lg:gap-6">
-        <div class="flex justify-between flex-col lg:max-w-[480px] min-[1150px]:max-w-2xl">
-            <h1 class="text-5xl font-bold pb-5 order-2">Marlon Mora</h1>
-            <h2 class="text-3xl font-bold pb-2 order-1">{i18n.HERO.GREETING}</h3>
-            <h3 class="text-2xl text-wrap order-3">{i18n.HERO.DESCRIPTION}</h2>
+<Section>
+    <div class="flex justify-between items-center lg:items-start flex-col lg:flex-row gap-10 lg:gap-6 pt-20 lg:pt-40">
+        <div class="flex justify-between flex-col lg:max-w-[480px] min-[1150px]:max-w-2xl ">
+            <h1 class="text-5xl font-bold pb-5 order-2 text-center self-center lg:self-start">Marlon Mora</h1>
+            <h2 class="text-3xl font-bold pb-2 order-1 self-center lg:self-start">{i18n.HERO.GREETING}</h3>
+            <h3 class="text-2xl text-balance text-center order-3 lg:text-start">{i18n.HERO.DESCRIPTION}</h2>
 
-            <nav class="flex justify-start items-center gap-x-4 py-5 order-4">
+            <nav class="flex justify-center items-center gap-x-4 py-5 order-4 lg:justify-start">
                 <SocialIcon
                     href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
                     class="hover:scale-110 transition"
@@ -37,17 +37,17 @@ const i18n = getI18n({ currentLocale });
             </nav>
 
             <div
-                class="flex justify-center items-center pt-10 lg:justify-start order-5"
+                class="flex justify-center items-center order-5 pt-2 lg:justify-start lg:pt-10"
             >
                 <a
                     href="#proyects"
-                    class="text-white bg-blue-700 hover:bg-blue-800 hover:scale-105 transition font-medium rounded-lg text-xl px-10 md:px-20 lg:px-8 py-2.5 me-2 mb-2"
+                    class="text-white bg-blue-700 hover:bg-blue-800 hover:scale-105 transition font-medium rounded-lg text-xl px-10 md:px-20 lg:px-8 py-2.5"
                     >{i18n.HERO.CTA_TEXT}</a
                 >
             </div>
         </div>
 
-        <div class="flex justify-center w-full max-w-[400px] md:max-w-[500px] lg:max-w-[530px] mt-10 lg:mt-0">
+        <div class="flex justify-center w-full max-w-[400px] md:max-w-[500px] lg:max-w-[530px] mt-8 lg:mt-0 z-10">
             <figure>
                 <Image
                     class="hero-img fadeInMove"
@@ -63,6 +63,8 @@ const i18n = getI18n({ currentLocale });
 <style>
     .hero-img {
         filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.4));
+        /* mask-image: linear-gradient(to bottom,
+        black 80%, transparent); */
     }
 
     .fadeInMove {

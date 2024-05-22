@@ -7,9 +7,9 @@ const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 ---
 
-<header class="px-8" id="top">
+<header class="fixed w-full px-8 z-20 " id="top">
     <div
-        class="flex justify-between items-center w-full mx-auto max-w-[1200px] py-6"
+        class="flex justify-between items-center w-full mx-auto max-w-screen-xl py-4"
     >
         <!-- Logo -->
         <div class="flex md:flex-grow md:basis-0">
@@ -29,7 +29,7 @@ const translation = useTranslations(lang);
 
 
         <div class="w-12 md:hidden">
-            <img src="/assets/menu-alt-01-svgrepo-com.svg" alt="" />
+            <img src="/assets/menu-alt-01-svgrepo-com.svg" alt=""/>
         </div>
 
         <nav class="hidden md:flex md:flex-row md:gap-x-10 md:text-xl">
@@ -44,3 +44,7 @@ const translation = useTranslations(lang);
         </div>
     </div>
 </header>
+
+<script>
+
+</script>

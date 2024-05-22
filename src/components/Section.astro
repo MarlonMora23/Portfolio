@@ -3,7 +3,7 @@ const { title, id } = Astro.props;
 ---
 
 <section class="px-8" id={id}>
-    <div class="w-full mx-auto max-w-[1200px] my-4 md:my-12 lg:my-20">
+    <div class="w-full mx-auto max-w-screen-xl py-12">
         {title && <h2 class="text-4xl">{title}</h2>}
         <slot />
     </div>
