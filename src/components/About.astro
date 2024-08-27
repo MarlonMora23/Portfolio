@@ -1,7 +1,18 @@
 ---
 import Section from "@/components/Section.astro";
+
+import { getI18n } from "@/i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18n({ currentLocale });
 ---
 
-<Section title="Sobre mí" class="bg-slate-400" id="about">
-    
+<Section title={i18n.ABOUT.TITLE} class="bg-slate-400" id="about">
+    <p class="text-lg mt-4 text-pretty">
+        {i18n.ABOUT.PARAGRAPH1}
+        <br><br>
+        {i18n.ABOUT.PARAGRAPH2}
+        <br><br>
+        {i18n.ABOUT.PARAGRAPH3}
+    </p>
 </Section>

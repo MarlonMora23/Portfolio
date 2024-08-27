@@ -1,13 +1,28 @@
 ---
+import { languages } from "@/i18n/ui";
 import { Image } from "astro:assets";
+import menu_svg from "../../public/assets/menu-alt-01-svgrepo-com.svg";
+import close_menu_svg from "../../public/assets/close-bold-svgrepo-com.svg";
+import leftArrow from "../../public/assets/left-arrow.svg";
+import rightArrow from "../../public/assets/right-arrow.svg";
 import LanguagePicker from "@/components/LenguagePicker.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import internationalIcon from "../../public/assets/international-svgrepo-com.svg";
+import {
+    getLangFromUrl,
+    useTranslations,
+    useTranslatedPath,
+} from "../i18n/utils";
+import LenguagePicker from "@/components/LenguagePicker.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
-<header class="fixed w-full px-8 z-20 " id="top">
+<header
+    class="fixed w-full px-8 z-20 bg-transparent transition-all duration-300 ease-in-out"
+    id="top"
+>
     <div
         class="flex justify-between items-center w-full mx-auto max-w-screen-xl py-4"
     >
@@ -19,7 +34,6 @@ const translation = useTranslations(lang);
                         src="/assets/MarlonMoraLogo.svg"
                         alt="Marlon Mora Icon"
                         loading="eager"
-                        class="w-10"
                         width={40}
                         height={40}
                     />
@@ -27,24 +41,259 @@ const translation = useTranslations(lang);
             </a>
         </div>
 
-
-        <div class="w-12 md:hidden">
-            <img src="/assets/menu-alt-01-svgrepo-com.svg" alt=""/>
+        <div class="w-10 h-10 md:hidden" id="menu_btn">
+            <button class="cursor-pointer">
+                <Image
+                    src={menu_svg}
+                    alt="menu"
+                    loading="eager"
+                    width={40}
+                    height={40}
+                />
+            </button>
         </div>
 
         <nav class="hidden md:flex md:flex-row md:gap-x-10 md:text-xl">
-            <a href="#top">{translation("nav.home")}</a>
+            <a href="#hero">{translation("nav.home")}</a>
             <a href="#about">{translation("nav.about")}</a>
             <a href="#proyects">{translation("nav.proyects")}</a>
-            <a href="#contact">{translation("nav.contact")}</a>
+            <!-- <a href="#contact">{translation("nav.contact")}</a> -->
         </nav>
 
         <div class="hidden md:flex md:justify-end md:flex-grow md:basis-0">
             <LanguagePicker />
         </div>
     </div>
+
+    <!-- Mobile Menu -->
+    <div
+        class="absolute top-0 left-0 w-full h-screen bg-white md:hidden z-10 pt-6 hidden"
+        id="mobile_menu"
+    >
+        <section class="px-10" id="menu">
+            <div class="flex justify-end w-full">
+                <button class="cursor-pointer">
+                    <div class="w-6" id="close_btn">
+                        <Image
+                            src={close_menu_svg}
+                            alt="menu"
+                            loading="eager"
+                            width={24}
+                            height={24}
+                        />
+                    </div>
+                </button>
+            </div>
+            <nav
+                class="flex flex-col justify-center items-baseline gap-8 text-xl mt-8"
+            >
+                <a href="#hero" class="w-full flex justify-between">
+                    {translation("nav.home")}
+
+                    <Image
+                        src={rightArrow}
+                        alt="menu"
+                        loading="eager"
+                        width={24}
+                        height={24}
+                    />
+                </a>
+
+                <a href="#about" class="w-full flex justify-between">
+                    {translation("nav.about")}
+                    <Image
+                        src={rightArrow}
+                        alt="menu"
+                        loading="eager"
+                        width={24}
+                        height={24}
+                    />
+                </a>
+
+                <a href="#proyects" class="w-full flex justify-between"
+                    >{translation("nav.proyects")}
+                    <Image
+                        src={rightArrow}
+                        alt="menu"
+                        loading="eager"
+                        width={24}
+                        height={24}
+                    />
+                </a>
+                <!-- <a href="#contact" class="w-full">{translation("nav.contact")}</a> -->
+
+                <button
+                class="md:hidden w-full flex justify-between cursor-pointer"
+                id="change_language_btn"
+            >
+                <div class="flex justify-center items-center gap-2 lg:gap-4">
+                    <Image
+                        src={internationalIcon}
+                        class="w-6"
+                        alt="itenational"
+                        loading="eager"
+                        width={24}
+                        height={24}
+                    />
+                    {languages[lang]}
+                </div>
+                <div>
+                    <Image
+                        src={rightArrow}
+                        alt="menu"
+                        loading="eager"
+                        width={24}
+                        height={24}
+                    />
+                </div>
+            </button>
+            </nav>
+        </section>
+
+        <!-- lenguage picker -->
+        <section class="hidden w-full px-10" id="select_language">
+            <div class="">
+                <div class="flex justify-between w-full">
+                    <button>
+                        <div class="w-6" id="back_btn">
+                            <Image
+                                src={leftArrow}
+                                alt="menu"
+                                loading="eager"
+                                width={24}
+                                height={24}
+                            />
+                        </div>
+                    </button>
+                    <p>Seleccionar idioma</p>
+                    <button class="cursor-pointer">
+                        <div class="w-6" id="close_btn2">
+                            <Image
+                                src={close_menu_svg}
+                                alt="menu"
+                                loading="eager"
+                                width={24}
+                                height={24}
+                            />
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <nav
+                class="w-full mt-8 flex flex-col justify-center items-baseline gap-8 text-xl"
+            >
+                {
+                    Object.entries(languages).map(([langKey, label]) => (
+                        <a href={translatePath("/", langKey)} class="w-full">
+                            <div class="flex justify-between w-full">
+                                <span class="inline-block">{label}</span>
+                                {lang === langKey && (
+                                    <img
+                                        src="/assets/check-svgrepo-com.svg"
+                                        class="w-4"
+                                        alt="selected"
+                                    />
+                                )}
+                            </div>
+                        </a>
+                    ))
+                }
+            </nav>
+        </section>
+    </div>
 </header>
 
-<script>
+<style>
+    header {
+        backdrop-filter: none;
+        background-color: transparent;
+        transition:
+            backdrop-filter 0.3s ease,
+            background-color 0.3s ease;
+    }
 
+    header.scrolled {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+</style>
+
+<script>
+    // Aplicar blur al nav cuando se hace scroll
+    document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+
+        function handleScroll() {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        }
+
+        handleScroll();
+
+        document.addEventListener("scroll", handleScroll);
+    });
+
+    const menuBtn = document.getElementById("menu_btn");
+    const closeBtn = document.getElementById("close_btn");
+    const mobileMenu = document.getElementById("mobile_menu");
+    const menuLinks = mobileMenu.querySelectorAll("a");
+
+    // Función para mostrar/ocultar el menú
+    function toggleMenu() {
+        mobileMenu.classList.toggle("hidden");
+    }
+
+    // Asigna los eventos de click
+    menuBtn.addEventListener("click", toggleMenu);
+    closeBtn.addEventListener("click", toggleMenu);
+
+    menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            toggleMenu();
+        });
+    });
+
+    // Acomodar el desplazamiento del nav
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            // Obtenemos la posición del elemento objetivo y restamos 20px
+            const offsetPosition =
+                targetElement.getBoundingClientRect().top + window.scrollY - 60;
+
+            window.scrollTo({
+                top: offsetPosition,
+            });
+        });
+    });
+
+    const selectLanguage = document.getElementById("change_language_btn");
+    const selectLenguageMenu = document.getElementById("select_language");
+    const menu = document.getElementById("menu");
+    const closeBtn2 = document.getElementById("close_btn2");
+    const backBtn = document.getElementById("back_btn");
+
+    backBtn.addEventListener("click", () => {
+        selectLenguageMenu.classList.toggle("hidden");
+        menu.classList.remove("hidden");
+    });
+
+    selectLanguage.addEventListener("click", () => {
+        selectLenguageMenu.classList.toggle("hidden");
+        menu.classList.add("hidden");
+    });
+
+    closeBtn2.addEventListener("click", () => {
+        menu.classList.remove("hidden");
+        toggleMenu()
+    });
 </script>

@@ -1,7 +1,151 @@
 ---
 import Section from "@/components/Section.astro";
+import { Image } from "astro:assets";
+
+import calinema_app_img from "../../public/assets/calinema_app.webp";
+import calinema_api_img from "../../public/assets/calinema_api.avif";
+import democracia_elite_img from "../../public/assets/democracia_elite.avif";
+import menu_usb_img from "../../public/assets/menu_usb.avif";
+
+import { getI18n } from "@/i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18n({ currentLocale });
 ---
 
-<Section title="Proyectos" id="proyects">
+<Section title={i18n.PROYECTS.TITLE} id="proyects">
+    <p class="text-lg  mb-2 mt-4">
+        {i18n.PROYECTS.DESCRIPTION}
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <figure>
+                <Image
+                    src={calinema_app_img}
+                    alt="CaliNema"
+                    class="w-full object-cover"
+                    width={628}
+                    height={353.25}
+                />
+            </figure>
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">CaliNema</h3>
+                <p class="text-gray-600">
+                    {i18n.PROYECTS.CALINEMA_DESCRIPTION}
+                </p>
+            </div>
+            <div class="flex gap-2 px-4 pb-4 ">
+                <a
+                    href="https://calinema.onrender.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-blue-700 rounded-lg text-white py-2 px-4 hover:bg-blue-800 hover:scale-105 transition"
+                >
+                    {i18n.PROYECTS.VIEW_PROJECT}
+                </a>
+                <a
+                    href="https://github.com/MarlonMora23/CaliNema"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border border-blue-700 rounded-lg text-blue-800 py-2 px-4 hover:scale-105 transition"
+                >
+                    {i18n.PROYECTS.VIEW_CODE}
+                </a>
+            </div>
+        </article>
+    
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <figure>
+                <Image
+                    src={calinema_api_img}
+                    alt="CaliNema"
+                    class="w-full object-cover"
+                    width={628}
+                    height={353.25}
+                />
+            </figure>
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">API CaliNema</h3>
+                <p class="text-gray-600">
+                    {i18n.PROYECTS.CALINEMA_API_DESCRIPTION}
+                </p>
+            </div>
+            <div class="flex justify-between items-center px-4 pb-4">
+                <a
+                    href="https://github.com/MarlonMora23/API_Calinema"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border border-blue-700 rounded-lg text-blue-800 py-2 px-4 hover:scale-105 transition"
+                >
+                    {i18n.PROYECTS.VIEW_CODE}
+                </a>
+            </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <figure>
+                <Image
+                    src={democracia_elite_img}
+                    alt="Democracia Elite"
+                    class="w-full object-cover"
+                    width={628}
+                    height={353.25}
+                />
+            </figure>
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Democracia de Élite</h3>
+                <p class="text-gray-600">
+                    {i18n.PROYECTS.DEMOCRACIA_ELITE_DESCRIPTION}
+                </p>
+            </div>
+            <div class="flex gap-2 px-4 pb-4">
+                <a
+                    href="https://marlonmora23.github.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-blue-700 rounded-lg text-white py-2 px-4 hover:bg-blue-800 hover:scale-105 transition"
+                >
+                    {i18n.PROYECTS.VIEW_PROJECT}
+                </a>
+                <a
+                    href="https://github.com/MarlonMora23/marlonmora23.github.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border border-blue-700 rounded-lg text-blue-800 py-2 px-4 hover:scale-105 transition"
+                >
+                    {i18n.PROYECTS.VIEW_CODE}
+                </a>
+            </div>
+        </article>
+    
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <figure>
+                <Image
+                    src={menu_usb_img}
+                    alt="MenuUsb"
+                    class="w-full object-cover"
+                    width={628}
+                    height={353.25}
+                />
+            </figure>
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Menu Usb</h3>
+                <p class="text-gray-600">
+                    {i18n.PROYECTS.MENUUSB_DESCRIPTION}
+                </p>
+            </div>
+            <div class="flex justify-between items-center px-4 pb-4">
+                <a
+                    href="https://github.com/MarlonMora23/MenuUsb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border border-blue-700 rounded-lg text-blue-800 py-2 px-4 hover:scale-105 transition"
+                >
+                    {i18n.PROYECTS.VIEW_CODE}
+                </a>
+            </div>
+        </article>
+    </div>
     
 </Section>

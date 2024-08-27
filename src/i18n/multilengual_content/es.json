@@ -1,7 +1,23 @@
 {
     "HERO": {
-        "GREETING" : "Hola, Soy",
-        "DESCRIPTION" : "Estudiante de Administración de Empresas y de Ingeniería de Sistemas. De Colombia. Me gusta ofrecer soluciones mediante la tecnología.",
-        "CTA_TEXT" : "Ver Proyectos"
+        "GREETING": "Hola, Soy",
+        "DESCRIPTION": "Estudiante de Administración de Empresas y de Ingeniería de Sistemas. De Colombia. Me gusta ofrecer soluciones mediante la tecnología.",
+        "CTA_TEXT": "Ver Proyectos"
+    },
+    "ABOUT": {
+        "TITLE": "Sobre mi",
+        "PARAGRAPH1": "Soy estudiante de la Universidad de San Buenaventura de Cali, donde comencé mis estudios en Administración de Negocios en el segundo semestre de 2021. En el segundo semestre de 2022, decidí ampliar mis horizontes académicos al optar por una doble titulación en Ingeniería de Sistemas. Esta decisión me ha brindado una perspectiva integral, combinando la lógica empresarial con el uso de herramientas informáticas para la resolución efectiva de problemas.",
+        "PARAGRAPH2": "Mi formación académica me ha permitido desarrollar habilidades en programación, así como en la toma de decisiones estratégicas y la gestión de recursos. Mi objetivo es integrar mis conocimientos técnicos y empresariales para contribuir al desarrollo de soluciones innovadoras en el campo de la tecnología.",
+        "PARAGRAPH3": "Mi lenguaje de programación favorito es Python, con el cual tengo mayor experiencia. Además, tengo conocimientos en JavaScript, C++ y Java, y he resuelto problemas con estos lenguajes. También he trabajado con frameworks web como Astro, Django y Angular, lo que me ha permitido desarrollar aplicaciones robustas y eficientes."
+    },
+    "PROYECTS": {
+        "TITLE": "Proyectos",
+        "DESCRIPTION": "Estos son algunos de los proyectos que he desaroollados",
+        "VIEW_PROJECT": "Ver Proyecto",
+        "VIEW_CODE": "Ver código",
+        "CALINEMA_DESCRIPTION": "Desarrollada en Astro, CaliNema es la página web prototipo que permite mostrar todas las películas y funciones del día disponibles en los cines de la ciudad de Cali. La informacion de las películas es obtenida por la API de CaliNema.",
+        "CALINEMA_API_DESCRIPTION": "Desarrollada en Django REST Framework, la API de CaliNema hace un scraping de la página de los cinco cines de la ciudad para obtener todas las películas y funciones del día en que se ejecuta el scraping.",
+        "DEMOCRACIA_ELITE_DESCRIPTION": "Página web desarrollada para un trabajo de constitución y democracia. La página describe, da características y ejemplos de lo que es la democracia de élite.",
+        "MENUUSB_DESCRIPTION": "Desarrollado en Django, MenuUsb es la página web prototipo que permite mostrar todos los menús de las tiendas de la universidad San Buenaventura en un solo lugar."
     }
 }
