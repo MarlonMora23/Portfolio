@@ -1,5 +1,5 @@
 #Portafolio de Marlon Mora
 
-Gracias a @Midudev por tus videos, este portfolio está inspirado en tu contenido
+Gracias a @Midudev por tus videos. Este portfolio está inspirado en tu contenido
 
 Fondo de @Ibelick
