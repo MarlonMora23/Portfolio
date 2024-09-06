@@ -12,7 +12,7 @@
     },
     "PROYECTS": {
         "TITLE": "Proyectos",
-        "DESCRIPTION": "Estos son algunos de los proyectos que he desaroollados",
+        "DESCRIPTION": "Estos son algunos de los proyectos que he desarrollado",
         "VIEW_PROJECT": "Ver Proyecto",
         "VIEW_CODE": "Ver código",
         "CALINEMA_DESCRIPTION": "Desarrollada en Astro, CaliNema es la página web prototipo que permite mostrar todas las películas y funciones del día disponibles en los cines de la ciudad de Cali. La informacion de las películas es obtenida por la API de CaliNema.",

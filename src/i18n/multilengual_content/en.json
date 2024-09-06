@@ -12,7 +12,7 @@
     },
     "PROYECTS": {
         "TITLE": "Projects",
-        "DESCRIPTION": "These are some of the projects I have developed at the university",
+        "DESCRIPTION": "These are some of the projects I have developed",
         "VIEW_PROJECT": "View Project",
         "VIEW_CODE": "View Code",
         "CALINEMA_DESCRIPTION": "Developed in Astro, CaliNema is the prototype website that displays all the movies and showtimes available in the cinemas of Cali city for the day. The movie information is obtained by the CaliNema API.",
