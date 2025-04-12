@@ -7,7 +7,7 @@ const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
 ---
 
-<Section title={i18n.ABOUT.TITLE} class="bg-slate-400" id="about">
+<Section title={i18n.ABOUT.TITLE} id="about">
     <p class="text-lg mt-4 text-pretty">
         {i18n.ABOUT.PARAGRAPH1}
         <br><br>
