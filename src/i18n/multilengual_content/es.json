@@ -16,8 +16,19 @@
         "VIEW_PROJECT": "Ver Proyecto",
         "VIEW_CODE": "Ver código",
         "CALINEMA_DESCRIPTION": "Desarrollada en Astro, CaliNema es la página web prototipo que permite mostrar todas las películas y funciones del día disponibles en los cines de la ciudad de Cali. La informacion de las películas es obtenida por la API de CaliNema.",
-        "CALINEMA_API_DESCRIPTION": "Desarrollada en Django REST Framework, la API de CaliNema hace un scraping de la página de los cinco cines de la ciudad para obtener todas las películas y funciones del día en que se ejecuta el scraping.",
-        "DEMOCRACIA_ELITE_DESCRIPTION": "Página web desarrollada para un trabajo de constitución y democracia. La página describe, da características y ejemplos de lo que es la democracia de élite.",
-        "MENUUSB_DESCRIPTION": "Desarrollado en Django, MenuUsb es la página web prototipo que permite mostrar todos los menús de las tiendas de la universidad San Buenaventura en un solo lugar."
+        "CALINEMA_API_DESCRIPTION": "Desarrollada en Django REST Framework, la API de CaliNema hace un scraping de la página de los cinco cines de la ciudad de Cali para obtener todas las películas y funciones del día en que se ejecuta el scraping.",
+        "LEETCODE_CLONE_TITLE": "Clon de LeetCode",
+        "LEETCODE_CLONE_DESCRIPTION": "Una aplicación web para probar ejercicios, creada con Flask e inspirada en LeetCode. Permite a los usuarios resolver problemas de programación, enviar soluciones y ver sus resultados.",
+        "XRAYS_TITLE": "Clasificación de Radiografías con Redes Neuronales",
+        "XRAYS_DESCRIPTION": "Repositorio que contiene un proyecto de machine learning enfocado en la clasificación automática de radiografías de tórax utilizando redes neuronales convolucionales (CNN) y modelos de transferencia de aprendizaje (VGG16 y ResNet50).",
+        "MENUUSB_TITLE": "Menú Usb",
+        "MENUUSB_DESCRIPTION": "Desarrollado en Django, MenuUsb es la página web prototipo que permite mostrar todos los menús de las tiendas de la universidad San Buenaventura en un solo lugar.",
+        "DEMOCRACIA_ELITE_TITLE": "Democracia de Élite",
+        "DEMOCRACIA_ELITE_DESCRIPTION": "Página web desarrollada para un trabajo de constitución y democracia. La página describe, da características y ejemplos de lo que es la democracia de élite."
+    },
+    "CONTACT": {
+        "TITLE": "Contacto",
+        "DESCRIPTION": "¿Tienes una oportunidad o idea interesante? No dudes en escribirme.",
+        "BUTTON": "Enviar correo"
     }
 }

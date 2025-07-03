@@ -1,7 +1,21 @@
 ---
 import Section from "@/components/Section.astro";
+import { getI18n } from "@/i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18n({ currentLocale });
 ---
 
-<Section title="Contacto" id="contact">
-    
+<Section title={i18n.CONTACT.TITLE} id="contact" class="mb-8">
+    <div class="flex flex-col flex-col lg:flex-col">
+        <p class="text-lg my-4">{i18n.CONTACT.DESCRIPTION}</p>
+        <div class="flex">
+            <a
+                href="mailto:marlonmora@ieee.org"
+                class="bg-blue-700 rounded-lg text-white py-2 px-4 hover:bg-blue-800 hover:bg-blue-800 hover:text-white"
+            >
+                {i18n.CONTACT.BUTTON}
+            </a>
+        </div>
+    </div>
 </Section>

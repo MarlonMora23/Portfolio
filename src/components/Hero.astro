@@ -13,10 +13,10 @@ const i18n = getI18n({ currentLocale });
 
 <Section id="hero" class="hero-bg overflow-hidden">
     <div
-        class="flex justify-between items-center lg:items-start flex-col lg:flex-row gap-10 lg:gap-6 lg:pt-20"
+        class="flex justify-between items-center flex-col lg:flex-row gap-10 lg:gap-6 lg:pt-20"
     >
         <div
-            class="flex justify-between flex-col lg:max-w-[480px] min-[1150px]:max-w-2xl lg: pt-10"
+            class="flex justify-between flex-col lg:max-w-[480px] min-[1150px]:max-w-2xl lg:mb-8"
         >
             <h1
                 class="text-5xl font-bold pb-5 order-2 text-center self-center lg:self-start"
@@ -64,7 +64,7 @@ const i18n = getI18n({ currentLocale });
         </div>
 
         <div
-            class="flex justify-center w-full max-w-[400px] md:max-w-[500px] lg:max-w-[530px] mt-8 lg:mt-0 z-10"
+            class="flex justify-center w-full max-w-[400px] md:max-w-[500px] lg:max-w-[530px] mt-8 lg:mt-0 z-10 lg:self-end"
         >
             <figure>
                 <Image
@@ -82,11 +82,11 @@ const i18n = getI18n({ currentLocale });
     :global(.hero-bg) {
         background: radial-gradient(
                 circle at top left,
-                #ffffff 20%,
+                #f5f5f5 20%,
                 transparent 40%
             ),
-            radial-gradient(circle at top right, #ffffff 20%, transparent 40%),
-            linear-gradient(to bottom, #d5f5ff 0%, #ffffff 60%, #ffffff 100%);
+            radial-gradient(circle at top right, #f5f5f5 20%, transparent 40%),
+            linear-gradient(to bottom, #d5f5ff 0%, #f5f5f5 60%, #f5f5f5 100%);
     }
 
     .hero-img {

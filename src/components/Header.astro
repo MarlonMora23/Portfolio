@@ -12,7 +12,6 @@ import {
     useTranslations,
     useTranslatedPath,
 } from "../i18n/utils";
-import LenguagePicker from "@/components/LenguagePicker.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
@@ -57,7 +56,7 @@ const translatePath = useTranslatedPath(lang);
             <a href="#hero">{translation("nav.home")}</a>
             <a href="#about">{translation("nav.about")}</a>
             <a href="#proyects">{translation("nav.proyects")}</a>
-            <!-- <a href="#contact">{translation("nav.contact")}</a> -->
+            <a href="#contact">{translation("nav.contact")}</a>
         </nav>
 
         <div class="hidden md:flex md:justify-end md:flex-grow md:basis-0">
@@ -120,24 +119,8 @@ const translatePath = useTranslatedPath(lang);
                         height={24}
                     />
                 </a>
-                <!-- <a href="#contact" class="w-full">{translation("nav.contact")}</a> -->
-
-                <button
-                class="md:hidden w-full flex justify-between cursor-pointer"
-                id="change_language_btn"
-            >
-                <div class="flex justify-center items-center gap-2 lg:gap-4">
-                    <Image
-                        src={internationalIcon}
-                        class="w-6"
-                        alt="itenational"
-                        loading="eager"
-                        width={24}
-                        height={24}
-                    />
-                    {languages[lang]}
-                </div>
-                <div>
+                <a href="#contact" class="w-full flex justify-between"
+                    >{translation("nav.contact")}
                     <Image
                         src={rightArrow}
                         alt="menu"
@@ -145,8 +128,35 @@ const translatePath = useTranslatedPath(lang);
                         width={24}
                         height={24}
                     />
-                </div>
-            </button>
+                </a>
+
+                <button
+                    class="md:hidden w-full flex justify-between cursor-pointer"
+                    id="change_language_btn"
+                >
+                    <div
+                        class="flex justify-center items-center gap-2 lg:gap-4"
+                    >
+                        <Image
+                            src={internationalIcon}
+                            class="w-6"
+                            alt="itenational"
+                            loading="eager"
+                            width={24}
+                            height={24}
+                        />
+                        {languages[lang]}
+                    </div>
+                    <div>
+                        <Image
+                            src={rightArrow}
+                            alt="menu"
+                            loading="eager"
+                            width={24}
+                            height={24}
+                        />
+                    </div>
+                </button>
             </nav>
         </section>
 
@@ -294,6 +304,6 @@ const translatePath = useTranslatedPath(lang);
 
     closeBtn2.addEventListener("click", () => {
         menu.classList.remove("hidden");
-        toggleMenu()
+        toggleMenu();
     });
 </script>
