@@ -17,6 +17,8 @@
         "VIEW_CODE": "View Code",
         "CALINEMA_DESCRIPTION": "Developed in Astro, CaliNema is the prototype website that displays all the movies and showtimes available in the cinemas of Cali city for the day. The movie information is obtained by the CaliNema API.",
         "CALINEMA_API_DESCRIPTION": "Developed in Django REST Framework, the CaliNema API scrapes the pages of the five cinemas in the city of Cali to obtain all the movies and showtimes for the day the scraping is performed.",
+        "POKEDEX_DESCRIPTION": "A web application developed with Vite and React that uses the PokéAPI to display detailed information about various Pokémon. It integrates React Three Fiber to render 3D models and elements, providing a dynamic and interactive visual experience.",
+        "RADIOAPP_DESCRIPTION": "A web application built with Vite and React that uses the Radio Browser public API to display radio stations from around the world. The homepage highlights stations from Colombia, providing a simple interface for exploring and playing live content.",
         "LEETCODE_CLONE_TITLE": "LeetCode Clone",
         "LEETCODE_CLONE_DESCRIPTION": "A web application for testing exercises, built using Flask and inspired by LeetCode. It allows users to solve programming problems, submit solutions, and view their results.",
         "XRAYS_TITLE": "Neural Network X-Ray Classification",

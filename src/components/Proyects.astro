@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 
 import calinema_app_img from "../../public/assets/calinema_app.webp";
 import calinema_api_img from "../../public/assets/calinema_api.avif";
+import radio_app_img from "../../public/assets/radio_app_img.webp";
+import pokedex_img from "../../public/assets/pokedex_img.webp";
 import leetcode_clone_img from "../../public/assets/leetcode_clone.avif";
 import democracia_elite_img from "../../public/assets/democracia_elite.avif";
 import menu_usb_img from "../../public/assets/menu_usb.avif";
@@ -78,6 +80,74 @@ const i18n = getI18n({ currentLocale });
             <div class="flex justify-between items-center px-4 pb-4">
                 <a
                     href="https://github.com/MarlonMora23/API_Calinema"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border border-blue-700 rounded-lg text-blue-800 py-2 px-4 hover:bg-blue-800 hover:text-white"
+                >
+                    {i18n.PROYECTS.VIEW_CODE}
+                </a>
+            </div>
+        </article>
+        
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <figure>
+                <Image
+                    src={radio_app_img}
+                    alt="Radio App"
+                    class="w-full object-cover"
+                    width={628}
+                    height={353.25}
+                />
+            </figure>
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    RadioApp
+                </h3>
+                <p class="text-gray-600">
+                    {i18n.PROYECTS.RADIOAPP_DESCRIPTION}
+                </p>
+            </div>
+            <div class="flex gap-2 px-4 pb-4">
+                <a
+                    href="https://radio-app-ochre.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-blue-700 rounded-lg text-white py-2 px-4 hover:bg-blue-800"
+                >
+                    {i18n.PROYECTS.VIEW_PROJECT}
+                </a>
+                <a
+                    href="https://github.com/MarlonMora23/LeetCode_Clon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border border-blue-700 rounded-lg text-blue-800 py-2 px-4 hover:bg-blue-800 hover:text-white"
+                >
+                    {i18n.PROYECTS.VIEW_CODE}
+                </a>
+            </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <figure>
+                <Image
+                    src={pokedex_img}
+                    alt="Pokedex 3D"
+                    class="w-full object-cover"
+                    width={628}
+                    height={353.25}
+                />
+            </figure>
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Pokedex 3D
+                </h3>
+                <p class="text-gray-600">
+                    {i18n.PROYECTS.POKEDEX_DESCRIPTION}
+                </p>
+            </div>
+            <div class="flex gap-2 px-4 pb-4">
+                <a
+                    href="https://github.com/MarlonMora23/LeetCode_Clon"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="border border-blue-700 rounded-lg text-blue-800 py-2 px-4 hover:bg-blue-800 hover:text-white"
