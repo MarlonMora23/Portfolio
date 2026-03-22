@@ -1,9 +1,9 @@
 ---
-const { title, id, class: customClass } = Astro.props;
+const { title, id, class: customClass, applyMargin = true } = Astro.props;
 ---
 
-<section class={`px-8 ${customClass || ''}`} id={id}>
-    <div class="w-full mx-auto max-w-screen-xl mt-16">
+<section class={`px-8 ${applyMargin ? 'mt-16' : ''} ${customClass || ''}`} id={id}>
+    <div class="w-full mx-auto max-w-screen-xl">
         {title && <h2 class="text-4xl">{title}</h2>}
         <slot />
     </div>

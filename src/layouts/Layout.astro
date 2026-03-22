@@ -2,112 +2,122 @@
 import Header from "@/components/Header.astro";
 
 interface Props {
-	title: string;
-	description: string;
+  title: string;
+  description: string;
 }
 
 const { title, description } = Astro.props;
-const { currentLocale } = Astro
+const { currentLocale } = Astro;
 ---
 
 <!doctype html>
 <html lang={currentLocale}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		
-		<!-- Open Graph -->
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content="assets/web_portada.webpp" />
-		<meta property="og:url" content={Astro.site} />
-		<meta property="og:type" content="website" />
-	
-		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="assets/web_portada.webpp" />
-	
-		<!-- SEO and Accessibility -->
-		<link rel="alternate" href="https://marlonmora.vercel.app" hreflang="es" />
-		<link rel="alternate" href="https://marlonmora.vercel.app/en" hreflang="en" />
-		<link rel="canonical" href={Astro.site} />
-	
-		<title>{title}</title>
-	</head>
-	
-	<body>
-		<Header />
-		<slot />
-	</body>
-	
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="assets/web_portada.webpp" />
+    <meta property="og:url" content={Astro.site} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="assets/web_portada.webpp" />
+
+    <!-- SEO and Accessibility -->
+    <link rel="alternate" href="https://marlonmora.vercel.app" hreflang="es" />
+    <link
+      rel="alternate"
+      href="https://marlonmora.vercel.app/en"
+      hreflang="en"
+    />
+    <link rel="canonical" href={Astro.site} />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <Header />
+    <slot />
+  </body>
 </html>
 
 <style is:global>
-	html {
-		font-family: system-ui, sans-serif;
-		background: #f5f5f5;
-		scroll-behavior: smooth;
-	}
+  @font-face {
+    font-family: "Agraham";
+    src: url("../assets/Agraham.otf") format("opentype");
+  }
 
-	body{
-		min-height: 100vh;
-	}
+  html {
+    font-family: system-ui, sans-serif;
+    background: #f5f5f5;
+    scroll-behavior: smooth;
+  }
 
-	code {
-		font-family:
-			Playfair Display,
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Courier New,
-			monospace;
-	}
+  body {
+    min-height: 100vh;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
 
-	body,
-	figure {
-		margin: 0;
-		padding: 0;
-	}
+  code {
+    font-family:
+      Playfair Display,
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Courier New,
+      monospace;
+  }
 
-	a {
-		text-decoration: none;
-	}
+  body,
+  figure {
+    margin: 0;
+    padding: 0;
+  }
 
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+  a {
+    text-decoration: none;
+  }
 
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-	h1,
-	h2,
-	h3,
-	h4 {
-		color: #000000;
-		margin: 0;
-		padding: 0;
-	}
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-	p {
-		color: #000000;
-		margin: 0;
-		text-wrap: pretty;
-	}
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #000000;
+    margin: 0;
+    padding: 0;
+  }
 
-	@media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
+  p {
+    color: #000000;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 </style>

@@ -1,0 +1,200 @@
+---
+import Section from "@/components/Section.astro";
+import { getI18n } from "@/i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18n({ currentLocale });
+
+const skillGroups = [
+    {
+        label: i18n.SKILLS.GROUP_ML,
+        skills: ["Python", "TensorFlow", "Keras", "pandas", "NumPy", "scikit-learn", "Jupyter"],
+    },
+    {
+        label: i18n.SKILLS.GROUP_BACKEND,
+        skills: ["Flask", "SQLAlchemy", "PostgreSQL", "REST APIs"],
+    },
+    {
+        label: i18n.SKILLS.GROUP_FRONTEND,
+        skills: ["React", "Angular", "TailwindCSS", "TypeScript", "Vite", "Astro", "JavaScript", "HTML/CSS"],
+    },
+    {
+        label: i18n.SKILLS.GROUP_DEVOPS,
+        skills: ["Git", "Github", "Docker", "Linux"],
+    },
+];
+
+---
+
+<Section id="skills" class="skills-section">
+
+    <div class="skills-header scroll-reveal">
+        <p class="section-overline">{i18n.SKILLS.OVERLINE}</p>
+        <h2 class="section-headline">{i18n.SKILLS.TITLE}</h2>
+    </div>
+
+    <div class="skills-grid">
+        {skillGroups.map((group, i) => {
+
+            return (
+                <div class="skill-group scroll-reveal" style={`--delay: ${0.08 + i * 0.09}s`}>
+                    <div class="skill-group-header">
+                        <span class="skill-group-label">{group.label}</span>
+                    </div>
+                    <div class="skill-tags">
+                        {group.skills.map(skill => (
+                            <span class="skill-tag">{skill}</span>
+                        ))}
+                    </div>
+                </div>
+            );
+        })}
+    </div>
+
+</Section>
+
+<style>
+    :global(.skills-section) {
+        background: #F7F7F5;
+    }
+
+    .skills-header {
+        margin-bottom: 40px;
+    }
+
+    .section-overline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #1867ce;
+        margin-bottom: 12px;
+    }
+
+    .section-overline::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 2px;
+        background: #1867ce;
+        border-radius: 1px;
+    }
+
+    .section-headline {
+        font-size: clamp(22px, 3vw, 30px);
+        font-weight: 700;
+        color: #0a0a0a;
+        line-height: 1.2;
+    }
+
+    /* ── GRID ──────────────────────────────────────────────────────────── */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+        .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+        .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    /* ── GROUP CARD ────────────────────────────────────────────────────── */
+    .skill-group {
+        background: #ffffff;
+        border: 0.5px solid #E8E6E0;
+        border-radius: 12px;
+        padding: 18px 20px;
+        transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-group:hover {
+        border-color: #B5D4F4;
+        transform: translateY(-2px);
+    }
+
+    .skill-group-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .skill-group-label {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #2C2C2A;
+    }
+
+    .skill-level-badge {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 20px;
+        border: 1px solid;
+        white-space: nowrap;
+    }
+
+    .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .skill-tag {
+        font-family: var(--font-mono, monospace);
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: #E6F1FB;
+        color: #0C447C;
+        border: 0.5px solid #B5D4F4;
+        transition: background 0.15s, color 0.15s;
+    }
+
+    .skill-tag:hover {
+        background: #004aad;
+        color: #ffffff;
+        border-color: #004aad;
+    }
+
+    /* ── SCROLL REVEAL ─────────────────────────────────────────────────── */
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+        transition-delay: var(--delay, 0s);
+    }
+
+    .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .scroll-reveal { opacity: 1; transform: none; transition: none; }
+    }
+</style>
+
+<script>
+    const els = document.querySelectorAll('#skills .scroll-reveal');
+    const obs = new IntersectionObserver(
+        entries => entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    els.forEach(el => obs.observe(el));
+</script>

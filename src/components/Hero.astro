@@ -11,64 +11,92 @@ const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
 ---
 
-<Section id="hero" class="hero-bg overflow-hidden">
-    <div
-        class="flex justify-between items-center flex-col pt-20 lg:flex-row gap-10 lg:gap-6"
-    >
-        <div
-            class="flex justify-between flex-col lg:max-w-[480px] min-[1150px]:max-w-2xl lg:mb-8"
+<Section id="hero" class="hero-section" applyMargin={false}>
+
+    <!-- Ambient video background: waves, low opacity so content stays protagonist -->
+    <div class="hero-video-bg" aria-hidden="true">
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            disablepictureinpicture
+            aria-hidden="true"
         >
-            <h1
-                class="text-5xl font-bold pb-5 order-2 text-center self-center lg:self-start"
-            >
+            <source src="/assets/background_vid.webm" type="video/webm" />
+        </video>
+    </div>
+
+    <!-- Blue accent line at the very top -->
+    <div class="hero-top-accent" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+
+        <!-- ── LEFT COLUMN ─────────────────────────────── -->
+        <div class="hero-content">
+
+            <!-- Greeting overline -->
+            <p class="hero-role hero-animate" style="--delay: 0.1s">
+                {i18n.HERO.GREETING}
+            </p>
+
+            <!-- H1: name -->
+            <h1 class="hero-name hero-animate" style="--delay: 0.2s">
                 Marlon Mora
             </h1>
-            <h2
-                class="text-3xl font-bold pb-2 order-1 self-center lg:self-start"
-            >
-                {i18n.HERO.GREETING}
-            </h2>
-            <h3 class="text-2xl text-balance text-center order-3 lg:text-start">
-                {i18n.HERO.DESCRIPTION}
-            </h3>
 
-            <nav
-                class="flex justify-center items-center gap-x-4 py-5 order-4 lg:justify-start"
-            >
+            <!-- Description -->
+            <h2 class="hero-description hero-animate" style="--delay: 0.35s">
+                {i18n.HERO.DESCRIPTION}
+            </h2>
+
+            <!-- CTA row — only 2 buttons now, clean & focused -->
+            <div class="hero-actions hero-animate" style="--delay: 0.5s">
+                <a href="#proyects" class="hero-cta">
+                    {i18n.HERO.CTA_TEXT}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+
+                <a href="#contact" class="hero-cta-ghost">
+                    {i18n.HERO.SECONDARY_CTA}
+                </a>
+            </div>
+        </div>
+
+        <!-- ── RIGHT COLUMN: photo + overlays ────────────── -->
+        <div class="hero-photo-wrapper hero-animate" style="--delay: 0.4s">
+
+            <!-- Availability badge: floating over the photo, top-left area -->
+            <div class="hero-availability-badge" aria-label={i18n.HERO.OVERLINE}>
+                <span class="badge-dot" aria-hidden="true"></span>
+                {i18n.HERO.OVERLINE}
+            </div>
+
+            <!-- Social icons: vertical stack on the left edge of the photo wrapper -->
+            <nav class="hero-social-stack" aria-label="Redes sociales">
                 <SocialIcon
                     href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
-                    class="hover:scale-110 transition"
+                    class="social-link"
                     title="LinkedIn"
                 >
-                    <LinkedInIcon class="size-8" />
+                    <LinkedInIcon class="size-5" />
                 </SocialIcon>
 
                 <SocialIcon
                     href="https://github.com/MarlonMora23"
-                    class="hover:scale-110 transition"
+                    class="social-link"
                     title="GitHub"
                 >
-                    <GithubIcon class="size-8" />
+                    <GithubIcon class="size-5" />
                 </SocialIcon>
             </nav>
 
-            <div
-                class="flex justify-center items-center order-5 pt-2 lg:justify-start lg:pt-10"
-            >
-                <a
-                    href="#proyects"
-                    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-xl px-10 md:px-20 lg:px-8 py-2.5"
-                    >{i18n.HERO.CTA_TEXT}</a
-                >
-            </div>
-        </div>
-
-        <div
-            class="flex justify-center w-full max-w-[400px] md:max-w-[500px] lg:max-w-[530px] mt-8 lg:mt-0 z-10 lg:self-end"
-        >
-            <figure>
+            <figure class="hero-figure">
                 <Image
-                    class="hero-img fadeInMove"
+                    class="hero-img"
                     src={MarlonMoraPhoto}
                     alt="Marlon Mora"
                     loading="eager"
@@ -76,30 +104,126 @@ const i18n = getI18n({ currentLocale });
             </figure>
         </div>
     </div>
+
 </Section>
 
 <style>
-    :global(.hero-bg) {
-        background: radial-gradient(
-                circle at top left,
-                #f5f5f5 20%,
-                transparent 40%
-            ),
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+    /* ── SECTION BASE ──────────────────────────────────────────────────────── */
+    :global(.hero-section) {
+        position: relative;
+        background:
+            radial-gradient(circle at top left,  #f5f5f5 20%, transparent 40%),
             radial-gradient(circle at top right, #f5f5f5 20%, transparent 40%),
             linear-gradient(to bottom, #d5f5ff 0%, #f5f5f5 60%, #f5f5f5 100%);
+        overflow: hidden;
+        padding-top: 100px;
+        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 0;
     }
 
-    .hero-img {
-        filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4));
+    /* ── VIDEO BACKGROUND ──────────────────────────────────────────────────── */
+    .hero-video-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
     }
 
-    .fadeInMove {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: moveUp 0.5s linear forwards;
+    .hero-video-bg video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.10;
     }
 
-    h1 {
+    /* ── TOP ACCENT LINE ───────────────────────────────────────────────────── */
+    .hero-top-accent {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #004aad 0%, #1867ce 40%, transparent 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* ── INNER LAYOUT ──────────────────────────────────────────────────────── */
+    .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 120px;
+        padding: 48px 0 32px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 1200px) {
+        .hero-inner {
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 64px;
+            padding: 150px 0 32px;
+        }
+    }
+
+    /* ── LEFT: CONTENT ─────────────────────────────────────────────────────── */
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 540px;
+    }
+
+    @media (min-width: 1200px) {
+        .hero-content {
+            align-items: flex-start;
+            padding-bottom: 32px;
+        }
+    }
+
+    /* Greeting — italic serif */
+    .hero-role {
+        font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+        font-size: clamp(22px, 2.8vw, 28px);
+        font-style: italic;
+        font-weight: 400;
+        color: #888780;
+        margin-bottom: 8px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    @media (min-width: 1200px) {
+        .hero-role { text-align: left; }
+    }
+
+    /* H1: name */
+    .hero-name {
+        font-family: 'Agraham', 'Playfair Display', Georgia, 'Times New Roman', serif;
+        font-size: clamp(48px, 8.5vw, 48px);
+        font-weight: bold;
+        line-height: 1.5;
+        letter-spacing: -2px;
+        /* Increased bottom margin for breathing room before description */
+        margin-bottom: 24px;
+        text-align: center;
+        height: fit-content;
+        font-variant-ligatures: common-ligatures contextual-ligatures;
+        font-feature-settings: "liga" 1, "calt" 1;
+        text-rendering: optimizeLegibility;
         background: linear-gradient(
             to right,
             #1867ce 10%,
@@ -115,20 +239,268 @@ const i18n = getI18n({ currentLocale });
         );
         background-size: 200%;
         color: transparent;
+        -webkit-background-clip: text;
         background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
         animation: shine 8s linear infinite;
     }
 
-    @keyframes moveUp {
-        100% {
+    @media (min-width: 1200px) {
+        .hero-name { text-align: left; }
+    }
+
+    /* Description — darker and slightly larger for legibility */
+    .hero-description {
+        font-size: 19px;           /* was 18px */
+        line-height: 1.85;
+        color: #3A3936;            /* was #5F5E5A — noticeably darker */
+        margin-bottom: 42px;
+        text-align: center;
+        max-width: 480px;
+        font-weight: 400;
+    }
+
+    @media (min-width: 1200px) {
+        .hero-description { text-align: left; }
+    }
+
+    /* ── ACTIONS ROW ───────────────────────────────────────────────────────── */
+    .hero-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    @media (min-width: 1200px) {
+        .hero-actions { justify-content: flex-start; }
+    }
+
+    /* Primary CTA */
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #004aad;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 11px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+        transition: background 0.2s, transform 0.15s;
+    }
+
+    .hero-cta:hover {
+        background: #1867ce;
+        transform: translateY(-1px);
+    }
+
+    /* Ghost CTA */
+    .hero-cta-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        color: #3A3936;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 11px 20px;
+        border-radius: 8px;
+        border: 0.5px solid #D3D1C7;
+        text-decoration: none;
+        transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .hero-cta-ghost:hover {
+        border-color: #1867ce;
+        color: #1867ce;
+        transform: translateY(-1px);
+    }
+
+    /* ── RIGHT: PHOTO WRAPPER ──────────────────────────────────────────────── */
+    .hero-photo-wrapper {
+        position: relative;
+        flex-shrink: 0;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 400px;
+        z-index: 1;
+        margin: -48px -24px -32px -24px;
+    }
+
+    @media (min-width: 768px) {
+        .hero-photo-wrapper { max-width: 500px; }
+    }
+
+    @media (min-width: 1200px) {
+        .hero-photo-wrapper {
+            align-self: flex-end;
+            max-width: 530px;
+        }
+    }
+
+    /* ── AVAILABILITY BADGE ────────────────────────────────────────────────── */
+    /*
+     * Floats at the top-left of the photo wrapper.
+     * Green pill with a pulsing dot — reads as "currently available".
+     */
+    .hero-availability-badge {
+        position: absolute;
+        top: 28px;
+        right: -12px;
+        z-index: 10;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: #d6f5e0;
+        color: #1a7a3a;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 7px 14px 7px 10px;
+        border-radius: 999px;
+        border: 1px solid #aee8c0;
+        box-shadow: 0 2px 12px rgba(26, 122, 58, 0.12);
+        white-space: nowrap;
+        /* Slide in slightly after the photo */
+        opacity: 0;
+        transform: translateX(-8px);
+        animation: badgeIn 0.5s ease-out 0.65s forwards;
+    }
+
+    /* Pulsing green dot */
+    .badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .badge-dot::after {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        background: #22c55e;
+        opacity: 0.35;
+        animation: pulse-ring 2s ease-out infinite;
+    }
+
+    @media (min-width: 1200px) {
+        .hero-availability-badge {
+            top: 0;
+            right: 0;
+            font-size: 13px;
+        }
+    }
+
+    /* ── SOCIAL STACK ──────────────────────────────────────────────────────── */
+    /*
+     * Vertical column of icon buttons anchored to the left edge of the
+     * photo wrapper, vertically centered. Subtle — doesn't compete with CTAs.
+     */
+    .hero-social-stack {
+        position: absolute;
+        left: -52px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        /* Hide on small screens where there's no space */
+        display: none;
+    }
+
+    @media (min-width: 1200px) {
+        .hero-social-stack {
+            display: flex;
+        }
+    }
+
+    :global(.social-link) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        border: 0.5px solid #D3D1C7;
+        color: #5F5E5A;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(4px);
+        transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    :global(.social-link:hover) {
+        border-color: #1867ce;
+        color: #1867ce;
+        transform: translateY(-2px);
+    }
+
+    .hero-figure {
+        margin: 0;
+        display: flex;
+        width: 100%;
+    }
+
+    .hero-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4));
+    }
+
+    /* ── ANIMATIONS ────────────────────────────────────────────────────────── */
+    .hero-animate {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: heroFadeUp 0.6s ease-out forwards;
+        animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes heroFadeUp {
+        to {
             opacity: 1;
-            transform: translateY(0px);
+            transform: translateY(0);
         }
     }
 
     @keyframes shine {
+        from { background-position: 0% center; }
+        to   { background-position: 200% center; }
+    }
+
+    @keyframes badgeIn {
         to {
-            background-position: 200% center;
+            opacity: 1;
+            transform: translateX(0);
         }
+    }
+
+    @keyframes pulse-ring {
+        0%   { transform: scale(1);   opacity: 0.35; }
+        70%  { transform: scale(2.2); opacity: 0; }
+        100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-animate,
+        .hero-availability-badge {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+        .hero-name          { animation: none; }
+        .badge-dot::after   { animation: none; }
     }
 </style>

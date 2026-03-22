@@ -2,36 +2,276 @@
 import SocialIcons from "@/components/SocialIcons.astro";
 import LinkedInIcon from "@/Icons/LinkedInIcon.astro";
 import GithubIcon from "@/Icons/GithubIcon.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { getI18n } from "@/i18n";
+
+const { currentLocale } = Astro;
+
+const lang = getLangFromUrl(Astro.url);
+const translation = useTranslations(lang);
+const i18n = getI18n({ currentLocale });
+
+const navLinks = [
+    { href: "#hero",     key: "nav.home" },
+    { href: "#about",    key: "nav.about" },
+    { href: "#proyects", key: "nav.proyects" },
+    { href: "#contact",  key: "nav.contact" },
+];
 ---
 
-<footer class="px-8">
-    <div class="w-full max-w-screen-xl mx-auto mb-4">
-        <hr />
-        <div class="flex justify-between items-center mt-4">
-            <p class="text-[#9ca3af]">
-                © {new Date().getFullYear()} Marlon Mora. 
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <!-- Top row: brand + nav links -->
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="/" class="footer-logo" aria-label="Inicio">
+                    <img
+                        src="/assets/MarlonMoraLogo.svg"
+                        alt="Marlon Mora"
+                        width="32"
+                        height="32"
+                    />
+                </a>
+                <div class="footer-brand-text">
+                    <span class="footer-name">Marlon Mora</span>
+                    <span class="footer-tagline">{i18n.FOOTER.TAGLINE}</span>
+                </div>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                {navLinks.map(link => {
+                    const sectionId = link.href.substring(1);
+                    return (
+                        <a 
+                            href={link.href} 
+                            class="footer-nav-link" 
+                            data-section={sectionId}
+                        >
+                            {translation(link.key)}
+                        </a>
+                    );
+                })}
+            </nav>
+        </div>
+
+        <!-- Divider -->
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <!-- Bottom row: copyright + socials -->
+        <div class="footer-bottom">
+            <p class="footer-copy">
+                © {new Date().getFullYear()} Marlon Mora.
+                <span class="footer-copy-muted">{i18n.FOOTER.RIGHTS}</span>
             </p>
-            <div class="flex gap-4">
+
+            <div class="footer-socials">
                 <SocialIcons
                     href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
                     title="LinkedIn"
+                    class="footer-social-link"
                 >
-                    <LinkedInIcon
-                        class="size-6 hover:fill-[#878c96]"
-                        fill="#9ca3af"
-                    />
+                    <LinkedInIcon class="size-5" />
                 </SocialIcons>
 
                 <SocialIcons
                     href="https://github.com/MarlonMora23"
                     title="GitHub"
+                    class="footer-social-link"
                 >
-                    <GithubIcon
-                        class="size-6 hover:fill-[#878c96]"
-                        fill="#9ca3af"
-                    />
+                    <GithubIcon class="size-5" />
                 </SocialIcons>
             </div>
         </div>
+
     </div>
 </footer>
+
+<style>
+    .site-footer {
+        background: #ffffff;
+        border-top: 0.5px solid #E8E6E0;
+        padding: 40px 32px 28px;
+    }
+
+    .footer-inner {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* ── TOP ───────────────────────────────────────────────────────────── */
+    .footer-top {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-bottom: 28px;
+    }
+
+    @media (min-width: 768px) {
+        .footer-top {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        transition: opacity 0.2s;
+    }
+
+    .footer-logo:hover { opacity: 0.75; }
+
+    .footer-brand-text {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .footer-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: #0a0a0a;
+        line-height: 1.2;
+    }
+
+    .footer-tagline {
+        font-size: 11px;
+        color: #888780;
+        letter-spacing: 0.03em;
+    }
+
+    /* Footer nav */
+    .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 2px;
+    }
+
+    .footer-nav-link {
+        font-size: 13px;
+        font-weight: 500;
+        color: #888780;
+        padding: 5px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: color 0.15s, background 0.15s;
+    }
+
+    .footer-nav-link:hover {
+        color: #004aad;
+        background: #E6F1FB;
+    }
+
+    .footer-nav-link.active {
+        color: #004aad;
+        font-weight: 600;
+        background: #E6F1FB;
+    }
+
+    /* ── DIVIDER ───────────────────────────────────────────────────────── */
+    .footer-divider {
+        height: 0.5px;
+        background: #E8E6E0;
+        margin-bottom: 20px;
+    }
+
+    /* ── BOTTOM ────────────────────────────────────────────────────────── */
+    .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .footer-copy {
+        font-size: 13px;
+        color: #888780;
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+
+    .footer-copy-muted { color: #B4B2A9; }
+
+    .footer-socials {
+        display: flex;
+        gap: 6px;
+    }
+
+    :global(.footer-social-link) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 7px;
+        border: 0.5px solid #E8E6E0;
+        color: #888780;
+        transition: border-color 0.2s, color 0.2s, transform 0.15s;
+        background: #ffffff;
+    }
+
+    :global(.footer-social-link:hover) {
+        border-color: #1867ce;
+        color: #1867ce;
+        transform: translateY(-2px);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // ── Active section con IntersectionObserver ────────────────────────
+        const footerNavLinks = document.querySelectorAll<HTMLAnchorElement>(".footer-nav-link[data-section]");
+        
+        function setActiveFooterLink(sectionId: string) {
+            footerNavLinks.forEach((link) => {
+                const isActive = link.dataset.section === sectionId;
+                link.classList.toggle("active", isActive);
+            });
+        }
+
+        // Usamos un Map para rastrear qué secciones están visibles
+        const visibleSections = new Map<string, number>();
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        visibleSections.set(entry.target.id, entry.intersectionRatio);
+                    } else {
+                        visibleSections.delete(entry.target.id);
+                    }
+                });
+
+                // Activar el link de la sección más visible
+                if (visibleSections.size > 0) {
+                    const mostVisible = [...visibleSections.entries()].reduce((a, b) =>
+                        a[1] > b[1] ? a : b
+                    );
+                    setActiveFooterLink(mostVisible[0]);
+                }
+            },
+            {
+                threshold: [0.1, 0.3, 0.5],
+                rootMargin: "-10% 0px -50% 0px",
+            }
+        );
+
+        // Observar todas las secciones que tienen un data-section correspondiente
+        const sectionIds = [...footerNavLinks].map((l) => l.dataset.section!);
+        sectionIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+    });
+</script>

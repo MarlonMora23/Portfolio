@@ -1,21 +1,402 @@
 ---
 import Section from "@/components/Section.astro";
+import LinkedInIcon from "@/Icons/LinkedInIcon.astro";
+import GithubIcon from "@/Icons/GithubIcon.astro";
+import SocialIcon from "@/components/SocialIcons.astro";
 import { getI18n } from "@/i18n";
 
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
+
+const opportunities = [
+    {
+        icon: "M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16",
+        label: i18n.CONTACT.OPP_INTERNSHIP,
+    },
+    {
+        icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
+        label: i18n.CONTACT.OPP_ACADEMIC,
+    },
+    {
+        icon: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z",
+        label: i18n.CONTACT.OPP_REMOTE,
+    },
+];
 ---
 
-<Section title={i18n.CONTACT.TITLE} id="contact" class="mb-8">
-    <div class="flex flex-col flex-col lg:flex-col">
-        <p class="text-lg my-4">{i18n.CONTACT.DESCRIPTION}</p>
-        <div class="flex">
-            <a
-                href="mailto:marlonmora@ieee.org"
-                class="bg-blue-700 rounded-lg text-white py-2 px-4 hover:bg-blue-800 hover:bg-blue-800 hover:text-white"
-            >
-                {i18n.CONTACT.BUTTON}
-            </a>
+<Section id="contact" class="contact-section mb-32">
+
+    <div class="contact-inner">
+
+        <!-- ── LEFT: CTA ───────────────────────────────────────────────── -->
+        <div class="contact-left scroll-reveal">
+
+            <p class="section-overline">{i18n.CONTACT.OVERLINE}</p>
+
+            <h2 class="contact-headline">
+                {i18n.CONTACT.TITLE}
+            </h2>
+
+            <p class="contact-description">{i18n.CONTACT.DESCRIPTION}</p>
+
+            <!-- Opportunities I'm open to -->
+            <div class="opportunity-list">
+                {opportunities.map(opp => (
+                    <div class="opportunity-item">
+                        <span class="opp-icon" aria-hidden="true">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d={opp.icon} />
+                            </svg>
+                        </span>
+                        <span class="opp-label">{opp.label}</span>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Primary CTA -->
+            <div class="contact-actions">
+                <a
+                    href="mailto:marlonmora@ieee.org"
+                    class="contact-cta"
+                >
+                    {i18n.CONTACT.BUTTON}
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                        <path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+
+                <div class="contact-socials">
+                    <SocialIcon
+                        href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
+                        class="contact-social-link"
+                        title="LinkedIn"
+                    >
+                        <LinkedInIcon class="size-5" />
+                    </SocialIcon>
+                    <SocialIcon
+                        href="https://github.com/MarlonMora23"
+                        class="contact-social-link"
+                        title="GitHub"
+                    >
+                        <GithubIcon class="size-5" />
+                    </SocialIcon>
+                </div>
+            </div>
+
         </div>
+
+        <!-- ── RIGHT: Info card ─────────────────────────────────────────── -->
+        <div class="contact-card scroll-reveal" style="--delay: 0.15s" aria-label="Información de contacto">
+
+            <div class="contact-card-header">
+                <div class="availability-dot" aria-hidden="true"></div>
+                <span class="availability-text">{i18n.CONTACT.AVAILABLE}</span>
+            </div>
+
+            <div class="contact-details">
+                <div class="contact-detail-row">
+                    <span class="contact-detail-label">{i18n.CONTACT.DETAIL_EMAIL}</span>
+                    <a href="mailto:marlonmora@ieee.org" class="contact-detail-value contact-detail-link">
+                        marlonmora@ieee.org
+                    </a>
+                </div>
+                <div class="contact-detail-row">
+                    <span class="contact-detail-label">{i18n.CONTACT.DETAIL_LOCATION}</span>
+                    <span class="contact-detail-value">Cali, Colombia 🇨🇴</span>
+                </div>
+                <div class="contact-detail-row">
+                    <span class="contact-detail-label">{i18n.CONTACT.DETAIL_LANGUAGES}</span>
+                    <span class="contact-detail-value">Español · English (C2)</span>
+                </div>
+                <div class="contact-detail-row">
+                    <span class="contact-detail-label">{i18n.CONTACT.DETAIL_STATUS}</span>
+                    <span class="contact-detail-value">{i18n.CONTACT.DETAIL_STATUS_VALUE}</span>
+                </div>
+            </div>
+
+            <!-- Quote / personal note -->
+            <div class="contact-note">
+                <p class="contact-note-text">"{i18n.CONTACT.NOTE}"</p>
+            </div>
+
+        </div>
+
     </div>
+
 </Section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap');
+
+    :global(.contact-section) {
+        background: #F7F7F5;
+    }
+
+    /* ── LAYOUT ────────────────────────────────────────────────────────── */
+    .contact-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+        .contact-inner {
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+    }
+
+    /* ── LEFT ──────────────────────────────────────────────────────────── */
+    .section-overline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #1867ce;
+        margin-bottom: 16px;
+    }
+
+    .section-overline::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 2px;
+        background: #1867ce;
+        border-radius: 1px;
+    }
+
+    .contact-headline {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 700;
+        color: #0a0a0a;
+        line-height: 1.15;
+        margin-bottom: 20px;
+    }
+
+    .contact-description {
+        font-size: 16px;
+        color: #5F5E5A;
+        line-height: 1.75;
+        margin-bottom: 28px;
+        max-width: 440px;
+    }
+
+    /* Opportunities */
+    .opportunity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 36px;
+    }
+
+    .opportunity-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: #2C2C2A;
+        font-weight: 500;
+    }
+
+    .opp-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: #E6F1FB;
+        border-radius: 7px;
+        color: #1867ce;
+        flex-shrink: 0;
+    }
+
+    /* Actions */
+    .contact-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .contact-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #004aad;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 12px 26px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s;
+    }
+
+    .contact-cta:hover {
+        background: #1867ce;
+        transform: translateY(-1px);
+    }
+
+    .contact-socials {
+        display: flex;
+        gap: 8px;
+    }
+
+    :global(.contact-social-link) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46.5px;
+        height: 46.5px;
+        border-radius: 8px;
+        border: 0.5px solid #D3D1C7;
+        color: #5F5E5A;
+        background: #ffffff;
+        transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    :global(.contact-social-link:hover) {
+        border-color: #1867ce;
+        color: #1867ce;
+        transform: translateY(-2px);
+    }
+
+    /* ── RIGHT CARD ────────────────────────────────────────────────────── */
+    .contact-card {
+        background: #ffffff;
+        border: 0.5px solid #E8E6E0;
+        border-radius: 16px;
+        overflow: hidden;
+        align-self: center;
+    }
+
+    .contact-card-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 24px;
+        border-bottom: 0.5px solid #E8E6E0;
+        background: #F7F7F5;
+    }
+
+    /* Animated availability pulse */
+    .availability-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .availability-dot::after {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        border: 1.5px solid #22c55e;
+        opacity: 0;
+        animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%   { transform: scale(0.8); opacity: 0.6; }
+        70%  { transform: scale(1.6); opacity: 0; }
+        100% { opacity: 0; }
+    }
+
+    .availability-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: #16a34a;
+        letter-spacing: 0.03em;
+    }
+
+    .contact-details {
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .contact-detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        padding: 11px 0;
+        border-bottom: 0.5px solid #F0EEE8;
+    }
+
+    .contact-detail-row:last-child { border-bottom: none; }
+
+    .contact-detail-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #B4B2A9;
+        flex-shrink: 0;
+    }
+
+    .contact-detail-value {
+        font-size: 14px;
+        color: #2C2C2A;
+        font-weight: 500;
+        text-align: right;
+    }
+
+    .contact-detail-link {
+        color: #1867ce;
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .contact-detail-link:hover { color: #004aad; }
+
+    /* Personal note */
+    .contact-note {
+        padding: 16px 24px;
+        border-top: 0.5px solid #E8E6E0;
+        background: #F7F7F5;
+    }
+
+    .contact-note-text {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 14px;
+        color: #888780;
+        line-height: 1.6;
+    }
+
+    /* ── SCROLL REVEAL ─────────────────────────────────────────────────── */
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+        transition-delay: var(--delay, 0s);
+    }
+
+    .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+        .scroll-reveal { opacity: 1; transform: none; transition: none; }
+        .availability-dot::after { animation: none; }
+    }
+</style>
+
+<script>
+    const els = document.querySelectorAll('#contact .scroll-reveal');
+    const obs = new IntersectionObserver(
+        entries => entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    els.forEach(el => obs.observe(el));
+</script>

@@ -22,10 +22,19 @@ const translatePath = useTranslatedPath(lang);
     class="fixed w-full px-8 z-20 bg-transparent transition-all duration-300 ease-in-out"
     id="top"
 >
+    <!-- ① PROGRESS BAR — nuevo elemento, posicionado en el borde inferior del header -->
     <div
-        class="flex justify-between items-center w-full mx-auto max-w-screen-xl py-4"
+        id="progress-bar"
+        class="absolute bottom-0 left-0 h-[2px] w-0 z-30 pointer-events-none"
+        style="background: linear-gradient(90deg, #004aad, #1867ce); transition: width 0.1s linear;"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class="flex justify-between items-center w-full mx-auto max-w-screen-xl py-4 transition-all duration-300"
+        id="nav-inner"
     >
-        <!-- Logo -->
+        <!-- Logo — sin cambios -->
         <div class="flex md:flex-grow md:basis-0">
             <a href="/">
                 <span>
@@ -52,11 +61,12 @@ const translatePath = useTranslatedPath(lang);
             </button>
         </div>
 
+        <!-- ② NAV LINKS — añadidas clases para active state -->
         <nav class="hidden md:flex md:flex-row md:gap-x-10 md:text-xl">
-            <a href="#hero">{translation("nav.home")}</a>
-            <a href="#about">{translation("nav.about")}</a>
-            <a href="#proyects">{translation("nav.proyects")}</a>
-            <a href="#contact">{translation("nav.contact")}</a>
+            <a href="#hero"   class="nav-link" data-section="hero">{translation("nav.home")}</a>
+            <a href="#about"  class="nav-link" data-section="about">{translation("nav.about")}</a>
+            <a href="#proyects" class="nav-link" data-section="proyects">{translation("nav.proyects")}</a>
+            <a href="#contact" class="nav-link" data-section="contact">{translation("nav.contact")}</a>
         </nav>
 
         <div class="hidden md:flex md:justify-end md:flex-grow md:basis-0">
@@ -64,7 +74,7 @@ const translatePath = useTranslatedPath(lang);
         </div>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu — sin cambios -->
     <div
         class="absolute top-0 left-0 w-full h-screen bg-white md:hidden z-10 pt-6 hidden"
         id="mobile_menu"
@@ -88,122 +98,60 @@ const translatePath = useTranslatedPath(lang);
             >
                 <a href="#hero" class="w-full flex justify-between">
                     {translation("nav.home")}
-
-                    <Image
-                        src={rightArrow}
-                        alt="menu"
-                        loading="eager"
-                        width={24}
-                        height={24}
-                    />
+                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
                 </a>
-
                 <a href="#about" class="w-full flex justify-between">
                     {translation("nav.about")}
-                    <Image
-                        src={rightArrow}
-                        alt="menu"
-                        loading="eager"
-                        width={24}
-                        height={24}
-                    />
+                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
                 </a>
-
-                <a href="#proyects" class="w-full flex justify-between"
-                    >{translation("nav.proyects")}
-                    <Image
-                        src={rightArrow}
-                        alt="menu"
-                        loading="eager"
-                        width={24}
-                        height={24}
-                    />
+                <a href="#proyects" class="w-full flex justify-between">
+                    {translation("nav.proyects")}
+                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
                 </a>
-                <a href="#contact" class="w-full flex justify-between"
-                    >{translation("nav.contact")}
-                    <Image
-                        src={rightArrow}
-                        alt="menu"
-                        loading="eager"
-                        width={24}
-                        height={24}
-                    />
+                <a href="#contact" class="w-full flex justify-between">
+                    {translation("nav.contact")}
+                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
                 </a>
-
                 <button
                     class="md:hidden w-full flex justify-between cursor-pointer"
                     id="change_language_btn"
                 >
-                    <div
-                        class="flex justify-center items-center gap-2 lg:gap-4"
-                    >
-                        <Image
-                            src={internationalIcon}
-                            class="w-6"
-                            alt="itenational"
-                            loading="eager"
-                            width={24}
-                            height={24}
-                        />
+                    <div class="flex justify-center items-center gap-2 lg:gap-4">
+                        <Image src={internationalIcon} class="w-6" alt="itenational" loading="eager" width={24} height={24} />
                         {languages[lang]}
                     </div>
                     <div>
-                        <Image
-                            src={rightArrow}
-                            alt="menu"
-                            loading="eager"
-                            width={24}
-                            height={24}
-                        />
+                        <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
                     </div>
                 </button>
             </nav>
         </section>
 
-        <!-- lenguage picker -->
+        <!-- Language picker — sin cambios -->
         <section class="hidden w-full px-10" id="select_language">
-            <div class="">
+            <div>
                 <div class="flex justify-between w-full">
                     <button>
                         <div class="w-6" id="back_btn">
-                            <Image
-                                src={leftArrow}
-                                alt="menu"
-                                loading="eager"
-                                width={24}
-                                height={24}
-                            />
+                            <Image src={leftArrow} alt="menu" loading="eager" width={24} height={24} />
                         </div>
                     </button>
                     <p>{translation("nav.lang")}</p>
                     <button class="cursor-pointer">
                         <div class="w-6" id="close_btn2">
-                            <Image
-                                src={close_menu_svg}
-                                alt="menu"
-                                loading="eager"
-                                width={24}
-                                height={24}
-                            />
+                            <Image src={close_menu_svg} alt="menu" loading="eager" width={24} height={24} />
                         </div>
                     </button>
                 </div>
             </div>
-
-            <nav
-                class="w-full mt-8 flex flex-col justify-center items-baseline gap-8 text-xl"
-            >
+            <nav class="w-full mt-8 flex flex-col justify-center items-baseline gap-8 text-xl">
                 {
                     Object.entries(languages).map(([langKey, label]) => (
                         <a href={translatePath("/", langKey)} class="w-full">
                             <div class="flex justify-between w-full">
                                 <span class="inline-block">{label}</span>
                                 {lang === langKey && (
-                                    <img
-                                        src="/assets/check-svgrepo-com.svg"
-                                        class="w-4"
-                                        alt="selected"
-                                    />
+                                    <img src="/assets/check-svgrepo-com.svg" class="w-4" alt="selected" />
                                 )}
                             </div>
                         </a>
@@ -215,95 +163,169 @@ const translatePath = useTranslatedPath(lang);
 </header>
 
 <style>
+    /* ── Estado base ── */
     header {
         backdrop-filter: none;
         background-color: transparent;
         transition:
             backdrop-filter 0.3s ease,
-            background-color 0.3s ease;
+            background-color 0.3s ease,
+            box-shadow 0.3s ease;
     }
 
+    /* ── Estado scrolled: blur + sombra sutil ── */
     header.scrolled {
         backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    /* ── Active section: link resaltado ── */
+    .nav-link {
+        position: relative;
+        transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #004aad;
+        border-radius: 1px;
+        transition: width 0.25s ease;
+    }
+
+    .nav-link.active {
+        color: #004aad;
+        font-weight: 600;
     }
 </style>
 
 <script>
-    // Aplicar blur al nav cuando se hace scroll
     document.addEventListener("DOMContentLoaded", function () {
-        const header = document.querySelector("header");
+        const header = document.getElementById("top") as HTMLElement;
+        const navInner = document.getElementById("nav-inner") as HTMLElement;
+        const progressBar = document.getElementById("progress-bar") as HTMLElement;
 
+        // ── ① Scroll: blur + shrink + progress bar ──────────────────────────
         function handleScroll() {
-            const scrollPosition = window.scrollY;
-            if (scrollPosition > 50) {
+            const scrollY = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+            // Blur + shrink
+            if (scrollY > 50) {
                 header.classList.add("scrolled");
             } else {
                 header.classList.remove("scrolled");
             }
+
+            // Progress bar: porcentaje de scroll de la página
+            const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+            progressBar.style.width = `${progress}%`;
         }
 
         handleScroll();
+        document.addEventListener("scroll", handleScroll, { passive: true });
 
-        document.addEventListener("scroll", handleScroll);
-    });
+        // ── ② Active section con IntersectionObserver ────────────────────────
+        const sections = document.querySelectorAll("section[id], div[id='hero'], div[id='about'], div[id='proyects'], div[id='contact']");
+        const navLinks = document.querySelectorAll<HTMLAnchorElement>(".nav-link[data-section]");
 
-    const menuBtn = document.getElementById("menu_btn");
-    const closeBtn = document.getElementById("close_btn");
-    const mobileMenu = document.getElementById("mobile_menu");
-    const menuLinks = mobileMenu.querySelectorAll("a");
+        function setActiveLink(sectionId: string) {
+            navLinks.forEach((link) => {
+                const isActive = link.dataset.section === sectionId;
+                link.classList.toggle("active", isActive);
+            });
+        }
 
-    // Función para mostrar/ocultar el menú
-    function toggleMenu() {
-        mobileMenu.classList.toggle("hidden");
-    }
+        // Usamos un Map para rastrear qué secciones están visibles
+        const visibleSections = new Map<string, number>();
 
-    // Asigna los eventos de click
-    menuBtn.addEventListener("click", toggleMenu);
-    closeBtn.addEventListener("click", toggleMenu);
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        visibleSections.set(entry.target.id, entry.intersectionRatio);
+                    } else {
+                        visibleSections.delete(entry.target.id);
+                    }
+                });
 
-    menuLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            toggleMenu();
+                // Activar el link de la sección más visible
+                if (visibleSections.size > 0) {
+                    const mostVisible = [...visibleSections.entries()].reduce((a, b) =>
+                        a[1] > b[1] ? a : b
+                    );
+                    setActiveLink(mostVisible[0]);
+                }
+            },
+            {
+                // El threshold array permite detectar cuánto de la sección es visible
+                threshold: [0.1, 0.3, 0.5],
+                // rootMargin negativo: activa cuando la sección está bien centrada en el viewport
+                rootMargin: "-10% 0px -50% 0px",
+            }
+        );
+
+        // Observar todas las secciones que tienen un data-section correspondiente
+        const sectionIds = [...navLinks].map((l) => l.dataset.section!);
+        sectionIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
         });
-    });
 
-    // Acomodar el desplazamiento del nav
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
+        // ── Menú móvil (tu código original, sin cambios) ────────────────────
+        const menuBtn = document.getElementById("menu_btn")!;
+        const closeBtn = document.getElementById("close_btn")!;
+        const mobileMenu = document.getElementById("mobile_menu")!;
+        const menuLinks = mobileMenu.querySelectorAll("a");
 
-            const targetId = this.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
+        function toggleMenu() {
+            mobileMenu.classList.toggle("hidden");
+        }
 
-            // Obtenemos la posición del elemento objetivo y restamos 20px
-            const offsetPosition =
-                targetElement.getBoundingClientRect().top + window.scrollY - 60;
+        menuBtn.addEventListener("click", toggleMenu);
+        closeBtn.addEventListener("click", toggleMenu);
+        menuLinks.forEach((link) => link.addEventListener("click", toggleMenu));
 
-            window.scrollTo({
-                top: offsetPosition,
+        // ── Smooth scroll con offset (tu código original) ───────────────────
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const targetId = (this as HTMLAnchorElement).getAttribute("href")!.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (!targetElement) return;
+
+                const offsetPosition =
+                    targetElement.getBoundingClientRect().top + window.scrollY - 60;
+
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
             });
         });
-    });
 
-    const selectLanguage = document.getElementById("change_language_btn");
-    const selectLenguageMenu = document.getElementById("select_language");
-    const menu = document.getElementById("menu");
-    const closeBtn2 = document.getElementById("close_btn2");
-    const backBtn = document.getElementById("back_btn");
+        // ── Language picker móvil (tu código original) ───────────────────────
+        const selectLanguage = document.getElementById("change_language_btn")!;
+        const selectLenguageMenu = document.getElementById("select_language")!;
+        const menu = document.getElementById("menu")!;
+        const closeBtn2 = document.getElementById("close_btn2")!;
+        const backBtn = document.getElementById("back_btn")!;
 
-    backBtn.addEventListener("click", () => {
-        selectLenguageMenu.classList.toggle("hidden");
-        menu.classList.remove("hidden");
-    });
+        backBtn.addEventListener("click", () => {
+            selectLenguageMenu.classList.toggle("hidden");
+            menu.classList.remove("hidden");
+        });
 
-    selectLanguage.addEventListener("click", () => {
-        selectLenguageMenu.classList.toggle("hidden");
-        menu.classList.add("hidden");
-    });
+        selectLanguage.addEventListener("click", () => {
+            selectLenguageMenu.classList.toggle("hidden");
+            menu.classList.add("hidden");
+        });
 
-    closeBtn2.addEventListener("click", () => {
-        menu.classList.remove("hidden");
-        toggleMenu();
+        closeBtn2.addEventListener("click", () => {
+            menu.classList.remove("hidden");
+            toggleMenu();
+        });
     });
 </script>
