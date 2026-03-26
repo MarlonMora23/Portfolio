@@ -1,7 +1,7 @@
 ---
-import { Image } from "astro:assets";
+// import { Image } from "astro:assets";
 import Section from "@/components/Section.astro";
-import MarlonMoraPhoto from "public/assets/profile/MarlonMoraPhoto.webp";
+// import MarlonMoraPhoto from "public/assets/profile/MarlonMoraPhoto.webp";
 import LinkedInIcon from "@/Icons/LinkedInIcon.astro";
 import GithubIcon from "@/Icons/GithubIcon.astro";
 import SocialIcon from "@/components/SocialIcons.astro";
@@ -115,9 +115,9 @@ const i18n = getI18n({ currentLocale });
       </nav>
 
       <figure class="hero-figure">
-        <Image
+        <img
           class="hero-img"
-          src={MarlonMoraPhoto}
+          src="/assets/profile/MarlonMoraPhoto.webp"
           alt="Marlon Mora"
           loading="eager"
         />

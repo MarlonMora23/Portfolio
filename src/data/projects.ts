@@ -1,21 +1,9 @@
-import nueroscreen_img from "public/assets/projects/neuroscreen/neuroscreen.webp";
-import neuroscreen_gallery1 from "public/assets/projects/neuroscreen/neuroscreen_gallery1.webp";
-import leetcode_clone_img from "public/assets/projects/leetcode_clone/leetcode_clone.avif";
-import leetcode_clone_gallery1 from "public/assets/projects/leetcode_clone/leetcode_clone_gallery1.webp";
-import radio_app_img from "public/assets/projects/radio_app_img.webp";
-import pokedex_img from "public/assets/projects/pokedex_img.webp";
-import calinema_app_img from "public/assets/projects/calinema_app.webp";
-import calinema_api_img from "public/assets/projects/calinema_api.avif";
-import democracia_elite_img from "public/assets/projects/democracia_elite.avif";
-import menu_usb_img from "public/assets/projects/menu_usb.avif";
-import xrays_img from "public/assets/projects/xrays.avif";
-
 export const projects = [
   // ── FEATURED ────────────────────────────────────────────────────────────
   {
     id: "neuroscreen",
     featured: true,
-    image: nueroscreen_img,
+    image: "/assets/projects/neuroscreen/neuroscreen.webp",
     imageAlt: "NeuroScreen-A dashboard",
     status: "in-progress",
     year: "2025 – 2026",
@@ -29,12 +17,12 @@ export const projects = [
       live: "https://lidis.usbcali.edu.co/neuro/",
       code: "https://github.com/MarlonMora23/NeuroScreen-A",
     },
-    screenshots: [neuroscreen_gallery1],
+    screenshots: ["/assets/projects/neuroscreen/neuroscreen_gallery1.webp"],
   },
   {
     id: "leetcode-clone",
     featured: true,
-    image: leetcode_clone_img,
+    image: "/assets/projects/leetcode_clone/leetcode_clone.avif",
     imageAlt: "LeetCode Clone interface",
     status: "completed",
     year: "2024 – May 2025",
@@ -47,14 +35,14 @@ export const projects = [
       live: null,
       code: "https://github.com/MarlonMora23/LeetCode_Clon",
     },
-    screenshots: [leetcode_clone_gallery1],
+    screenshots: ["/assets/projects/leetcode_clone/leetcode_clone_gallery1.webp"],
   },
 
   // ── SECONDARY ───────────────────────────────────────────────────────────
   {
     id: "calinema",
     featured: false,
-    image: calinema_app_img,
+    image: "/assets/projects/calinema_app.webp",
     imageAlt: "CaliNema app",
     status: "completed",
     year: "2023",
@@ -68,7 +56,7 @@ export const projects = [
   {
     id: "calinema-api",
     featured: false,
-    image: calinema_api_img,
+    image: "/assets/projects/calinema_api.avif",
     imageAlt: "CaliNema API",
     status: "completed",
     year: "2023",
@@ -82,7 +70,7 @@ export const projects = [
   {
     id: "radioapp",
     featured: false,
-    image: radio_app_img,
+    image: "/assets/projects/radio_app_img.webp",
     imageAlt: "RadioApp",
     status: "completed",
     year: "2024",
@@ -99,7 +87,7 @@ export const projects = [
   {
     id: "pokedex",
     featured: false,
-    image: pokedex_img,
+    image: "/assets/projects/pokedex_img.webp",
     imageAlt: "Pokédex 3D",
     status: "completed",
     year: "2024",
@@ -116,7 +104,7 @@ export const projects = [
   {
     id: "menuusb",
     featured: false,
-    image: menu_usb_img,
+    image: "/assets/projects/menu_usb.avif",
     imageAlt: "MenuUSB",
     status: "completed",
     year: "2023",
@@ -130,7 +118,7 @@ export const projects = [
   {
     id: "democracia-elite",
     featured: false,
-    image: democracia_elite_img,
+    image: "/assets/projects/democracia_elite.avif",
     imageAlt: "Democracia Elite",
     status: "completed",
     year: "2023",
@@ -144,7 +132,7 @@ export const projects = [
   {
     id: "xrays",
     featured: false,
-    image: xrays_img,
+    image: "/assets/projects/xrays.avif",
     imageAlt: "X-Ray Classification",
     status: "completed",
     year: "2024",

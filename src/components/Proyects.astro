@@ -1,6 +1,7 @@
 ---
+// import { Image } from "astro:assets";
+
 import Section from "@/components/Section.astro";
-import { Image } from "astro:assets";
 
 import { projects as baseProjects } from "@/data/projects";
 
@@ -66,12 +67,10 @@ const statusConfig = {
               tabindex="0"
               aria-label={`Ver detalles de ${p.title}`}
             >
-              <Image
+              <img
                 src={p.image}
                 alt={p.imageAlt}
                 class="project-img"
-                width={600}
-                height={400}
               />
               <div class="project-overlay" aria-hidden="true">
                 <span class="overlay-cta">{i18n.PROYECTS.VIEW_DETAILS} →</span>
@@ -153,12 +152,10 @@ const statusConfig = {
               tabindex="0"
               aria-label={`Ver detalles de ${p.title}`}
             >
-              <Image
+              <img
                 src={p.image}
                 alt={p.imageAlt}
                 class="project-img"
-                width={600}
-                height={400}
               />
               <div class="project-overlay" aria-hidden="true">
                 <span class="overlay-cta">{i18n.PROYECTS.VIEW_DETAILS} →</span>

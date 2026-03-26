@@ -1,12 +1,11 @@
 ---
-import { languages } from "@/i18n/ui";
 import { Image } from "astro:assets";
-import menu_svg from "public/assets/icons/menu-alt-01-svgrepo-com.svg";
-import close_menu_svg from "public/assets/icons/close-bold-svgrepo-com.svg";
-import leftArrow from "public/assets/icons/left-arrow.svg";
-import rightArrow from "public/assets/icons/right-arrow.svg";
+// import menu_svg from "public/assets/icons/menu-alt-01-svgrepo-com.svg";
+// import close_menu_svg from "public/assets/icons/close-bold-svgrepo-com.svg";
+// import leftArrow from "public/assets/icons/left-arrow.svg";
+// import rightArrow from "public/assets/icons/right-arrow.svg";
 import LanguagePicker from "@/components/LenguagePicker.astro";
-import internationalIcon from "public/assets/icons/international-svgrepo-com.svg";
+// import internationalIcon from "public/assets/icons/international-svgrepo-com.svg";
 import {
     getLangFromUrl,
     useTranslations,
@@ -78,7 +77,7 @@ const translatePath = useTranslatedPath(lang);
             <div class="flex justify-end w-full">
                 <button class="cursor-pointer">
                     <div class="w-6" id="close_btn">
-                        <Image src={close_menu_svg} alt="menu" loading="eager" width={24} height={24} />
+                        <img src="/assets/icons/close-bold-svgrepo-com.svg" alt="menu" loading="eager" width={24} height={24} />
                     </div>
                 </button>
             </div>
@@ -86,26 +85,26 @@ const translatePath = useTranslatedPath(lang);
             <nav class="mobile-nav">
                 <a href="#hero"     class="mobile-nav-link text-body">
                     {translation("nav.home")}
-                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
+                    <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
                 </a>
                 <a href="#about"    class="mobile-nav-link text-body">
                     {translation("nav.about")}
-                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
+                    <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
                 </a>
                 <a href="#proyects" class="mobile-nav-link text-body">
                     {translation("nav.proyects")}
-                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
+                    <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
                 </a>
                 <a href="#contact"  class="mobile-nav-link text-body">
                     {translation("nav.contact")}
-                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
+                    <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
                 </a>
                 <button class="mobile-nav-link text-body md:hidden cursor-pointer" id="change_language_btn">
                     <div class="flex justify-center items-center gap-2 lg:gap-4">
-                        <Image src={internationalIcon} class="w-6" alt="international" loading="eager" width={24} height={24} />
+                        <img src="/assets/icons/international-svgrepo-com.svg" class="w-6" alt="international" loading="eager" width={24} height={24} />
                         {languages[lang]}
                     </div>
-                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
+                    <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
                 </button>
             </nav>
         </section>
@@ -115,13 +114,13 @@ const translatePath = useTranslatedPath(lang);
             <div class="flex justify-between w-full">
                 <button>
                     <div class="w-6" id="back_btn">
-                        <Image src={leftArrow} alt="back" loading="eager" width={24} height={24} />
+                        <img src="/assets/icons/left-arrow.svg" alt="back" loading="eager" width={24} height={24} />
                     </div>
                 </button>
                 <p class="text-body">{translation("nav.lang")}</p>
                 <button class="cursor-pointer">
                     <div class="w-6" id="close_btn2">
-                        <Image src={close_menu_svg} alt="close" loading="eager" width={24} height={24} />
+                        <img src="/assets/icons/close-bold-svgrepo-com.svg" alt="close" loading="eager" width={24} height={24} />
                     </div>
                 </button>
             </div>

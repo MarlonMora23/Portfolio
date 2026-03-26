@@ -1,9 +1,7 @@
 ---
-import { languages } from "@/i18n/ui";
-import { getLangFromUrl, useTranslatedPath } from "@/i18n/utils";
-import { Image } from "astro:assets";
-import internationalIcon from "../../public/assets/icons/international-svgrepo-com.svg";
-import downArrow from "../../public/assets/icons/down-arrow-5-svgrepo-com.svg";
+// import { Image } from "astro:assets";
+// import internationalIcon from "../../public/assets/icons/international-svgrepo-com.svg";
+// import downArrow from "../../public/assets/icons/down-arrow-5-svgrepo-com.svg";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
@@ -12,8 +10,8 @@ const translatePath = useTranslatedPath(lang);
 <div class="hidden md:flex md:justify-center md:items-center relative group">
     <button class="py-2 pr-4 pl-12 w-full cursor-auto">
         <div class="flex justify-center items-center gap-2 lg:gap-4">
-            <Image
-                src={internationalIcon}
+            <img
+                src="/assets/icons/international-svgrepo-com.svg"
                 class="w-6"
                 alt="itenational"
                 loading="eager"
@@ -21,8 +19,8 @@ const translatePath = useTranslatedPath(lang);
                 height={24}
             />
             <span class="md:text-xl">{lang[0].toUpperCase() + lang.slice(1)}</span>
-            <Image
-                src={downArrow}
+            <img
+                src="/assets/icons/down-arrow-5-svgrepo-com.svg"
                 class="w-6 inline"
                 alt="down-arrow"
                 loading="eager"
