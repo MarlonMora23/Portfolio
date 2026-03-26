@@ -1,29 +1,35 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
-import icon from 'astro-icon';
-
+import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon({
-    include: {
-      "logos": ["*"],
-      "simple-icons": ["*"],
-      "mdi": ["*"]
-    }
-  }), sitemap()],
+  site: "https://marlonmora.vercel.app", 
+
+  integrations: [
+    tailwind(),
+    icon({
+      include: {
+        logos: ["*"],
+        "simple-icons": ["*"],
+        mdi: ["*"],
+      },
+    }),
+    sitemap(),
+  ],
+
   i18n: {
-    defaultLocale: 'es',
-    locales: ['es', 'en'],
+    defaultLocale: "es",
+    locales: ["es", "en"],
     routing: {
-      prefixDefaultLocale: false
+      prefixDefaultLocale: false,
     },
     fallback: {
-      'en': 'es'
-    }
+      en: "es",
+    },
   },
+
   output: "server",
-  adapter: vercel({ runtime: 'nodejs20.x' })
+  adapter: vercel({ runtime: "nodejs20.x" }),
 });
