@@ -1,16 +1,17 @@
 ---
-import { Image } from "astro:assets";
+// import { Image } from "astro:assets";
 // import menu_svg from "public/assets/icons/menu-alt-01-svgrepo-com.svg";
 // import close_menu_svg from "public/assets/icons/close-bold-svgrepo-com.svg";
 // import leftArrow from "public/assets/icons/left-arrow.svg";
 // import rightArrow from "public/assets/icons/right-arrow.svg";
+import { languages } from "@/i18n/ui";
 import LanguagePicker from "@/components/LenguagePicker.astro";
 // import internationalIcon from "public/assets/icons/international-svgrepo-com.svg";
 import {
     getLangFromUrl,
     useTranslations,
     useTranslatedPath,
-} from "../i18n/utils";
+} from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
@@ -31,7 +32,7 @@ const translatePath = useTranslatedPath(lang);
         <!-- Logo -->
         <div class="flex md:flex-grow md:basis-0">
             <a href="/">
-                <Image
+                <img
                     src="/assets/profile/MarlonMoraLogo.svg"
                     alt="Marlon Mora Icon"
                     loading="eager"
@@ -44,8 +45,8 @@ const translatePath = useTranslatedPath(lang);
         <!-- Hamburger (mobile) -->
         <div class="w-10 h-10 md:hidden" id="menu_btn">
             <button class="cursor-pointer">
-                <Image
-                    src={menu_svg}
+                <img
+                    src="/assets/icons/menu-alt-01-svgrepo-com.svg"
                     alt="menu"
                     loading="eager"
                     width={40}

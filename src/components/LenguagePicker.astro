@@ -1,4 +1,6 @@
 ---
+import { languages } from "@/i18n/ui";
+import { getLangFromUrl, useTranslatedPath } from "@/i18n/utils";
 // import { Image } from "astro:assets";
 // import internationalIcon from "../../public/assets/icons/international-svgrepo-com.svg";
 // import downArrow from "../../public/assets/icons/down-arrow-5-svgrepo-com.svg";
@@ -74,13 +76,3 @@ const translatePath = useTranslatedPath(lang);
         height: 12px;
     }
 </style>
-
-<script>
-    const selectLanguage = document.getElementById("select_language");
-    const closeSelectLanguage = document.getElementById("close_btn2");
-
-    closeSelectLanguage.addEventListener("click", () => {
-        console.log("close");
-        selectLanguage.classList.add("hidden");
-    });
-</script>
