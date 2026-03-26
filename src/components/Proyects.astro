@@ -2,1022 +2,586 @@
 import Section from "@/components/Section.astro";
 import { Image } from "astro:assets";
 
-import leetcode_clone_img from "../../public/assets/leetcode_clone.avif";
-import radio_app_img from "../../public/assets/radio_app_img.webp";
-import pokedex_img from "../../public/assets/pokedex_img.webp";
-import calinema_app_img from "../../public/assets/calinema_app.webp";
-import calinema_api_img from "../../public/assets/calinema_api.avif";
-import democracia_elite_img from "../../public/assets/democracia_elite.avif";
-import menu_usb_img from "../../public/assets/menu_usb.avif";
-import xrays_img from "../../public/assets/xrays.avif";
+import { projects as baseProjects } from "@/data/projects";
 
 import { getI18n } from "@/i18n";
+import { getProjectById } from "@/i18n/helpers";
 
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
 
-// ── PROJECT DATA ARRAY ──────────────────────────────────────────────────────
-// To add a new project: push a new object to this array. The template handles the rest.
-const projects = [
-    // ── FEATURED ────────────────────────────────────────────────────────────
-    {
-        id: "neuroscreen",
-        featured: true,
-        title: "NeuroScreen-A",
-        subtitle: i18n.PROYECTS.NEUROSCREEN_SUBTITLE,
-        description: i18n.PROYECTS.NEUROSCREEN_DESCRIPTION,
-        image: xrays_img,           // ← replace with neuroscreen thumbnail when ready
-        imageAlt: "NeuroScreen-A dashboard",
-        status: "in-progress",      // "completed" | "in-progress" | "maintenance"
-        year: "2025 – 2026",
-        role: i18n.PROYECTS.NEUROSCREEN_ROLE,
-        problem: i18n.PROYECTS.NEUROSCREEN_PROBLEM,
-        stack: {
-            Frontend: ["React 18", "TypeScript", "Vite", "TailwindCSS", "React Query", "Framer Motion"],
-            Backend:  ["Flask", "SQLAlchemy", "PostgreSQL", "Celery"],
-            ML:       ["TensorFlow", "Keras"],
-            Infra:    ["JWT", "CORS"],
-        },
-        features: i18n.PROYECTS.NEUROSCREEN_FEATURES,  // array of strings
-        links: {
-            live: null,             // ← add institutional URL when deployed
-            code: null,             // ← private / institutional repo
-        },
-        screenshots: [
-            // ← replace paths with your actual screenshot paths
-            // "/assets/neuroscreen/dashboard.webp",
-            // "/assets/neuroscreen/patient.webp",
-            // "/assets/neuroscreen/prediction.webp",
-        ],
-    },
-    {
-        id: "leetcode-clone",
-        featured: true,
-        title: "LeetCode Clone",
-        subtitle: i18n.PROYECTS.LEETCODE_CLONE_SUBTITLE,
-        description: i18n.PROYECTS.LEETCODE_CLONE_DESCRIPTION,
-        image: leetcode_clone_img,
-        imageAlt: "LeetCode Clone interface",
-        status: "completed",
-        year: "2024 – May 2025",
-        role: i18n.PROYECTS.LEETCODE_CLONE_ROLE,
-        problem: i18n.PROYECTS.LEETCODE_CLONE_PROBLEM,
-        stack: {
-            Backend:  ["Flask", "Python"],
-            Frontend: ["HTML", "CSS", "JavaScript"],
-            Auth:     ["Flask-Login"],
-        },
-        features: i18n.PROYECTS.LEETCODE_CLONE_FEATURES,
-        links: {
-            live: null,
-            code: "https://github.com/MarlonMora23/LeetCode_Clon",
-        },
-        screenshots: [
-            // "/assets/leetcode/exercises.webp",
-            // "/assets/leetcode/editor.webp",
-        ],
-    },
+const i18nProjects = i18n.PROYECTS?.items || [];
 
-    // ── SECONDARY ───────────────────────────────────────────────────────────
-    {
-        id: "calinema",
-        featured: false,
-        title: "CaliNema",
-        subtitle: i18n.PROYECTS.CALINEMA_SUBTITLE,
-        description: i18n.PROYECTS.CALINEMA_DESCRIPTION,
-        image: calinema_app_img,
-        imageAlt: "CaliNema app",
-        status: "completed",
-        year: "2023",
-        role: null,
-        problem: null,
-        stack: { Web: ["Django", "Python", "HTML", "CSS"] },
-        features: [],
-        links: {
-            live: "https://calinema.onrender.com/",
-            code: "https://github.com/MarlonMora23/CaliNema",
-        },
-        screenshots: [],
-    },
-    {
-        id: "calinema-api",
-        featured: false,
-        title: "API CaliNema",
-        subtitle: i18n.PROYECTS.CALINEMA_API_SUBTITLE,
-        description: i18n.PROYECTS.CALINEMA_API_DESCRIPTION,
-        image: calinema_api_img,
-        imageAlt: "CaliNema API",
-        status: "completed",
-        year: "2023",
-        role: null,
-        problem: null,
-        stack: { Backend: ["Django REST Framework", "Python"] },
-        features: [],
-        links: {
-            live: null,
-            code: "https://github.com/MarlonMora23/API_Calinema",
-        },
-        screenshots: [],
-    },
-    {
-        id: "radioapp",
-        featured: false,
-        title: "RadioApp",
-        subtitle: i18n.PROYECTS.RADIOAPP_SUBTITLE,
-        description: i18n.PROYECTS.RADIOAPP_DESCRIPTION,
-        image: radio_app_img,
-        imageAlt: "RadioApp",
-        status: "completed",
-        year: "2024",
-        role: null,
-        problem: null,
-        stack: { Frontend: ["JavaScript", "HTML", "CSS"] },
-        features: [],
-        links: {
-            live: "https://radio-app-ochre.vercel.app/",
-            code: "https://github.com/MarlonMora23/LeetCode_Clon",
-        },
-        screenshots: [],
-    },
-    {
-        id: "pokedex",
-        featured: false,
-        title: "Pokédex 3D",
-        subtitle: i18n.PROYECTS.POKEDEX_SUBTITLE,
-        description: i18n.PROYECTS.POKEDEX_DESCRIPTION,
-        image: pokedex_img,
-        imageAlt: "Pokédex 3D",
-        status: "completed",
-        year: "2024",
-        role: null,
-        problem: null,
-        stack: { Frontend: ["JavaScript", "Three.js", "PokéAPI"] },
-        features: [],
-        links: {
-            live: null,
-            code: "https://github.com/MarlonMora23/LeetCode_Clon",
-        },
-        screenshots: [],
-    },
-    {
-        id: "menu-usb",
-        featured: false,
-        title: "MenuUSB",
-        subtitle: i18n.PROYECTS.MENUUSB_SUBTITLE,
-        description: i18n.PROYECTS.MENUUSB_DESCRIPTION,
-        image: menu_usb_img,
-        imageAlt: "MenuUSB",
-        status: "completed",
-        year: "2023",
-        role: null,
-        problem: null,
-        stack: { Web: ["HTML", "CSS", "JavaScript"] },
-        features: [],
-        links: {
-            live: null,
-            code: "https://github.com/MarlonMora23/MenuUsb",
-        },
-        screenshots: [],
-    },
-    {
-        id: "democracia-elite",
-        featured: false,
-        title: "Democracia Elite",
-        subtitle: i18n.PROYECTS.DEMOCRACIA_ELITE_SUBTITLE,
-        description: i18n.PROYECTS.DEMOCRACIA_ELITE_DESCRIPTION,
-        image: democracia_elite_img,
-        imageAlt: "Democracia Elite",
-        status: "completed",
-        year: "2023",
-        role: null,
-        problem: null,
-        stack: { Frontend: ["HTML", "CSS", "JavaScript"] },
-        features: [],
-        links: {
-            live: "https://marlonmora23.github.io/",
-            code: "https://github.com/MarlonMora23/marlonmora23.github.io",
-        },
-        screenshots: [],
-    },
-];
+const getProjectData = (projectId: string) => {
+  return getProjectById(i18nProjects, projectId);
+};
 
+const projects = baseProjects.map((p) => ({
+  ...p,
+  subtitle: getProjectData(p.id)?.subtitle || "",
+  description: getProjectData(p.id)?.description || "",
+  role: getProjectData(p.id)?.role || null,
+  problem: getProjectData(p.id)?.problem || null,
+  features: getProjectData(p.id)?.features || [],
+}));
 
-// ── DATA ─────────────────────────────────────────────────────────────────
-const featuredProjects  = projects.filter(p => p.featured);
-const secondaryProjects = projects.filter(p => !p.featured);
+const featuredProjects = projects.filter((p) => p.featured);
+const secondaryProjects = projects.filter((p) => !p.featured);
 
 const statusConfig = {
-    "completed":   { label: i18n.PROYECTS.STATUS_COMPLETED,   dot: "#22c55e" },
-    "in-progress": { label: i18n.PROYECTS.STATUS_IN_PROGRESS, dot: "#f59e0b" },
-    "maintenance": { label: i18n.PROYECTS.STATUS_MAINTENANCE, dot: "#3b82f6" },
+  completed: {
+    label: i18n.COMMON?.STATUS_COMPLETED || "Completed",
+    dot: "#22c55e",
+  },
+  "in-progress": {
+    label: i18n.COMMON?.STATUS_IN_PROGRESS || "In progress",
+    dot: "#f59e0b",
+  },
+  maintenance: {
+    label: i18n.COMMON?.STATUS_MAINTENANCE || "Maintenance",
+    dot: "#3b82f6",
+  },
 };
 ---
 
 <Section id="proyects" class="proyects-section">
+  <p class="section-overline">{i18n.PROYECTS.OVERLINE}</p>
+  <h2 class="statement-small">{i18n.PROYECTS.TITLE}</h2>
 
-    <p class="section-overline">{i18n.PROYECTS.OVERLINE}</p>
-    <h2 class="proyects-headline">{i18n.PROYECTS.TITLE}</h2>
+  <!-- ── FEATURED GRID ─────────────────────────────────────────────── -->
+  <div class="projects-grid projects-grid--featured">
+    {
+      featuredProjects.map((p, i) => {
+        const st = statusConfig[p.status];
+        return (
+          <article
+            class="project-card project-card--featured scroll-reveal"
+            style={`--delay: ${0.1 + i * 0.12}s`}
+          >
+            <div
+              class="project-img-wrap"
+              data-project-id={p.id}
+              role="button"
+              tabindex="0"
+              aria-label={`Ver detalles de ${p.title}`}
+            >
+              <Image
+                src={p.image}
+                alt={p.imageAlt}
+                class="project-img"
+                width={600}
+                height={400}
+              />
+              <div class="project-overlay" aria-hidden="true">
+                <span class="overlay-cta">{i18n.PROYECTS.VIEW_DETAILS} →</span>
+              </div>
+            </div>
 
-    <!-- ── FEATURED GRID ─────────────────────────────────────────────── -->
-    <div class="featured-grid">
-        {featuredProjects.map((p, i) => {
-            const st = statusConfig[p.status];
-            return (
-                <article
-                    class={`featured-card scroll-reveal ${i === 0 ? 'featured-card--large' : 'featured-card--small'}`}
-                    style={`--delay: ${0.1 + i * 0.12}s`}
-                    data-project-id={p.id}
-                    role="button"
-                    tabindex="0"
-                    aria-label={`Ver detalles de ${p.title}`}
-                >
-                    <div class="featured-img-wrap">
-                        <Image src={p.image} alt={p.imageAlt} class="featured-img" width={600} height={400} />
-                        <div class="featured-img-overlay" aria-hidden="true">
-                            <span class="overlay-cta">{i18n.PROYECTS.VIEW_DETAILS} →</span>
-                        </div>
-                    </div>
-                    <div class="featured-body">
-                        <div class="featured-meta">
-                            <span class="status-badge">
-                                <span class="status-dot" style={`background: ${st.dot}`}></span>
-                                {st.label}
-                            </span>
-                            <span class="proj-year">{p.year}</span>
-                        </div>
-                        <h3 class="featured-title">{p.title}</h3>
-                        <p class="featured-subtitle">{p.subtitle}</p>
-                        <div class="tag-row">
-                            {Object.values(p.stack).flat().slice(0, 6).map(tech => (
-                                <span class="tech-tag">{tech}</span>
-                            ))}
-                        </div>
-                        <div class="featured-actions">
-                            <button class="btn-detail" data-project-id={p.id}>
-                                {i18n.PROYECTS.VIEW_DETAILS}
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                            {p.links.code && (
-                                <a href={p.links.code} target="_blank" rel="noopener noreferrer" class="btn-ghost-sm" onclick="event.stopPropagation()">GitHub</a>
-                            )}
-                            {p.links.live && (
-                                <a href={p.links.live} target="_blank" rel="noopener noreferrer" class="btn-ghost-sm" onclick="event.stopPropagation()">{i18n.PROYECTS.VIEW_PROJECT}</a>
-                            )}
-                        </div>
-                    </div>
-                </article>
-            );
-        })}
-    </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="status-badge">
+                  <span class="status-dot" style={`background: ${st.dot}`} />
+                  {st.label}
+                </span>
+                <span class="proj-year">{p.year}</span>
+              </div>
 
-    <!-- ── SECONDARY GRID ────────────────────────────────────────────── -->
-    <div class="secondary-grid">
-        {secondaryProjects.map((p, i) => {
-            const st = statusConfig[p.status];
-            return (
-                <article
-                    class="secondary-card scroll-reveal"
-                    style={`--delay: ${0.05 + i * 0.07}s`}
-                    data-project-id={p.id}
-                    role="button"
-                    tabindex="0"
-                    aria-label={`Ver detalles de ${p.title}`}
-                >
-                    <div class="secondary-img-wrap">
-                        <Image src={p.image} alt={p.imageAlt} class="secondary-img" width={600} height={400} />
-                    </div>
-                    <div class="secondary-body">
-                        <div class="secondary-meta">
-                            <span class="status-badge status-badge--sm">
-                                <span class="status-dot" style={`background: ${st.dot}`}></span>
-                                {st.label}
-                            </span>
-                            <span class="proj-year proj-year--sm">{p.year}</span>
-                        </div>
-                        <h3 class="secondary-title">{p.title}</h3>
-                        <p class="secondary-desc">{p.description}</p>
-                        <div class="tag-row tag-row--sm">
-                            {Object.values(p.stack).flat().slice(0, 4).map(tech => (
-                                <span class="tech-tag tech-tag--sm">{tech}</span>
-                            ))}
-                        </div>
-                        <div class="secondary-actions">
-                            {p.links.live && (
-                                <a href={p.links.live} target="_blank" rel="noopener noreferrer" class="btn-primary-sm">{i18n.PROYECTS.VIEW_PROJECT}</a>
-                            )}
-                            {p.links.code && (
-                                <a href={p.links.code} target="_blank" rel="noopener noreferrer" class="btn-outline-sm">GitHub</a>
-                            )}
-                        </div>
-                    </div>
-                </article>
-            );
-        })}
-    </div>
+              <h3 class="project-title project-title--featured">{p.title}</h3>
+              <p class="project-subtitle">{p.subtitle}</p>
 
+              <div class="project-actions">
+                {p.links.live && (
+                  <a
+                    href={p.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    onclick="event.stopPropagation()"
+                  >
+                    {i18n.PROYECTS.VIEW_PROJECT}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2 7h10M8 3l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                )}
+                {p.links.code && (
+                  <a
+                    href={p.links.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary btn-sm"
+                    onclick="event.stopPropagation()"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+
+  <!-- ── SECONDARY GRID ────────────────────────────────────────────── -->
+  <div class="projects-grid projects-grid--secondary">
+    {
+      secondaryProjects.map((p, i) => {
+        const st = statusConfig[p.status];
+        return (
+          <article
+            class="project-card scroll-reveal"
+            style={`--delay: ${0.05 + i * 0.07}s`}
+          >
+            <div
+              class="project-img-wrap"
+              data-project-id={p.id}
+              role="button"
+              tabindex="0"
+              aria-label={`Ver detalles de ${p.title}`}
+            >
+              <Image
+                src={p.image}
+                alt={p.imageAlt}
+                class="project-img"
+                width={600}
+                height={400}
+              />
+              <div class="project-overlay" aria-hidden="true">
+                <span class="overlay-cta">{i18n.PROYECTS.VIEW_DETAILS} →</span>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="status-badge status-badge--sm">
+                  <span class="status-dot" style={`background: ${st.dot}`} />
+                  {st.label}
+                </span>
+                <span class="proj-year proj-year--sm">{p.year}</span>
+              </div>
+
+              <h3 class="project-title">{p.title}</h3>
+              <p class="project-desc">{p.description}</p>
+
+              <div class="project-actions">
+                {p.links.live && (
+                  <a
+                    href={p.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                  >
+                    {i18n.PROYECTS.VIEW_PROJECT}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2 7h10M8 3l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                )}
+                {p.links.code && (
+                  <a
+                    href={p.links.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary btn-sm"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
 </Section>
 
-<!-- ── MODAL ──────────────────────────────────────────────────────────────── -->
-<div class="modal-backdrop" id="proj-modal" aria-modal="true" role="dialog" hidden>
-    <div class="modal-panel">
-
-        <!-- Close button -->
-        <button class="modal-close" id="modal-close" aria-label="Cerrar">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-        </button>
-
-        <!-- HERO IMAGE with gradient fade into body -->
-        <div class="modal-hero">
-            <img id="modal-img" class="modal-hero-img" alt="" />
-            <div class="modal-hero-gradient" aria-hidden="true"></div>
-
-            <!-- Status + year float over the hero image bottom-left -->
-            <div class="modal-hero-badges">
-                <span id="modal-status" class="status-badge"></span>
-                <span id="modal-year" class="proj-year"></span>
-            </div>
-        </div>
-
-        <div class="modal-body">
-
-            <!-- HEADER: title + action links side by side -->
-            <div class="modal-header">
-                <div class="modal-header-left">
-                    <h2 id="modal-title" class="modal-title"></h2>
-                    <p id="modal-subtitle" class="modal-subtitle"></p>
-                </div>
-                <div class="modal-links-top" id="modal-links"></div>
-            </div>
-
-            <!-- CONTENT GRID: 2 col on desktop -->
-            <div class="modal-content-grid">
-
-                <!-- LEFT: Problem + Role -->
-                <div class="modal-content-left">
-
-                    <div id="modal-problem-wrap" class="modal-section">
-                        <div class="modal-section-label">🧩 Problem</div>
-                        <div class="modal-problem-box">
-                            <p id="modal-problem"></p>
-                        </div>
-                    </div>
-
-                    <div id="modal-role-wrap" class="modal-section">
-                        <div class="modal-section-label">👤 Role</div>
-                        <p id="modal-role" class="modal-body-text"></p>
-                    </div>
-
-                    <div id="modal-features-wrap" class="modal-section">
-                        <div class="modal-section-label">🚀 What I built</div>
-                        <ul id="modal-features" class="features-list"></ul>
-                    </div>
-
-                </div>
-
-                <!-- RIGHT: Stack + Screenshots -->
-                <div class="modal-content-right">
-
-                    <div id="modal-stack" class="modal-section modal-stack-section"></div>
-
-                    <div id="modal-screenshots-wrap" class="modal-section">
-                        <div class="modal-section-label">🖼 Screens</div>
-                        <div id="modal-screenshots" class="screenshots-grid"></div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
 
-    /* ── SECTION ───────────────────────────────────────────────────────── */
-    :global(.proyects-section) {
-        background: #F7F7F5;
+  /* ── SECTION ───────────────────────────────────────────────────────── */
+  :global(.proyects-section) {
+    background: var(--color-bg-section);
+  }
+
+  .section-overline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--text-size-xxs);
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .section-overline::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: var(--border-accent);
+    background: var(--color-primary);
+    border-radius: 1px;
+  }
+
+  /* ── GRIDS ─────────────────────────────────────────────────────────── */
+  .projects-grid {
+    display: grid;
+    gap: var(--spacing-xl);
+  }
+
+  .projects-grid--featured {
+    margin-bottom: var(--spacing-4xl);
+  }
+
+  @media (min-width: 1024px) {
+    .projects-grid--featured {
+      grid-template-columns: 1fr 1fr;
     }
+  }
 
-    .section-overline {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        color: #1867ce;
-        margin-bottom: 16px;
+  .projects-grid--secondary {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  @media (min-width: 640px) {
+    .projects-grid--secondary {
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
 
-    .section-overline::before {
-        content: '';
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        background: #1867ce;
-        border-radius: 1px;
+  @media (min-width: 1024px) {
+    .projects-grid--secondary {
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 
-    .proyects-headline {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(28px, 4vw, 42px);
-        font-weight: 700;
-        color: #0a0a0a;
-        line-height: 1.15;
-        margin-bottom: 32px;
-    }
+  /* ── CARD BASE ─────────────────────────────────────────────────────── */
+  .project-card {
+    background: var(--color-bg-white);
+    border: var(--border-thin) solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition:
+      transform var(--transition-normal),
+      box-shadow var(--transition-normal),
+      border-color var(--transition-normal);
+  }
 
-    /* ── FEATURED GRID ─────────────────────────────────────────────────── */
-    .featured-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 24px;
-        margin-bottom: 48px;
-    }
+  .project-card:has(.project-img-wrap:hover) {
+    border-color: var(--color-border-primary);
+    box-shadow: 0 12px 32px rgba(0, 74, 173, 0.1);
+  }
 
-    @media (min-width: 1024px) {
-        .featured-grid { grid-template-columns: 1fr 1fr; }
-    }
+  /* ── IMAGE WRAP ────────────────────────────────────────────────────── */
+  .project-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+  }
 
-    .featured-card {
-        background: #ffffff;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 14px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-        display: flex;
-        flex-direction: column;
-    }
+  .project-img-wrap:hover {
+    transform: translateY(-4px);
+  }
 
-    .featured-card:hover {
-        border-color: #B5D4F4;
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(0, 74, 173, 0.1);
-    }
+  .project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
 
-    .featured-card:focus-visible { outline: 2px solid #1867ce; outline-offset: 2px; }
+  .project-img-wrap:hover .project-img {
+    transform: scale(1.04);
+  }
 
-    .featured-img-wrap { position: relative; overflow: hidden; aspect-ratio: 16/9; }
-    .featured-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-    .featured-card:hover .featured-img { transform: scale(1.03); }
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--spacing-lg);
+    transition: opacity var(--transition-slower);
+  }
 
-    .featured-img-overlay {
-        position: absolute; inset: 0;
-        background: linear-gradient(to top, rgba(0,74,173,0.75) 0%, transparent 60%);
-        opacity: 0;
-        transition: opacity 0.3s;
-        display: flex; align-items: flex-end; padding: 20px;
-    }
-    .featured-card:hover .featured-img-overlay { opacity: 1; }
-    .overlay-cta { font-size: 13px; font-weight: 600; color: #fff; letter-spacing: 0.05em; }
+  .project-img-wrap:hover .project-overlay {
+    opacity: 1;
+  }
 
-    .featured-body { padding: 20px 24px 24px; display: flex; flex-direction: column; flex: 1; }
-    .featured-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .overlay-cta {
+    color: white;
+    font-size: var(--text-size-small);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.05em;
+  }
 
-    .featured-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(20px, 2.5vw, 26px);
-        font-weight: 700;
-        color: #0a0a0a;
-        margin-bottom: 6px;
-        line-height: 1.2;
-    }
+  /* ── CARD BODY ─────────────────────────────────────────────────────── */
+  .project-body {
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 
-    .featured-subtitle { font-size: 14px; color: #5F5E5A; line-height: 1.6; margin-bottom: 16px; flex: 1; }
-    .featured-actions { display: flex; align-items: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .project-card--featured .project-body {
+    padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl);
+  }
 
-    /* ── SECONDARY GRID ────────────────────────────────────────────────── */
-    .secondary-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 640px)  { .secondary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (min-width: 1024px) { .secondary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+  }
 
-    .secondary-card {
-        background: #ffffff;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: border-color 0.2s, transform 0.2s;
-        display: flex;
-        flex-direction: column;
-    }
-    .secondary-card:hover { border-color: #B5D4F4; transform: translateY(-3px); }
-    .secondary-card:focus-visible { outline: 2px solid #1867ce; outline-offset: 2px; }
+  .project-title {
+    font-size: var(--text-size-body);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-xs);
+  }
 
-    .secondary-img-wrap { aspect-ratio: 16/9; overflow: hidden; }
-    .secondary-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
-    .secondary-card:hover .secondary-img { transform: scale(1.04); }
+  .project-title--featured {
+    font-size: var(--text-size-h3);
+  }
 
-    .secondary-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
-    .secondary-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-    .secondary-title { font-size: 16px; font-weight: 700; color: #0a0a0a; margin-bottom: 6px; }
+  .project-subtitle {
+    font-size: var(--text-size-small);
+    color: var(--color-text-tertiary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+  }
 
-    .secondary-desc {
-        font-size: 13px; color: #888780; line-height: 1.55; margin-bottom: 10px; flex: 1;
-        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .secondary-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .project-desc {
+    font-size: var(--text-size-small);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-sm);
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-    /* ── SHARED: STATUS BADGE ──────────────────────────────────────────── */
-    .status-badge {
-        display: inline-flex; align-items: center; gap: 5px;
-        font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-        color: #5F5E5A; background: #F7F7F5; border: 0.5px solid #E8E6E0;
-        padding: 3px 8px; border-radius: 20px;
-    }
-    .status-badge--sm { font-size: 10px; padding: 2px 7px; }
-    .status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .proj-year {
+    font-size: var(--text-size-xs);
+    color: var(--color-text-muted);
+    font-weight: var(--weight-medium);
+    opacity: 0.85;
+  }
 
-    .proj-year { font-size: 12px; color: #B4B2A9; font-weight: 500; }
-    .proj-year--sm { font-size: 11px; }
+  .proj-year--sm {
+    font-size: 11px;
+  }
 
-    /* ── SHARED: TECH TAGS ─────────────────────────────────────────────── */
-    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag-row--sm { gap: 5px; }
-    .tech-tag {
-        font-family: var(--font-mono, monospace); font-size: 12px; font-weight: 500;
-        padding: 3px 10px; border-radius: 20px;
-        background: #E6F1FB; color: #0C447C; border: 0.5px solid #B5D4F4;
-    }
-    .tech-tag--sm { font-size: 11px; padding: 2px 8px; }
+  .project-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    flex-wrap: wrap;
+  }
 
-    /* ── SHARED: BUTTONS ───────────────────────────────────────────────── */
-    .btn-detail {
-        display: inline-flex; align-items: center; gap: 6px;
-        background: #004aad; color: #ffffff; font-size: 13px; font-weight: 500;
-        padding: 8px 18px; border-radius: 7px; border: none; cursor: pointer;
-        transition: background 0.2s, transform 0.15s; font-family: var(--font-sans);
-    }
-    .btn-detail:hover { background: #1867ce; transform: translateY(-1px); }
+  /* ── SHARED: STATUS BADGE ──────────────────────────────────────────── */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #5f5e5a;
+    background: #f7f7f5;
+    border: 0.5px solid #e8e6e0;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
 
-    .btn-ghost-sm {
-        display: inline-flex; align-items: center; font-size: 13px; font-weight: 500;
-        padding: 8px 14px; border-radius: 7px; border: 0.5px solid #D3D1C7;
-        color: #5F5E5A; text-decoration: none; transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-ghost-sm:hover { border-color: #1867ce; color: #1867ce; }
+  .status-badge--sm {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
 
-    .btn-primary-sm {
-        font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 6px;
-        background: #004aad; color: #ffffff; text-decoration: none; transition: background 0.2s;
-    }
-    .btn-primary-sm:hover { background: #1867ce; }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
 
-    .btn-outline-sm {
-        font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 6px;
-        border: 0.5px solid #D3D1C7; color: #5F5E5A; text-decoration: none;
-        transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-outline-sm:hover { border-color: #1867ce; color: #1867ce; }
+  /* ── SHARED: BUTTONS ───────────────────────────────────────────────── */
+  .btn-detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--color-primary-dark);
+    color: var(--color-bg-white);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    transition:
+      background var(--transition-normal),
+      transform var(--transition-fast);
+    font-family: var(--font-sans);
+  }
 
-    /* ════════════════════════════════════════════════════════════════════
-       MODAL
-    ════════════════════════════════════════════════════════════════════ */
+  .btn-detail:hover {
+    background: var(--color-primary);
+    transform: translateY(-1px);
+  }
 
-    /* Backdrop */
-    .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(10, 10, 10, 0.55);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        z-index: 100;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    .modal-backdrop:not([hidden]) { display: flex; }
-    .modal-backdrop.modal-open    { opacity: 1; }
+  .btn-ghost-sm {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 7px;
+    border: var(--border-thin) solid var(--color-border-default);
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    transition:
+      border-color var(--transition-normal),
+      color var(--transition-normal);
+  }
 
-    /* Panel */
-    .modal-panel {
-        position: relative;
-        width: 100%;
-        max-width: 860px;
-        max-height: 90vh;
-        overflow-y: auto;
-        border-radius: 20px;
-        background: #ffffff;
-        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28), 0 0 0 0.5px rgba(0,0,0,0.06);
-        transform: translateY(24px) scale(0.98);
-        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        scrollbar-width: thin;
-        scrollbar-color: #E8E6E0 transparent;
-    }
-    .modal-backdrop.modal-open .modal-panel {
-        transform: translateY(0) scale(1);
-    }
+  .btn-ghost-sm:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
 
-    /* Close */
-    .modal-close {
-        position: sticky;
-        top: 14px;
-        float: right;
-        margin: 14px 14px 0 0;
-        z-index: 20;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 0.5px solid rgba(255,255,255,0.3);
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(8px);
-        color: #ffffff;
-        cursor: pointer;
-        transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .modal-close:hover {
-        background: rgba(255,255,255,0.9);
-        color: #0a0a0a;
-        border-color: transparent;
-    }
+  .btn-primary-sm {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: var(--color-primary-dark);
+    color: var(--color-bg-white);
+    text-decoration: none;
+    transition: background var(--transition-normal);
+  }
 
-    /* ── HERO IMAGE ──────────────────────────────────────────────────────── */
-    .modal-hero {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16 / 7;
-        overflow: hidden;
-        border-radius: 20px 20px 0 0;
-        /* Pull up so the close button floats over it */
-        margin-top: -46px;
-    }
+  .btn-primary-sm:hover {
+    background: var(--color-primary);
+  }
 
-    .modal-hero-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
+  .btn-outline-sm {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: var(--border-thin) solid var(--color-border-default);
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    transition:
+      border-color var(--transition-normal),
+      color var(--transition-normal);
+  }
 
-    /*
-     * Gradient that fades the hero image INTO the white modal body below.
-     * Bottom 40% fades cleanly to white — no hard edge.
-     */
-    .modal-hero-gradient {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.15) 0%,
-            rgba(0,0,0,0.05) 40%,
-            rgba(255,255,255,0.7) 75%,
-            #ffffff 100%
-        );
-        pointer-events: none;
-    }
+  .btn-outline-sm:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
 
-    /* Status + year float over the hero, bottom-left */
-    .modal-hero-badges {
-        position: absolute;
-        bottom: 18px;
-        left: 24px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+  /* ── SCROLL REVEAL ─────────────────────────────────────────────────── */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+    transition-delay: var(--delay, 0s);
+  }
 
-    .modal-hero-badges .status-badge {
-        background: rgba(255,255,255,0.92);
-        backdrop-filter: blur(4px);
-        border-color: rgba(255,255,255,0.5);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    .modal-hero-badges .proj-year {
-        font-size: 12px;
-        color: rgba(255,255,255,0.85);
-        font-weight: 600;
-        text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-    }
-
-    /* ── MODAL BODY ──────────────────────────────────────────────────────── */
-    .modal-body {
-        padding: 0 32px 36px;
-    }
-
-    /* ── HEADER ──────────────────────────────────────────────────────────── */
-    .modal-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 20px;
-        margin-bottom: 32px;
-        padding-bottom: 24px;
-        border-bottom: 0.5px solid #E8E6E0;
-    }
-
-    .modal-header-left { flex: 1; min-width: 0; }
-
-    .modal-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(24px, 3.5vw, 34px);
-        font-weight: 700;
-        color: #0a0a0a;
-        line-height: 1.15;
-        margin-bottom: 8px;
-    }
-
-    .modal-subtitle {
-        font-size: 15px;
-        color: #5F5E5A;
-        line-height: 1.65;
-        max-width: 520px;
-    }
-
-    /* CTA links top-right of header */
-    .modal-links-top {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        flex-shrink: 0;
-    }
-
-    @media (max-width: 600px) {
-        .modal-header { flex-direction: column; }
-        .modal-links-top { flex-direction: row; }
-    }
-
-    /* ── CONTENT GRID ────────────────────────────────────────────────────── */
-    .modal-content-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 28px;
-    }
-
-    @media (min-width: 640px) {
-        .modal-content-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 36px;
-        }
-    }
-
-    /* ── SECTION BLOCKS ──────────────────────────────────────────────────── */
-    .modal-section {
-        margin-bottom: 24px;
-    }
-    .modal-section:last-child { margin-bottom: 0; }
-
-    .modal-section-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: #B4B2A9;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .modal-body-text {
-        font-size: 14px;
-        color: #5F5E5A;
-        line-height: 1.7;
-    }
-
-    /* Problem: highlighted quote-block */
-    .modal-problem-box {
-        background: #f5f9ff;
-        border-left: 3px solid #004aad;
-        border-radius: 0 8px 8px 0;
-        padding: 14px 16px;
-    }
-
-    .modal-problem-box p {
-        font-size: 14px;
-        color: #2C2C2A;
-        line-height: 1.7;
-        font-style: italic;
-    }
-
-    /* Stack section */
-    .modal-stack-section {
-        background: #F7F7F5;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 12px;
-        padding: 16px 18px;
-    }
-
-    .stack-group { margin-bottom: 14px; }
-    .stack-group:last-child { margin-bottom: 0; }
-
-    .stack-group-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #888780;
-        margin-bottom: 7px;
-    }
-
-    .stack-group-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    /* Features */
-    .features-list {
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    .features-list li {
-        display: flex;
-        gap: 10px;
-        font-size: 14px;
-        color: #3A3936;
-        line-height: 1.55;
-        align-items: flex-start;
-    }
-
-    .features-list li::before {
-        content: '';
-        width: 5px;
-        height: 5px;
-        min-width: 5px;
-        background: #004aad;
-        border-radius: 50%;
-        margin-top: 7px;
-    }
-
-    /* Screenshots */
-    .screenshots-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 8px;
-    }
-
-    .screenshots-grid img {
-        width: 100%;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 0.5px solid #E8E6E0;
-        transition: transform 0.2s;
-    }
-
-    .screenshots-grid img:hover { transform: scale(1.02); }
-
-    /* ── SCROLL REVEAL ─────────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
     .scroll-reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.55s ease-out, transform 0.55s ease-out;
-        transition-delay: var(--delay, 0s);
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
-    .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (prefers-reduced-motion: reduce) {
-        .scroll-reveal { opacity: 1; transform: none; transition: none; }
-        .modal-backdrop, .modal-panel { transition: none; }
-    }
+  }
 </style>
 
-<script define:vars={{
-    projects,
-    statusConfig,
-    labelProblem:     i18n.PROYECTS.MODAL_PROBLEM_LABEL,
-    labelRole:        i18n.PROYECTS.MODAL_ROLE_LABEL,
-    labelStack:       i18n.PROYECTS.MODAL_STACK_LABEL,
-    labelFeatures:    i18n.PROYECTS.MODAL_FEATURES_LABEL,
-    labelScreenshots: i18n.PROYECTS.MODAL_SCREENSHOTS_LABEL,
-    labelLive:        i18n.PROYECTS.VIEW_PROJECT,
-    labelCode:        i18n.PROYECTS.VIEW_CODE,
-}}>
+<script define:vars={{ projects }}>
+  // ── SCROLL REVEAL ────────────────────────────────────────────────────────
+  const revealEls = document.querySelectorAll("#proyects .scroll-reveal");
+  const revealObs = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          revealObs.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+  );
+  revealEls.forEach((el) => revealObs.observe(el));
 
-// ── SCROLL REVEAL ────────────────────────────────────────────────────────
-const revealEls = document.querySelectorAll('#proyects .scroll-reveal');
-const revealObs = new IntersectionObserver(
-    entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-    }),
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-);
-revealEls.forEach(el => revealObs.observe(el));
-
-// ── MODAL ────────────────────────────────────────────────────────────────
-const backdrop = document.getElementById('proj-modal');
-const closeBtn = document.getElementById('modal-close');
-
-function openModal(projectId) {
-    const p = projects.find(x => x.id === projectId);
-    if (!p) return;
-
-    const st = statusConfig[p.status];
-
-    document.getElementById('modal-img').src = p.image.src ?? p.image;
-
-    document.getElementById('modal-status').innerHTML =
-        `<span class="status-dot" style="background:${st.dot}"></span>${st.label}`;
-
-    document.getElementById('modal-year').textContent = p.year;
-    document.getElementById('modal-title').textContent = p.title;
-    document.getElementById('modal-subtitle').textContent = p.subtitle || p.description;
-
-    // PROBLEM
-    const problemWrap = document.getElementById('modal-problem-wrap');
-    if (p.problem) {
-        problemWrap.style.display = '';
-        document.getElementById('modal-problem').textContent = p.problem;
-    } else {
-        problemWrap.style.display = 'none';
-    }
-
-    // ROLE
-    const roleWrap = document.getElementById('modal-role-wrap');
-    if (p.role) {
-        roleWrap.style.display = '';
-        document.getElementById('modal-role').textContent = p.role;
-    } else {
-        roleWrap.style.display = 'none';
-    }
-
-    // STACK
-    const stackEl = document.getElementById('modal-stack');
-    stackEl.innerHTML = `
-        <div class="modal-section-label">⚙️ ${labelStack}</div>
-        ${Object.entries(p.stack).map(([cat, techs]) => `
-            <div class="stack-group">
-                <div class="stack-group-label">${cat}</div>
-                <div class="stack-group-tags">
-                    ${techs.map(t => `<span class="tech-tag">${t}</span>`).join('')}
-                </div>
-            </div>
-        `).join('')}
-    `;
-
-    // FEATURES
-    const featWrap = document.getElementById('modal-features-wrap');
-    if (p.features?.length) {
-        featWrap.style.display = '';
-        document.getElementById('modal-features').innerHTML =
-            p.features.map(f => `<li>${f}</li>`).join('');
-    } else {
-        featWrap.style.display = 'none';
-    }
-
-    // LINKS (top-right of header)
-    const linksEl = document.getElementById('modal-links');
-    linksEl.innerHTML = '';
-    if (p.links.live) {
-        linksEl.innerHTML += `<a href="${p.links.live}" target="_blank" rel="noopener noreferrer" class="btn-detail">${labelLive} →</a>`;
-    }
-    if (p.links.code) {
-        linksEl.innerHTML += `<a href="${p.links.code}" target="_blank" rel="noopener noreferrer" class="btn-ghost-sm">GitHub</a>`;
-    }
-
-    // SCREENSHOTS
-    const ssWrap = document.getElementById('modal-screenshots-wrap');
-    if (p.screenshots?.length) {
-        ssWrap.style.display = '';
-        document.getElementById('modal-screenshots').innerHTML =
-            p.screenshots.map(src => `<img src="${src}" loading="lazy" />`).join('');
-    } else {
-        ssWrap.style.display = 'none';
-    }
-
-    backdrop.removeAttribute('hidden');
-    requestAnimationFrame(() => backdrop.classList.add('modal-open'));
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.modal-panel').scrollTop = 0;
-}
-
-function closeModal() {
-    backdrop.classList.remove('modal-open');
-    backdrop.addEventListener('transitionend', () => {
-        backdrop.setAttribute('hidden', '');
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-    }, { once: true });
-}
-
-document.querySelectorAll('[data-project-id]').forEach(el => {
-    el.addEventListener('click', (e) => {
-        if (e.target.closest('a')) return;
-        openModal(el.dataset.projectId);
+  // ── DISPARAR EVENTO HACIA LA MODAL ──────────────────────────────────────
+  document.querySelectorAll("[data-project-id]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      const projectId = el.dataset.projectId;
+      const project = projects.find((x) => x.id === projectId);
+      if (!project) return;
+      document.dispatchEvent(
+        new CustomEvent("open-project-modal", { detail: { project } }),
+      );
     });
-    el.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') openModal(el.dataset.projectId);
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        const projectId = el.dataset.projectId;
+        const project = projects.find((x) => x.id === projectId);
+        if (!project) return;
+        document.dispatchEvent(
+          new CustomEvent("open-project-modal", { detail: { project } }),
+        );
+      }
     });
-});
-
-closeBtn.addEventListener('click', closeModal);
-backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  });
 </script>

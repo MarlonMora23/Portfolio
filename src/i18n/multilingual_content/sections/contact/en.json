@@ -1,0 +1,18 @@
+{
+  "CONTACT": {
+    "OVERLINE": "Let's talk",
+    "TITLE": "Shall we work together?",
+    "DESCRIPTION": "I'm looking for opportunities where I can contribute my technical-business profile. If you have something in mind, write to me.",
+    "OPP_INTERNSHIP": "Internships in software development or data analysis",
+    "OPP_ACADEMIC": "Academic collaborations and applied research",
+    "OPP_REMOTE": "Remote junior work — backend or full-stack",
+    "AVAILABLE": "Available for new opportunities",
+    "BUTTON": "Send message",
+    "DETAIL_EMAIL": "Email",
+    "DETAIL_LOCATION": "Location",
+    "DETAIL_LANGUAGES": "Languages",
+    "DETAIL_STATUS": "Status",
+    "DETAIL_STATUS_VALUE": "Active student · Available",
+    "NOTE": "I build at the intersection between business and technology."
+  }
+}

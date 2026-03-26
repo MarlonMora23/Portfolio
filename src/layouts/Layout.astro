@@ -1,5 +1,6 @@
 ---
 import Header from "@/components/Header.astro";
+import "@/styles/global.css";
 
 interface Props {
   title: string;
@@ -12,37 +13,52 @@ const { currentLocale } = Astro;
 
 <!doctype html>
 <html lang={currentLocale}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Primary SEO -->
+  <title>{title} | Marlon Mora</title>
+  <meta name="description" content={description} />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content="assets/web_portada.webpp" />
-    <meta property="og:url" content={Astro.site} />
-    <meta property="og:type" content="website" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://marlonmora.vercel.app" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="assets/web_portada.webpp" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- SEO and Accessibility -->
-    <link rel="alternate" href="https://marlonmora.vercel.app" hreflang="es" />
-    <link
-      rel="alternate"
-      href="https://marlonmora.vercel.app/en"
-      hreflang="en"
-    />
-    <link rel="canonical" href={Astro.site} />
+  <!-- Open Graph -->
+  <meta property="og:title" content={title + " | Marlon Mora"} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://marlonmora.vercel.app/assets/web_portada.webp" />
+  <meta property="og:url" content="https://marlonmora.vercel.app" />
+  <meta property="og:type" content="website" />
 
-    <title>{title}</title>
-  </head>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title + " | Marlon Mora"} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://marlonmora.vercel.app/assets/web_portada.webp" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" href="https://marlonmora.vercel.app" hreflang="es" />
+  <link rel="alternate" href="https://marlonmora.vercel.app/en" hreflang="en" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Marlon Mora",
+    "url": "https://marlonmora.vercel.app",
+    "jobTitle": "Ingeniero de Sistemas y Administrador de Negocios",
+    "sameAs": [
+      "https://github.com/MarlonMora23",
+      "https://www.linkedin.com/in/marlonmora/"
+    ]
+  })}
+  </script>
+</head>
 
   <body>
     <Header />
@@ -60,12 +76,12 @@ const { currentLocale } = Astro;
     font-family: system-ui, sans-serif;
     background: #f5f5f5;
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   body {
     min-height: 100vh;
     overflow-y: auto;
-    scrollbar-gutter: stable;
   }
 
   code {

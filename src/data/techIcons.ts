@@ -1,0 +1,71 @@
+export const techIconMap = {
+  // Frontend
+  React: "logos:react",
+  "React 18": "logos:react",
+  Angular: "logos:angular-icon",
+  Vue: "logos:vue",
+  Svelte: "logos:svelte",
+  TypeScript: "logos:typescript-icon",
+  JavaScript: "logos:javascript",
+  "HTML/CSS": "logos:html-5",
+  HTML: "logos:html-5",
+  CSS: "logos:css-3",
+  TailwindCSS: "logos:tailwindcss-icon",
+  "Tailwind CSS": "logos:tailwindcss-icon",
+  Vite: "logos:vitejs",
+  Astro: "logos:astro-icon",
+  "Three.js": "logos:threejs",
+  "React Query": "simple-icons:react-query",
+  "Framer Motion": "logos:framer",
+
+  // Backend
+  Flask: "simple-icons:flask",
+  Django: "logos:django",
+  "Django REST Framework": "logos:django",
+  Python: "logos:python",
+  Java: "logos:java",
+  "Spring Boot": "logos:spring",
+  "Node.js": "logos:nodejs-icon",
+  Node: "logos:nodejs-icon",
+  Express: "simple-icons:express",
+  FastAPI: "simple-icons:fastapi",
+
+  // Databases
+  PostgreSQL: "logos:postgresql",
+  MongoDB: "logos:mongodb-icon",
+  MySQL: "logos:mysql-icon",
+  Redis: "logos:redis",
+  SQLAlchemy: "simple-icons:sqlalchemy",
+
+  // Data Science & ML
+  TensorFlow: "logos:tensorflow",
+  Keras: "simple-icons:keras",
+  pandas: "simple-icons:pandas",
+  NumPy: "simple-icons:numpy",
+  "scikit-learn": "simple-icons:scikitlearn",
+  Jupyter: "logos:jupyter",
+  "Google Colab": "simple-icons:googlecolab",
+
+  // DevOps & Infrastructure
+  Docker: "logos:docker-icon",
+  Kubernetes: "logos:kubernetes",
+  Git: "logos:git-icon",
+  GitHub: "mdi:github",
+  GitLab: "simple-icons:gitlab",
+  Linux: "logos:linux-tux",
+  AWS: "logos:aws",
+  Azure: "logos:microsoft-azure",
+  "Google Cloud": "logos:google-cloud",
+
+  // Other
+  REST: "mdi:api",
+  "REST APIs": "mdi:api",
+  API: "mdi:api",
+  GraphQL: "simple-icons:graphql",
+  JWT: "simple-icons:jwt",
+  CORS: "mdi:shield-check",
+  Celery: "simple-icons:celery",
+  PokéAPI: "simple-icons:pokemon",
+  "Radio Browser API": "mdi:radio",
+  Selenium: "simple-icons:selenium",
+};

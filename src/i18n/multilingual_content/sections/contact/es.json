@@ -1,0 +1,18 @@
+{
+  "CONTACT": {
+    "OVERLINE": "Hablemos",
+    "TITLE": "¿Trabajamos juntos?",
+    "DESCRIPTION": "Estoy buscando oportunidades donde pueda aportar mi perfil técnico-empresarial. Si tienes algo en mente, escríbeme.",
+    "OPP_INTERNSHIP": "Pasantías en desarrollo de software o análisis de datos",
+    "OPP_ACADEMIC": "Colaboraciones académicas e investigación aplicada",
+    "OPP_REMOTE": "Trabajo remoto junior — backend o full-stack",
+    "AVAILABLE": "Disponible para nuevas oportunidades",
+    "BUTTON": "Enviar mensaje",
+    "DETAIL_EMAIL": "Email",
+    "DETAIL_LOCATION": "Ubicación",
+    "DETAIL_LANGUAGES": "Idiomas",
+    "DETAIL_STATUS": "Estatus",
+    "DETAIL_STATUS_VALUE": "Estudiante activo · Disponible",
+    "NOTE": "Construyo en la intersección entre el negocio y la tecnología."
+  }
+}

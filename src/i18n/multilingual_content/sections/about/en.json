@@ -1,0 +1,19 @@
+{
+  "ABOUT": {
+    "TITLE": "About me",
+    "STATEMENT": "Where business logic and code converge.",
+    "PARAGRAPH1": "I am a student at San Buenaventura University in Cali, where I began my studies in Business Administration in the second semester of 2021. In the second semester of 2022, I decided to broaden my academic horizons by opting for a double degree in Systems Engineering. This decision has given me an integral perspective, combining business logic with the use of computer tools for effective problem solving.",
+    "PARAGRAPH2": "My academic background has allowed me to develop skills in programming, as well as in strategic decision making and resource management. My goal is to integrate my technical and business knowledge to contribute to the development of innovative solutions in the field of technology.",
+    "PARAGRAPH3": "My favorite programming language is Python, with which I have the most experience. In addition, I have knowledge in JavaScript, C++ and Java, and I have solved problems with these languages. I have also worked with web frameworks such as Astro, Django and Angular, which has allowed me to develop robust and efficient applications.",
+    "COL_ACADEMIC_LABEL": "Academic Background",
+    "COL_HIGHLIGHTS_LABEL": "What defines me",
+    "HIGHLIGHT_1_TITLE": "Double Degree",
+    "HIGHLIGHT_1_DESC": "Business Administration + Systems Engineering, USB Cali",
+    "HIGHLIGHT_2_TITLE": "Technical-Strategic Approach",
+    "HIGHLIGHT_2_DESC": "I combine business decisions with software solutions",
+    "HIGHLIGHT_3_TITLE": "Real Projects",
+    "HIGHLIGHT_3_DESC": "Full web applications with modern technologies",
+    "SKILLS_HEADER": "Skills & Technologies",
+    "SKILLS_DESC": "Tools I use to turn ideas into systems"
+  }
+}

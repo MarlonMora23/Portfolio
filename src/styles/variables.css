@@ -1,0 +1,395 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM - GLOBAL CSS VARIABLES
+   Central source of truth for colors, typography, spacing, and design tokens
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - PRIMARY PALETTE                                                */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --color-primary: #1867ce;
+  --color-primary-light: #1159b8;
+  --color-primary-dark: #004aad;
+  --color-primary-darker: #002168;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - BACKGROUNDS                                                    */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --color-bg-page: #f5f5f5;
+  --color-bg-section: #F7F7F5;
+  --color-bg-white: #ffffff;
+  --color-bg-hero-accent: #d5f5ff;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - TEXT                                                           */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --color-text-primary: #000000;
+  --color-text-dark: #0a0a0a;
+  --color-text-secondary: #3A3936;
+  --color-text-tertiary: #5F5E5A;
+  --color-text-muted: #888780;
+  --color-text-label: #2C2C2A;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - BORDERS & DIVIDERS                                             */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --color-border-light: #E8E6E0;
+  --color-border-default: #D3D1C7;
+  --color-border-primary: #B5D4F4;
+  --color-border-success: #aee8c0;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - STATUS & STATES                                                */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --color-success: #22c55e;
+  --color-success-bg: #d6f5e0;
+  --color-success-text: #1a7a3a;
+
+  --color-accent-teal: #0f766e;
+  --color-accent-amber: #b45309;
+
+  /* Primary tint — very light blue, used in icon backgrounds, tag fills */
+  --color-primary-tint: #E6F1FB;
+  --color-primary-tint-text: #0C447C;
+
+  /* Problem/quote block background — slightly bluer than page */
+  --color-bg-tint-blue: #f5f9ff;
+
+  /* In-progress / active — amber warm */
+  --color-status-active-bg:     #fef9eb;
+  --color-status-active-text:   var(--color-accent-amber);
+  --color-status-active-border: #fcd87a;
+
+  /* Done / complete — green */
+  --color-status-done-bg:     var(--color-success-bg);
+  --color-status-done-text:   var(--color-success-text);
+  --color-status-done-border: var(--color-border-success);
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - BUTTON VARIANTS                                                */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  /* Primary button */
+  --color-btn-primary-bg: var(--color-primary);
+  --color-btn-primary-bg-hover: var(--color-primary-dark);
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-border: transparent;
+
+  /* Secondary button */
+  --color-btn-secondary-bg: transparent;
+  --color-btn-secondary-bg-hover: var(--color-bg-white);
+  --color-btn-secondary-text: var(--color-text-secondary);
+  --color-btn-secondary-border: var(--color-border-default);
+  --color-btn-secondary-border-hover: var(--color-border-primary);
+
+  /* Ghost button (sin borde, texto solo) */
+  --color-btn-ghost-bg: transparent;
+  --color-btn-ghost-bg-hover: var(--color-bg-section);
+  --color-btn-ghost-text: var(--color-primary);
+  --color-btn-ghost-border: transparent;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* TYPOGRAPHY - FONT FAMILIES (3 Main Fonts)                               */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  /* Special font for hero name only */
+  --font-name: 'Agraham', 'Playfair Display', Georgia, serif;
+
+  /* Serif accent font for headings and highlights */
+  --font-accent-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+  /* Sans-serif for body text and UI */
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Monospace — code snippets, skill tags */
+  --font-mono: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  /* Legacy aliases — kept for backward compatibility */
+  --font-serif: var(--font-accent-serif);
+  --font-sans: var(--font-body);
+  --font-special: var(--font-name);
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* TYPOGRAPHY - FONT SIZES (Responsive scale with clamp)                   */
+  /*                                                                          */
+  /*  clamp(MIN, PREFERRED, MAX)                                              */
+  /*  MIN  = mobile floor                                                     */
+  /*  PREFERRED = fluid (vw-based)                                            */
+  /*  MAX  = desktop ceiling                                                  */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --text-size-display: clamp(40px, 7vw, 60px);   /* Hero name */
+  --text-size-h1:      clamp(32px, 5vw, 48px);   /* Page-level heading */
+  --text-size-h2:      clamp(24px, 3.2vw, 34px); /* Section headings */
+  --text-size-h3:      clamp(20px, 2.6vw, 28px); /* Sub-section headings */
+  --text-size-h4:      clamp(17px, 2vw, 22px);   /* Card headings, labels */
+  --text-size-body-lg: clamp(17px, 1.6vw, 20px); /* Hero description, intros */
+  --text-size-body:    clamp(15px, 1.2vw, 17px); /* Standard body text */
+  --text-size-small:   clamp(13px, 1vw, 14px);   /* Secondary text, captions */
+  --text-size-xs:      12px;                      /* Badges, tags */
+  --text-size-xxs:     11px;                      /* Overlines, micro labels */
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* TYPOGRAPHY - SEMANTIC TEXT STYLES                                        */
+  /* Pre-combined tokens: family + size + weight + optional extras           */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  /* Hero name — Agraham, display size */
+  --text-name-family:   var(--font-name);
+  --text-name-size:     var(--text-size-display);
+  --text-name-weight:   var(--weight-bold);
+  --text-name-spacing:  var(--letter-spacing-tight);
+
+  /* Hero subtitle — Playfair italic */
+  --text-subtitle-serif-family: var(--font-accent-serif);
+  --text-subtitle-serif-size:   var(--text-size-h2);
+  --text-subtitle-serif-weight: var(--weight-normal);
+  --text-subtitle-serif-style:  italic;
+
+  /* Body description — body-lg, generous line-height */
+  --text-description-family: var(--font-body);
+  --text-description-size:   var(--text-size-body-lg);
+  --text-description-weight: var(--weight-normal);
+
+  /* Button — shared base for all button variants */
+  --text-button-family:  var(--font-body);
+  --text-button-size:    var(--text-size-body);
+  --text-button-weight:  var(--weight-medium);
+  --text-button-spacing: var(--letter-spacing-default);
+
+  /* Label / badge — uppercase micro text */
+  --text-label-family:  var(--font-body);
+  --text-label-size:    var(--text-size-xxs);
+  --text-label-weight:  var(--weight-bold);
+  --text-label-spacing: var(--letter-spacing-label);
+
+  /* Badge — slightly bigger than label */
+  --text-badge-family:  var(--font-body);
+  --text-badge-size:    var(--text-size-xs);
+  --text-badge-weight:  var(--weight-bold);
+  --text-badge-spacing: var(--letter-spacing-expanded);
+
+  /* Stats number — serif, large */
+  --text-stats-number-family: var(--font-accent-serif);
+  --text-stats-number-size:   clamp(28px, 3.5vw, 40px);
+  --text-stats-number-weight: var(--weight-bold);
+
+  /* Overline — smallest uppercase, generous tracking */
+  --text-overline-family:  var(--font-body);
+  --text-overline-size:    var(--text-size-xxs);
+  --text-overline-weight:  var(--weight-bold);
+  --text-overline-spacing: 0.13em;
+
+  /* Section headline — large serif bold */
+  --text-headline-family: var(--font-accent-serif);
+  --text-headline-size:   var(--text-size-h1);
+  --text-headline-weight: var(--weight-bold);
+
+  /* Block label — ultra-small uppercase */
+  --text-block-label-family:  var(--font-body);
+  --text-block-label-size:    10px;
+  --text-block-label-weight:  var(--weight-bold);
+  --text-block-label-spacing: 0.14em;
+
+  /* Year badge — small pill */
+  --text-year-badge-family:  var(--font-body);
+  --text-year-badge-size:    10px;
+  --text-year-badge-weight:  var(--weight-bold);
+  --text-year-badge-spacing: 0.05em;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* TYPOGRAPHY - FONT WEIGHTS                                               */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* TYPOGRAPHY - LETTER SPACING                                             */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --letter-spacing-tight:    -2px;      /* Hero name */
+  --letter-spacing-default:  0.01em;    /* Buttons, UI */
+  --letter-spacing-label:    0.1em;     /* Labels, stats */
+  --letter-spacing-expanded: 0.04em;   /* Badges, accents */
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* TYPOGRAPHY - LINE HEIGHT                                                */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --line-height-tight:   1.1;   /* Display / hero name — ⚠️ no usar con Agraham, usar 1.5 directo */
+  --line-height-heading: 1.25;  /* H1–H3 */
+  --line-height-normal:  1.4;   /* Subtitles, cards */
+  --line-height-relaxed: 1.6;   /* Body text */
+  --line-height-loose:   1.8;   /* Long descriptions, intros */
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* SPACING - SCALE                                                         */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --spacing-xs:  8px;
+  --spacing-sm:  12px;
+  --spacing-md:  16px;
+  --spacing-lg:  20px;
+  --spacing-xl:  24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 40px;
+  --spacing-4xl: 48px;
+  --spacing-5xl: 64px;
+  --spacing-6xl: 80px;
+  --spacing-7xl: 100px;
+  --spacing-8xl: 120px;
+  --spacing-9xl: 150px;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* SPACING - SPECIFIC COMPONENTS                                           */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --gap-skill-grid:     16px;
+  --padding-card:       18px 20px;
+  --padding-button:     11px 24px;
+  --margin-section:     16px;
+  --margin-footer-top:  40px;
+  --margin-footer-bottom: 28px;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* BORDER RADIUS                                                           */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-pill: 20px;
+  --radius-full: 999px;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* BORDERS & LINES                                                         */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --border-thin:         0.5px;
+  --border-default:      1px;
+  --border-accent:       2px;
+  --border-accent-heavy: 3px;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* SHADOWS                                                                 */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --shadow-xs:      0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-success: 0 2px 12px rgba(26, 122, 58, 0.12);
+  --shadow-photo:   0 25px 25px rgba(0, 0, 0, 0.4);
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* GRADIENTS                                                               */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  /* Hero name gradient — blue-to-black shimmer, animated via background-position */
+  --gradient-name:
+    linear-gradient(
+      to right,
+      var(--color-primary)        10%,
+      var(--color-primary-light)  20%,
+      var(--color-primary-dark)   30%,
+      var(--color-primary-darker) 40%,
+      var(--color-text-primary)   50%,
+      var(--color-primary-darker) 60%,
+      var(--color-primary-dark)   70%,
+      var(--color-primary-light)  80%,
+      var(--color-primary)        90%,
+      var(--color-primary)       100%
+    );
+
+  /* Hero section background — light blue at top fading to page color */
+  --gradient-hero-bg:
+    radial-gradient(circle at top left,  var(--color-bg-page) 20%, transparent 40%),
+    radial-gradient(circle at top right, var(--color-bg-page) 20%, transparent 40%),
+    linear-gradient(to bottom, var(--color-bg-hero-accent) 0%, var(--color-bg-page) 60%);
+
+  /* Top accent line — primary brand gradient */
+  --gradient-top-accent:
+    linear-gradient(90deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, transparent 100%);
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - SURFACE / OVERLAY                                              */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  /* Frosted-glass background for social icon buttons */
+  --color-surface-glass: rgba(255, 255, 255, 0.85);
+
+  /* Header scrolled state */
+  --color-surface-scrolled: rgba(255, 255, 255, 0.92);
+  --shadow-header: 0 1px 0 rgba(0, 0, 0, 0.06);
+  --backdrop-blur-header: blur(10px);
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* TRANSITIONS & ANIMATIONS                                                */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --transition-fast:    0.15s;
+  --transition-normal:  0.2s;
+  --transition-slow:    0.25s;
+  --transition-slower:  0.3s;
+  --transition-slowest: 0.5s;
+
+  --duration-badge-in: 0.5s;
+  --duration-fade-up:  0.6s;
+  --duration-pulse:    2s;
+  --duration-shine:    8s;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* BREAKPOINTS (referencia — usar en @media queries)                       */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --breakpoint-sm:  640px;
+  --breakpoint-md:  768px;
+  --breakpoint-lg:  1024px;
+  --breakpoint-xl:  1200px;
+  --breakpoint-2xl: 1280px;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - NEUTRAL TINTS                                                  */
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  --color-bg-muted: #F0EFEC;
+
+  /* Warning (amarillo — achievements, in-progress) */
+  --color-warning: #b45309;
+  --color-warning-bg: #fef9eb;
+  --color-warning-border: #fcd87a;
+
+  /* Achievement featured */
+  --color-achievement-bg: #fffdf5;
+  --color-achievement-border: #ffe099;
+  --color-achievement-border-hover: #ffd063;
+
+  /* Achievement icon */
+  --color-achievement-icon-bg: #F0F5FF;
+  --color-achievement-icon-border: #E0EBFF;
+
+  --color-achievement-icon-featured-bg: #fef6dc;
+  --color-achievement-icon-featured-border: #f0d98a;
+
+  /* Featured highlight — warm gold (logros destacados, banners, etc.) */
+  --color-featured-bg:        #fffdf5;
+  --color-featured-border:    #ffe099;
+  --color-featured-border-hover: #ffd063;
+  --color-featured-year-bg:   #fef6dc;
+  --color-featured-year-text: var(--color-accent-amber);
+  --color-featured-year-border: #f0d98a;
+  --color-featured-emoji-bg:  #fef6dc;
+  --color-featured-emoji-border: #f0d98a;
+
+  /* ─────────────────────────────────────────────────────────────────────── */
+  /* COLORS - ICON / EMOJI CONTAINER (neutral)                               */
+  /* Fondo azul muy tenue para contenedores de emoji/icon en cards.          */
+  /* ─────────────────────────────────────────────────────────────────────── */
+  --color-icon-bg:     var(--color-primary-tint);
+  --color-icon-border: var(--color-border-primary);
+}
+

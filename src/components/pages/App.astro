@@ -5,15 +5,18 @@ import Hero from "@/components/Hero.astro";
 import Proyects from "@/components/Proyects.astro";
 import Footer from "@/components/Footer.astro";
 import StatsBridge from "@/components/StatsBridge.astro";
-import Education from "@/components/Education.astro";
+import Education from "../Education.astro";
+import ProjectModal from "@/components/ProjectModal.astro";
+
 ---
 
 <main class="flex flex-col">
   <Hero />
   <StatsBridge />
   <About />
-  <Proyects />
   <Education />
+  <Proyects />
+  <ProjectModal />
   <Contact />
   <Footer />
 </main>

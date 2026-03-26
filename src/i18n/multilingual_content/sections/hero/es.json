@@ -1,0 +1,14 @@
+{
+  "HERO": {
+    "GREETING": "Hola, Soy",
+    "DESCRIPTION": "Estudiante de Administración de Empresas y de Ingeniería de Sistemas. De Colombia. Me gusta ofrecer soluciones mediante la tecnología.",
+    "CTA_TEXT": "Ver Proyectos",
+    "OVERLINE": "Disponible para trabajar",
+    "OVERLINE_MOBILE": "Disponible",
+    "SECONDARY_CTA": "Contactar",
+    "STAT_1_LABEL": "Proyectos académicos",
+    "STAT_2_LABEL": "Cursos completados",
+    "STAT_3_LABEL": "Herramientas usadas",
+    "STAT_4_LABEL": "Commits en GitHub"
+  }
+}

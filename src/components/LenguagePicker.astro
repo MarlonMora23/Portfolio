@@ -2,8 +2,8 @@
 import { languages } from "@/i18n/ui";
 import { getLangFromUrl, useTranslatedPath } from "@/i18n/utils";
 import { Image } from "astro:assets";
-import internationalIcon from "../../public/assets/international-svgrepo-com.svg";
-import downArrow from "../../public/assets/down-arrow-5-svgrepo-com.svg";
+import internationalIcon from "../../public/assets/icons/international-svgrepo-com.svg";
+import downArrow from "../../public/assets/icons/down-arrow-5-svgrepo-com.svg";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
@@ -51,7 +51,7 @@ const translatePath = useTranslatedPath(lang);
                                 <span class="inline-block">{label}</span>
                                 {lang === langKey && (
                                     <img
-                                        src="/assets/check-svgrepo-com.svg"
+                                        src="/assets/icons/check-svgrepo-com.svg"
                                         class="w-4"
                                         alt="selected"
                                     />

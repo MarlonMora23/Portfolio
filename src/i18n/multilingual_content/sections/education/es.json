@@ -1,0 +1,28 @@
+{
+  "EDUCATION": {
+    "OVERLINE": "Educación",
+    "TITLE": "La formación y los logros que respaldan mi perfil.",
+    "PRESENT": "Presente",
+    "IN_PROGRESS": "En proceso",
+    "GPA": "Promedio",
+    "SCHOLARSHIP": "Beca por excelencia académica",
+    "BLOCK_EDUCATION": "Formación académica",
+    "BLOCK_CERTS": "Certificaciones",
+    "BLOCK_ACHIEVEMENTS": "Logros destacados",
+    "DEGREE_SYSTEMS": "Ingeniería de Sistemas",
+    "DEGREE_BUSINESS": "Administración de Negocios",
+    "CERT_CAT_LANGUAGE": "Idiomas",
+    "CERT_CAT_METHODOLOGY": "Metodología",
+    "CERT_CAT_SECURITY": "Ciberseguridad",
+    "ACH_SCHOLARSHIP_TITLE": "Beca por excelencia académica",
+    "ACH_SCHOLARSHIP_DESC": "Promedio de 4.8/5.0 — Universidad de San Buenaventura Cali, 2026-1",
+    "ACH_PAPER_TITLE": "Co-autor — Applied Artificial Intelligence (Taylor & Francis)",
+    "ACH_PAPER_DESC": "Exploración e interpretabilidad de modelos deep learning para análisis EEG en detección de alcoholismo. Paper en redacción.",
+    "ACH_SPEAKER_TITLE": "Ponente — Seminario «Adiós al token»",
+    "ACH_SPEAKER_DESC": "Presentación de metodología y hallazgos sobre tokenización eficiente de inputs en LLMs. Universidad de San Buenaventura Cali.",
+    "ACH_IEEE_TITLE": "Vicepresidente — Rama IEEE USB Cali",
+    "ACH_IEEE_DESC": "Apoyo a procesos académicos e interinstitucionales con universidades como la Santiago de Cali.",
+    "ACH_HACKATHON_TITLE": "Participante en hackathones",
+    "ACH_HACKATHON_DESC": "Experiencia en competencias de desarrollo bajo presión y trabajo en equipo."
+  }
+}

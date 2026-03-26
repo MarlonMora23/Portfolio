@@ -1,0 +1,784 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLOBAL STYLES
+   Import design system variables and apply global styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@import "./variables.css";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   REUSABLE TEXT UTILITY CLASSES
+   Semantic typography classes for consistent styling across components
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Hero name — Agraham, display size, tight tracking */
+.text-name {
+  font-family: var(--text-name-family);
+  font-size: var(--text-name-size);
+  font-weight: var(--text-name-weight);
+  letter-spacing: var(--text-name-spacing);
+  line-height: var(--line-height-tight);
+}
+
+/* Hero subtitle — Playfair italic */
+.text-subtitle-serif-italic {
+  font-family: var(--text-subtitle-serif-family);
+  font-size: var(--text-subtitle-serif-size);
+  font-weight: var(--text-subtitle-serif-weight);
+  font-style: var(--text-subtitle-serif-style);
+  line-height: var(--line-height-normal);
+  text-wrap: pretty;
+}
+
+/* Body description — intro paragraphs, hero blurb */
+.text-description {
+  font-family: var(--text-description-family);
+  font-size: var(--text-description-size);
+  font-weight: var(--text-description-weight);
+  line-height: var(--line-height-loose);
+  text-wrap: pretty;
+}
+
+/* Section body — standard paragraph text inside sections */
+.text-body {
+  font-family: var(--font-body);
+  font-size: var(--text-size-body);
+  font-weight: var(--weight-normal);
+  line-height: var(--line-height-relaxed);
+  text-wrap: pretty;
+}
+
+/* Section headline — large serif bold (Playfair) */
+.text-headline {
+  font-family: var(--text-headline-family);
+  font-size: var(--text-size-h1);
+  font-weight: var(--text-headline-weight);
+  line-height: var(--line-height-heading);
+  text-wrap: balance;
+}
+
+/* Sub-section heading — h3 level */
+.text-subheading {
+  font-family: var(--font-accent-serif);
+  font-size: var(--text-size-h3);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-heading);
+  text-wrap: balance;
+}
+
+/* Card heading — h4 level, sans-serif */
+.text-card-heading {
+  font-family: var(--font-body);
+  font-size: var(--text-size-body);
+  font-weight: var(--weight-semibold);
+  line-height: var(--line-height-normal);
+  text-wrap: balance;
+}
+
+/* Overline — smallest uppercase, generous tracking */
+.text-overline {
+  font-family: var(--text-overline-family);
+  font-size: var(--text-overline-size);
+  font-weight: var(--text-overline-weight);
+  letter-spacing: var(--text-overline-spacing);
+  text-transform: uppercase;
+}
+
+/* Label — badge-adjacent, uppercase micro text */
+.text-label {
+  font-family: var(--text-label-family);
+  font-size: var(--text-label-size);
+  font-weight: var(--text-label-weight);
+  letter-spacing: var(--text-label-spacing);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* Badge — tag chips, skill pills */
+.text-badge {
+  font-family: var(--text-badge-family);
+  font-size: var(--text-badge-size);
+  font-weight: var(--text-badge-weight);
+  letter-spacing: var(--text-badge-spacing);
+}
+
+/* Stats number — serif, large, used in bridge/stats sections */
+.text-stats-number {
+  font-family: var(--text-stats-number-family);
+  font-size: var(--text-stats-number-size);
+  font-weight: var(--text-stats-number-weight);
+  line-height: 1;
+}
+
+/* Block label — ultra-small uppercase, used inside cards/blocks */
+.text-block-label {
+  font-family: var(--text-block-label-family);
+  font-size: var(--text-block-label-size);
+  font-weight: var(--text-block-label-weight);
+  letter-spacing: var(--text-block-label-spacing);
+  text-transform: uppercase;
+}
+
+/* Year badge — small pill, timeline use */
+.text-year-badge {
+  font-family: var(--text-year-badge-family);
+  font-size: var(--text-year-badge-size);
+  font-weight: var(--text-year-badge-weight);
+  letter-spacing: var(--text-year-badge-spacing);
+}
+
+/* ── STATEMENT ─────────────────────────────────────────────────────────── */
+/* Blockquote-style italic serif */
+.statement {
+  font-family: var(--font-accent-serif);
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-style: italic;
+  color: var(--color-text-label);
+  line-height: var(--line-height-heading);
+  max-width: 760px;
+  margin-bottom: var(--spacing-6xl);
+  border-left: var(--border-accent-heavy) solid var(--color-primary-dark);
+  padding-left: var(--spacing-xl);
+  text-wrap: pretty;
+}
+
+.statement-small {
+  font-family: var(--font-accent-serif);
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-style: italic;
+  color: var(--color-text-label);
+  line-height: var(--line-height-heading);
+  max-width: 600px;
+  margin-bottom: var(--spacing-3xl);
+  border-left: var(--border-accent) solid var(--color-primary-dark);
+  padding-left: var(--spacing-lg);
+  text-wrap: pretty;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BUTTON UTILITY CLASSES
+   Three semantic variants: primary, secondary, ghost
+   All share the same base layout/typography — only color differs
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Shared base — apply to all buttons alongside a variant class */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--padding-button);
+  border-radius: var(--radius-pill);
+  border: var(--border-default) solid transparent;
+  font-family: var(--text-button-family);
+  font-size: var(--text-button-size);
+  font-weight: var(--text-button-weight);
+  letter-spacing: var(--text-button-spacing);
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-normal) ease,
+    color var(--transition-normal) ease,
+    border-color var(--transition-normal) ease;
+}
+
+/* Primary — filled, blue */
+.btn-primary {
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  border-color: var(--color-btn-primary-border);
+}
+.btn-primary:hover {
+  background-color: var(--color-btn-primary-bg-hover);
+}
+
+/* Secondary — outlined */
+.btn-secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  border-color: var(--color-btn-secondary-border);
+}
+.btn-secondary:hover {
+  background-color: var(--color-btn-secondary-bg-hover);
+  border-color: var(--color-btn-secondary-border-hover);
+}
+
+/* Ghost — text only, subtle hover */
+.btn-ghost {
+  background-color: var(--color-btn-ghost-bg);
+  color: var(--color-btn-ghost-text);
+  border-color: var(--color-btn-ghost-border);
+}
+.btn-ghost:hover {
+  background-color: var(--color-btn-ghost-bg-hover);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATION UTILITY CLASSES
+   Reusable entrance animations — apply to any section element
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Fade-up entrance — driven by --delay CSS custom property on the element */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp var(--duration-fade-up) ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient text — pairs with --gradient-name or any other gradient variable */
+.text-gradient {
+  background: var(--gradient-name);
+  background-size: 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Solo el shine, para elementos que NO necesitan fade-up (ya visibles) */
+.text-gradient-animated {
+  animation: shine var(--duration-shine) linear infinite;
+}
+
+/* Fade-up + shine simultáneos — para el hero name que arranca invisible */
+.animate-fade-up.text-gradient-animated {
+  animation:
+    fadeUp var(--duration-fade-up) ease-out forwards,
+    shine var(--duration-shine) linear infinite;
+  animation-delay: var(--delay, 0s), var(--delay, 0s);
+}
+
+@keyframes shine {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Pulsing dot ring — used in availability badges */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Badge slide-in — used for floating badges over photos */
+@keyframes badgeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Reduced motion — disable all animations globally */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .text-gradient-animated {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Scroll reveal — toggled via IntersectionObserver adding .visible ── */
+.reveal,
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+  transition-delay: var(--delay, 0s);
+}
+
+.reveal.visible,
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SOCIAL LINK — reusable icon button (used in hero, footer, etc.)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: var(--border-thin) solid var(--color-border-default);
+  color: var(--color-text-tertiary);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(4px);
+  transition:
+    border-color var(--transition-normal),
+    color var(--transition-normal),
+    transform var(--transition-fast);
+  text-decoration: none;
+}
+
+.social-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NAV LINK — underline-on-active pattern, reusable in any nav
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.nav-link {
+  position: relative;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-normal) ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: var(--border-accent);
+  background: var(--color-primary-dark);
+  border-radius: 1px;
+  transition: width var(--transition-slow) ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--color-primary-dark);
+  font-weight: var(--weight-semibold);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION OVERLINE — labeled section marker with decorative leading line
+   Used at the top of major sections (About, Projects, Contact…)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.section-overline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-family: var(--text-overline-family);
+  font-size: var(--text-overline-size);
+  font-weight: var(--text-overline-weight);
+  letter-spacing: var(--text-overline-spacing);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-overline::before {
+  content: "";
+  width: 20px;
+  height: var(--border-accent);
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STATUS BADGE — project/item status pill with colored dot
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--text-label-family);
+  font-size: var(--text-size-xxs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.06em;
+  color: var(--color-text-tertiary);
+  background: var(--color-bg-section);
+  border: var(--border-thin) solid var(--color-border-light);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.status-badge--sm {
+  font-size: 10px;
+  padding: 2px 7px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PROJ YEAR — muted year label beside status badges
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.proj-year {
+  font-family: var(--font-body);
+  font-size: var(--text-size-xs);
+  font-weight: var(--weight-medium);
+  color: var(
+    --color-border-default
+  ); /* muted, intentionally lighter than text-muted */
+}
+
+.proj-year--sm {
+  font-size: var(--text-size-xxs);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TECH TAG / TAG ROW — monospace technology chips
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-row--sm {
+  gap: 5px;
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--text-size-xs);
+  font-weight: var(--weight-medium);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-tint);
+  color: var(--color-primary-tint-text);
+  border: var(--border-thin) solid var(--color-border-primary);
+}
+
+.tech-tag--sm {
+  font-size: var(--text-size-xxs);
+  padding: 2px 8px;
+}
+
+.tech-tag-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tech-tag-icon[icon] {
+  color: var(--color-primary-dark);
+  opacity: 0.95;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BUTTON SIZE VARIANTS — sm scale for card/modal contexts
+   Base styles (.btn, .btn-primary, etc.) defined above
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Small filled — project detail CTA */
+.btn-sm {
+  padding: 8px 18px;
+  font-size: var(--text-size-small);
+}
+
+/* Extra-small — secondary card actions */
+.btn-xs {
+  padding: 6px 14px;
+  font-size: var(--text-size-xs);
+}
+
+/* ── STATUS BADGE VARIANTS ─────────────────────────────────────────────── */
+/*
+ * Extienden .status-badge (ya definida en global.css).
+ * Uso: <span class="status-badge status-badge--active">...</span>
+ *
+ * Reemplaza las clases .edu-status-badge--active / --done que antes
+ * vivían solo en Education. Ahora son parte del sistema de diseño.
+ */
+
+.status-badge--active {
+  background: var(--color-status-active-bg);
+  color: var(--color-status-active-text);
+  border-color: var(--color-status-active-border);
+}
+
+.status-badge--done {
+  background: var(--color-status-done-bg);
+  color: var(--color-status-done-text);
+  border-color: var(--color-status-done-border);
+}
+
+/* Dot animado: solo aplica al estado activo */
+.status-badge--active .status-dot {
+  animation: pulse-status var(--duration-pulse) ease-in-out infinite;
+}
+
+@keyframes pulse-status {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-badge--active .status-dot {
+    animation: none;
+  }
+}
+
+/* ── CARD BASE ─────────────────────────────────────────────────────────── */
+/*
+ * Tarjeta blanca con borde sutil y hover con sombra + lift.
+ * Uso: <div class="card">...</div>
+ * Para hover lateral (listas): añadir .card--slide
+ */
+
+.card {
+  background: var(--color-bg-white);
+  border: var(--border-thin) solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--padding-card);
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.card:hover {
+  border-color: var(--color-border-primary);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Variante: lift vertical (edu-card, project-card) */
+.card--lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Variante: slide horizontal (cert-item, achievement-item) */
+.card--slide:hover {
+  transform: translateX(3px);
+}
+
+/* Variante: featured con borde izquierdo dorado */
+.card--featured {
+  border-left: var(--border-accent-heavy) solid var(--color-featured-border);
+  background: var(--color-featured-bg);
+}
+
+.card--featured:hover {
+  border-color: var(--color-featured-border-hover);
+  box-shadow: 0 4px 16px rgba(180, 130, 20, 0.1);
+}
+
+/* ── ICON CONTAINER ────────────────────────────────────────────────────── */
+/*
+ * Contenedor cuadrado para emoji o icono dentro de una card.
+ * Uso: <div class="icon-container">🏆</div>
+ */
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-icon-bg);
+  border-radius: var(--radius-sm);
+  border: var(--border-thin) solid var(--color-icon-border);
+  font-size: var(--text-size-h3);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.icon-container--featured {
+  background: var(--color-featured-emoji-bg);
+  border-color: var(--color-featured-emoji-border);
+}
+
+/* ── YEAR BADGE (pill visual) ──────────────────────────────────────────── */
+/*
+ * .text-year-badge ya define tipografía en global.css.
+ * Esta clase añade el aspecto visual pill — úsalas juntas:
+ * <span class="text-year-badge year-badge">2024</span>
+ */
+
+.year-badge {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  background: var(--color-bg-section);
+  border: var(--border-thin) solid var(--color-border-light);
+  border-radius: var(--radius-pill);
+  padding: 1px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.year-badge--featured {
+  background: var(--color-featured-year-bg);
+  color: var(--color-featured-year-text);
+  border-color: var(--color-featured-year-border);
+}
+
+
+/* ── TECH / SKILL PILLS (GLOBAL) ───────────────────────────────────── */
+.skill-tag,
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-family: var(--font-mono);
+  font-size: var(--text-size-xs);
+
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+
+  background: var(--color-primary-tint);
+  color: var(--color-primary-tint-text);
+  border: var(--border-thin) solid var(--color-border-primary);
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+/* ── PILL ICONS ───────────────────────────────────────────────────── */
+.skill-icon,
+.tech-pill-icon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.skill-icon svg,
+.tech-pill-icon svg,
+.skill-icon img,
+.tech-pill-icon img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* ── PILL CONTAINERS ──────────────────────────────────────────────── */
+.skill-tags,
+.stack-group-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  background: var(--color-bg-section);
+  border: var(--border-thin) solid var(--color-border-light);
+
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.features-list li::before {
+  content: "✓";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+
+  border-radius: 50%;
+  margin-top: 2px;
+}
+
+.features-list li:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-border-primary);
+  background: var(--color-primary-tint);
+}
+
+.stack-group-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-text-muted);
+}

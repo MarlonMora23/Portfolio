@@ -6,553 +6,588 @@ const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
 
 const education = [
-    {
-        degree: i18n.EDUCATION.DEGREE_SYSTEMS,
-        institution: "Universidad de San Buenaventura Cali",
-        period: "2022 – " + i18n.EDUCATION.PRESENT,
-        status: "in-progress",
-        highlight: i18n.EDUCATION.GPA + " 4.8 / 5.0",
-        emoji: "💻",
-    },
-    {
-        degree: i18n.EDUCATION.DEGREE_BUSINESS,
-        institution: "Universidad de San Buenaventura Cali",
-        period: "2021 – " + i18n.EDUCATION.PRESENT,
-        status: "in-progress",
-        highlight: i18n.EDUCATION.SCHOLARSHIP,
-        emoji: "📊",
-    },
+  {
+    degree: i18n.EDUCATION.DEGREE_SYSTEMS,
+    institution: "Universidad de San Buenaventura Cali",
+    period: "2022 – " + i18n.EDUCATION.PRESENT,
+    status: "in-progress",
+    emoji: "💻",
+  },
+  {
+    degree: i18n.EDUCATION.DEGREE_BUSINESS,
+    institution: "Universidad de San Buenaventura Cali",
+    period: "2021 – " + i18n.EDUCATION.PRESENT,
+    status: "in-progress",
+    emoji: "📊",
+  },
 ];
 
 const certifications = [
-    {
-        name: "C2 Proficient — EF SET",
-        issuer: "EF Standard English Test",
-        category: i18n.EDUCATION.CERT_CAT_LANGUAGE,
-        year: "2024",
-        color: "#004aad",
-        emoji: "🌐",
-    },
-    {
-        name: "Scrum Fundamentals Certified",
-        issuer: "SCRUMstudy",
-        category: i18n.EDUCATION.CERT_CAT_METHODOLOGY,
-        year: "2024",
-        color: "#0f766e",
-        emoji: "🔄",
-    },
-    {
-        name: "Technical Introduction to Cybersecurity 3.0",
-        issuer: "Fortinet Training Institute",
-        category: i18n.EDUCATION.CERT_CAT_SECURITY,
-        year: "2024",
-        color: "#b45309",
-        emoji: "🔒",
-    },
+  {
+    name: "C2 Proficient — EF SET",
+    issuer: "EF Standard English Test",
+    category: i18n.EDUCATION.CERT_CAT_LANGUAGE,
+    year: "2024",
+    color: "#004aad",
+    emoji: "🌐",
+  },
+  {
+    name: "Scrum Fundamentals Certified",
+    issuer: "SCRUMstudy",
+    category: i18n.EDUCATION.CERT_CAT_METHODOLOGY,
+    year: "2024",
+    color: "#0f766e",
+    emoji: "🔄",
+  },
+  {
+    name: "Technical Introduction to Cybersecurity 3.0",
+    issuer: "Fortinet Training Institute",
+    category: i18n.EDUCATION.CERT_CAT_SECURITY,
+    year: "2024",
+    color: "#b45309",
+    emoji: "🔒",
+  },
 ];
 
 const achievements = [
-    {
-        emoji: "🏆",
-        title: i18n.EDUCATION.ACH_SCHOLARSHIP_TITLE,
-        desc: i18n.EDUCATION.ACH_SCHOLARSHIP_DESC,
-        year: "2026-1",
-        weight: "featured",
-    },
-    {
-        emoji: "📄",
-        title: i18n.EDUCATION.ACH_PAPER_TITLE,
-        desc: i18n.EDUCATION.ACH_PAPER_DESC,
-        year: i18n.EDUCATION.IN_PROGRESS,
-        weight: "featured",
-    },
-    {
-        emoji: "🎤",
-        title: i18n.EDUCATION.ACH_SPEAKER_TITLE,
-        desc: i18n.EDUCATION.ACH_SPEAKER_DESC,
-        year: "2025",
-        weight: "normal",
-    },
-    {
-        emoji: "⚡",
-        title: i18n.EDUCATION.ACH_IEEE_TITLE,
-        desc: i18n.EDUCATION.ACH_IEEE_DESC,
-        year: "2024 – " + i18n.EDUCATION.PRESENT,
-        weight: "normal",
-    },
-    {
-        emoji: "🚀",
-        title: i18n.EDUCATION.ACH_HACKATHON_TITLE,
-        desc: i18n.EDUCATION.ACH_HACKATHON_DESC,
-        year: "2023 – " + i18n.EDUCATION.PRESENT,
-        weight: "normal",
-    },
+  {
+    emoji: "🏆",
+    title: i18n.EDUCATION.ACH_SCHOLARSHIP_TITLE,
+    desc: i18n.EDUCATION.ACH_SCHOLARSHIP_DESC,
+    year: "2026-1",
+    weight: "featured",
+  },
+  {
+    emoji: "📄",
+    title: i18n.EDUCATION.ACH_PAPER_TITLE,
+    desc: i18n.EDUCATION.ACH_PAPER_DESC,
+    year: i18n.EDUCATION.IN_PROGRESS,
+    weight: "featured",
+  },
+  {
+    emoji: "🎤",
+    title: i18n.EDUCATION.ACH_SPEAKER_TITLE,
+    desc: i18n.EDUCATION.ACH_SPEAKER_DESC,
+    year: "2025",
+    weight: "normal",
+  },
+  {
+    emoji: "⚡",
+    title: i18n.EDUCATION.ACH_IEEE_TITLE,
+    desc: i18n.EDUCATION.ACH_IEEE_DESC,
+    year: "2024 – " + i18n.EDUCATION.PRESENT,
+    weight: "normal",
+  },
+  {
+    emoji: "🚀",
+    title: i18n.EDUCATION.ACH_HACKATHON_TITLE,
+    desc: i18n.EDUCATION.ACH_HACKATHON_DESC,
+    year: "2023 – " + i18n.EDUCATION.PRESENT,
+    weight: "normal",
+  },
 ];
 ---
 
 <Section id="education" class="education-section">
+  <div class="section-header scroll-reveal">
+    <p class="section-overline">{i18n.EDUCATION.OVERLINE}</p>
+    <h2 class="statement-small">{i18n.EDUCATION.TITLE}</h2>
+  </div>
 
-    <div class="section-header scroll-reveal">
-        <p class="section-overline">{i18n.EDUCATION.OVERLINE}</p>
-        <h2 class="section-headline">{i18n.EDUCATION.TITLE}</h2>
-    </div>
-
-    <div class="edu-layout">
-
-        <!-- ── LEFT: Education + Certifications ───────────────────────── -->
-        <div class="edu-left">
-
-            <!-- Education cards -->
-            <div class="edu-block scroll-reveal" style="--delay: 0.1s">
-                <div class="block-label">🎓 {i18n.EDUCATION.BLOCK_EDUCATION}</div>
-                <div class="edu-cards">
-                    {education.map(e => (
-                        <div class="edu-card">
-                            <div class="edu-card-top">
-                                <div class="edu-card-emoji" aria-hidden="true">{e.emoji}</div>
-                                <div class="edu-card-meta">
-                                    <span class={`edu-status-badge ${e.status === 'in-progress' ? 'edu-status-badge--active' : 'edu-status-badge--done'}`}>
-                                        <span class="edu-status-dot" aria-hidden="true"></span>
-                                        {e.period}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="edu-degree">{e.degree}</div>
-                            <div class="edu-institution">{e.institution}</div>
-                            <div class="edu-highlight">{e.highlight}</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <!-- Certifications -->
-            <div class="edu-block scroll-reveal" style="--delay: 0.2s">
-                <div class="block-label">🏅 {i18n.EDUCATION.BLOCK_CERTS}</div>
-                <div class="cert-list">
-                    {certifications.map(c => (
-                        <div class="cert-item">
-                            <div class="cert-emoji-col">
-                                <span class="cert-emoji" aria-hidden="true">{c.emoji}</span>
-                                <div class="cert-accent" style={`background: ${c.color}`}></div>
-                            </div>
-                            <div class="cert-body">
-                                <div class="cert-name">{c.name}</div>
-                                <div class="cert-meta">
-                                    <span class="cert-issuer">{c.issuer}</span>
-                                    <span class="cert-dot" aria-hidden="true">·</span>
-                                    <span class="cert-category">{c.category}</span>
-                                    <span class="cert-year-badge">{c.year}</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
+  <div class="edu-layout">
+    <!-- ── LEFT: Education + Certifications ───────────────────────── -->
+    <div class="edu-left">
+      <!-- Education cards -->
+      <div class="edu-block scroll-reveal" style="--delay: 0.1s">
+        <div class="text-label edu-block-label">
+          🎓 {i18n.EDUCATION.BLOCK_EDUCATION}
         </div>
-
-        <!-- ── RIGHT: Achievements ─────────────────────────────────────── -->
-        <div class="edu-right scroll-reveal" style="--delay: 0.15s">
-            <div class="block-label">✨ {i18n.EDUCATION.BLOCK_ACHIEVEMENTS}</div>
-            <div class="achievements-list">
-                {achievements.map((a, i) => (
-                    <div
-                        class={`achievement-item ${a.weight === 'featured' ? 'achievement-item--featured' : ''} scroll-reveal`}
-                        style={`--delay: ${0.2 + i * 0.08}s`}
+        <div class="edu-cards">
+          {
+            education.map((e) => (
+              <div class="edu-card">
+                <div class="edu-emoji-col">
+                  <span class="edu-card-emoji" aria-hidden="true">
+                    {e.emoji}
+                  </span>
+                </div>
+                <div class="edu-body">
+                  <div class="edu-header">
+                    <div class="text-card-heading edu-degree">{e.degree}</div>
+                    <span
+                      class={`status-badge edu-status-badge--${e.status === "in-progress" ? "active" : "done"}`}
                     >
-                        <div class="achievement-emoji" aria-hidden="true">{a.emoji}</div>
-                        <div class="achievement-body">
-                            <div class="achievement-header">
-                                <span class="achievement-title">{a.title}</span>
-                                <span class="achievement-year">{a.year}</span>
-                            </div>
-                            <p class="achievement-desc">{a.desc}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                      <span
+                        class="status-dot edu-status-dot"
+                        aria-hidden="true"
+                      />
+                      {e.period}
+                    </span>
+                  </div>
+                  <div class="edu-institution">{e.institution}</div>
+                </div>
+              </div>
+            ))
+          }
         </div>
+      </div>
 
+      <!-- Certifications -->
+      <div class="edu-block scroll-reveal" style="--delay: 0.2s">
+        <div class="text-label edu-block-label">
+          🏅 {i18n.EDUCATION.BLOCK_CERTS}
+        </div>
+        <div class="cert-list">
+          {
+            certifications.map((c) => (
+              <div class="cert-item">
+                <div class="cert-emoji-col">
+                  <span class="cert-emoji" aria-hidden="true">
+                    {c.emoji}
+                  </span>
+                  <div class="cert-accent" style={`background: ${c.color}`} />
+                </div>
+                <div class="cert-body">
+                  <div class="cert-header">
+                    <span class="text-card-heading cert-name">{c.name}</span>
+                    <span class="text-year-badge cert-year-badge">
+                      {c.year}
+                    </span>
+                  </div>
+                  <div class="cert-meta">
+                    <span class="cert-issuer">{c.issuer}</span>
+                    <span class="cert-dot" aria-hidden="true">
+                      ·
+                    </span>
+                    <span class="cert-category">{c.category}</span>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
 
+    <!-- ── RIGHT: Achievements ─────────────────────────────────────── -->
+    <div class="edu-right scroll-reveal" style="--delay: 0.15s">
+      <div class="text-label edu-block-label">
+        ✨ {i18n.EDUCATION.BLOCK_ACHIEVEMENTS}
+      </div>
+      <div class="achievements-list">
+        {
+          achievements.map((a, i) => (
+            <div
+              class={`achievement-item ${a.weight === "featured" ? "achievement-item--featured" : ""} scroll-reveal`}
+              style={`--delay: ${0.2 + i * 0.08}s`}
+            >
+              <div class="achievement-emoji" aria-hidden="true">
+                {a.emoji}
+              </div>
+              <div class="achievement-body">
+                <div class="achievement-header">
+                  <span class="text-card-heading achievement-title">
+                    {a.title}
+                  </span>
+                  <span class="text-year-badge achievement-year">{a.year}</span>
+                </div>
+                <p class="text-body achievement-desc">{a.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </Section>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  /* ── SECTION ───────────────────────────────────────────────────────── */
+  :global(.education-section) {
+    background: var(--color-bg-section);
+  }
 
-    /* ── SECTION: fondo neutro, cards en blanco ────────────────────────── */
-    :global(.education-section) {
-        background: #F7F7F5;
-    }
+  /* ── SECTION HEADER ────────────────────────────────────────────────── */
+  .section-header {
+    margin-bottom: var(--spacing-3xl);
+  }
 
-    /* ── SECTION HEADER ────────────────────────────────────────────────── */
-    .section-header { margin-bottom: 40px; }
+  /*
+     * .section-overline y .statement-small vienen de global.css.
+     * No se redefinen aquí — son 100% del sistema de diseño.
+     */
 
-    .section-overline {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        color: #1867ce;
-        margin-bottom: 12px;
-    }
+  /* ── LAYOUT ────────────────────────────────────────────────────────── */
+  .edu-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4xl);
+  }
 
-    .section-overline::before {
-        content: '';
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        background: #1867ce;
-        border-radius: 1px;
-    }
-
-    .section-headline {
-        font-size: clamp(22px, 3vw, 30px);
-        font-weight: 700;
-        color: #0a0a0a;
-    }
-
-    /* ── LAYOUT ────────────────────────────────────────────────────────── */
+  @media (min-width: 1024px) {
     .edu-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 48px;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-5xl);
     }
+  }
 
-    @media (min-width: 1024px) {
-        .edu-layout {
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-        }
+  /*
+     * .text-block-label viene de global.css.
+     * Solo añadimos el gap/margin contextual aquí.
+     */
+  .edu-block-label {
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  .edu-block {
+    margin-bottom: var(--spacing-3xl);
+  }
+  .edu-block:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── EDUCATION CARDS ───────────────────────────────────────────────── */
+  .edu-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .edu-card {
+    display: flex;
+    align-items: stretch;
+    gap: var(--spacing-md);
+    background: var(--color-bg-white);
+    border: var(--border-thin) solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    padding: var(--padding-card);
+    transition:
+      border-color var(--transition-normal),
+      box-shadow var(--transition-normal),
+      transform var(--transition-normal);
+  }
+
+  .edu-card:hover {
+    border-color: var(--color-border-primary);
+    box-shadow: var(--shadow-xs);
+    transform: translateY(-2px);
+  }
+
+  .edu-emoji-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+  }
+
+  .edu-card-emoji {
+    font-size: var(--text-size-h3);
+    line-height: 1;
+  }
+
+  .edu-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .edu-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-xs);
+  }
+
+  .edu-header .edu-degree {
+    flex: 1;
+  }
+
+  /*
+     * .status-badge base viene de global.css.
+     * Solo definimos las variantes de color semántico aquí.
+     */
+  .edu-status-badge--active {
+    background: #fef9eb;
+    color: var(--color-accent-amber);
+    border-color: #fcd87a;
+  }
+
+  .edu-status-badge--done {
+    background: var(--color-success-bg);
+    color: var(--color-success-text);
+    border-color: var(--color-border-success);
+  }
+
+  /* Dot animado solo para el estado activo */
+  .edu-status-badge--active .edu-status-dot {
+    background-color: var(--color-accent-amber);
+    animation: blink var(--duration-pulse) ease-in-out infinite;
+  }
+
+  .edu-status-badge--done .edu-status-dot {
+    background-color: var(--color-success-text);
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 0.7;
     }
-
-    .block-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: #B4B2A9;
-        margin-bottom: 14px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
+    50% {
+      opacity: 0.2;
     }
+  }
 
-    .edu-block { margin-bottom: 40px; }
-    .edu-block:last-child { margin-bottom: 0; }
+  /*
+     * .text-card-heading viene de global.css (font-size h4, semibold, sans).
+     * Solo añadimos el margin-bottom contextual.
+     */
+  .edu-degree {
+    color: var(--color-text-dark);
+    line-height: var(--line-height-heading);
+  }
 
-    /* ── EDUCATION CARDS ───────────────────────────────────────────────── */
-    .edu-cards {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
+  .edu-institution {
+    font-size: var(--text-size-small);
+    color: var(--color-text-muted);
+  }
 
-    .edu-card {
-        background: #ffffff;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 12px;
-        padding: 18px 20px;
-        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
+  .edu-highlight {
+    display: inline-block;
+    font-size: var(--text-size-xxs);
+    font-weight: var(--weight-semibold);
+    color: var(--color-primary-dark);
+    background: var(--color-primary-tint);
+    border: var(--border-thin) solid var(--color-border-primary);
+    border-radius: var(--radius-pill);
+    padding: 3px 10px;
+  }
 
-    .edu-card:hover {
-        border-color: #B5D4F4;
-        box-shadow: 0 4px 20px rgba(0, 74, 173, 0.07);
-        transform: translateY(-2px);
-    }
+  /* ── CERTIFICATIONS ────────────────────────────────────────────────── */
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
 
-    .edu-card-top {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 12px;
-    }
+  .cert-item {
+    display: flex;
+    align-items: stretch;
+    gap: var(--spacing-md);
+    background: var(--color-bg-white);
+    border: var(--border-thin) solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    padding: 14px var(--spacing-md);
+    transition:
+      border-color var(--transition-normal),
+      box-shadow var(--transition-normal),
+      transform var(--transition-normal);
+  }
 
-    .edu-card-emoji {
-        font-size: 24px;
-        line-height: 1;
-        flex-shrink: 0;
-    }
+  .cert-item:hover {
+    border-color: var(--color-border-primary);
+    box-shadow: var(--shadow-xs);
+    transform: translateX(3px);
+  }
 
-    /* Status badge — replaces the lonely dot */
-    .edu-status-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 11px;
-        font-weight: 600;
-        padding: 3px 10px;
-        border-radius: 20px;
-    }
+  .cert-emoji-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+  }
 
-    .edu-status-badge--active {
-        background: #fef9eb;
-        color: #b45309;
-        border: 0.5px solid #fcd87a;
-    }
+  .cert-emoji {
+    font-size: var(--text-size-h4);
+    line-height: 1;
+  }
 
-    .edu-status-badge--done {
-        background: #f0fdf4;
-        color: #166534;
-        border: 0.5px solid #bbf7d0;
-    }
+  .cert-accent {
+    width: var(--border-accent-heavy);
+    border-radius: 2px;
+    flex: 1;
+    min-height: 20px;
+  }
 
-    .edu-status-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: currentColor;
-        opacity: 0.7;
-        flex-shrink: 0;
-    }
+  /*
+     * .text-card-heading viene de global.css.
+     * Solo añadimos el margin-bottom contextual.
+     */
+  .cert-name {
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-heading);
+  }
 
+  .cert-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xs);
+  }
+
+  .cert-body {
+    width: 100%;
+  }
+
+  .cert-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: var(--text-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .cert-issuer {
+    font-weight: var(--weight-medium);
+  }
+  .cert-dot {
+    color: var(--color-border-default);
+  }
+  .cert-category {
+    color: var(--color-text-tertiary);
+  }
+
+  /*
+     * .text-year-badge viene de global.css (font, size, weight, spacing).
+     * Solo añadimos la apariencia visual pill aquí.
+     */
+  .cert-year-badge,
+  .achievement-year {
+    color: var(--color-text-muted);
+    background: var(--color-bg-section);
+    border: var(--border-thin) solid var(--color-border-light);
+    border-radius: var(--radius-pill);
+    padding: 1px 7px;
+    margin-left: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── ACHIEVEMENTS ──────────────────────────────────────────────────── */
+  .achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .achievement-body {
+    width: 100%;
+  }
+
+  .achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: 14px var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: var(--border-thin) solid var(--color-border-light);
+    background: var(--color-bg-white);
+    transition:
+      border-color var(--transition-normal),
+      box-shadow var(--transition-normal),
+      transform var(--transition-normal);
+  }
+
+  .achievement-item:hover {
+    border-color: var(--color-border-primary);
+    box-shadow: var(--shadow-xs);
+    transform: translateX(3px);
+  }
+
+  .achievement-item--featured {
+    border-left: var(--border-accent-heavy) solid #ffe099;
+    background: #fffdf5;
+  }
+
+  .achievement-item--featured:hover {
+    border-color: #ffd063;
+    box-shadow: 0 4px 16px rgba(180, 130, 20, 0.1);
+  }
+
+  .achievement-emoji {
+    font-size: var(--text-size-h4);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary-tint);
+    border-radius: var(--radius-sm);
+    border: var(--border-thin) solid var(--color-border-primary);
+  }
+
+  .achievement-item--featured .achievement-emoji {
+    background: #fef6dc;
+    border-color: #f0d98a;
+  }
+
+  .achievement-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-xs);
+    margin-bottom: 4px;
+  }
+
+  /*
+     * .text-card-heading viene de global.css.
+     * Solo ajustamos el color contextual.
+     */
+  .achievement-title {
+    color: var(--color-text-dark);
+    line-height: var(--line-height-heading);
+  }
+
+  .achievement-item--featured .achievement-year {
+    background: #fef6dc;
+    color: var(--color-accent-amber);
+    border-color: #f0d98a;
+  }
+
+  /*
+     * .text-body viene de global.css (font-body, size-body, relaxed line-height).
+     * Solo ajustamos el color y el tamaño fine-tuned.
+     */
+  .achievement-desc {
+    font-size: var(--text-size-small);
+    color: var(--color-text-tertiary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* ── REDUCED MOTION ────────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
     .edu-status-badge--active .edu-status-dot {
-        animation: blink 1.8s ease-in-out infinite;
+      animation: none;
     }
-
-    @keyframes blink {
-        0%, 100% { opacity: 0.7; }
-        50%       { opacity: 0.2; }
-    }
-
-    .edu-degree {
-        font-size: 15px;
-        font-weight: 700;
-        color: #0a0a0a;
-        margin-bottom: 3px;
-        line-height: 1.3;
-    }
-
-    .edu-institution {
-        font-size: 13px;
-        color: #888780;
-        margin-bottom: 12px;
-    }
-
-    .edu-highlight {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 600;
-        color: #004aad;
-        background: #E6F1FB;
-        border: 0.5px solid #B5D4F4;
-        border-radius: 20px;
-        padding: 3px 10px;
-    }
-
-    /* ── CERTIFICATIONS ────────────────────────────────────────────────── */
-    .cert-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .cert-item {
-        display: flex;
-        align-items: stretch;
-        gap: 14px;
-        background: #ffffff;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 12px;
-        padding: 14px 16px;
-        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
-
-    .cert-item:hover {
-        border-color: #B5D4F4;
-        box-shadow: 0 4px 16px rgba(0, 74, 173, 0.06);
-        transform: translateX(3px);
-    }
-
-    /* Left column: emoji on top, colored accent bar below */
-    .cert-emoji-col {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        flex-shrink: 0;
-    }
-
-    .cert-emoji {
-        font-size: 20px;
-        line-height: 1;
-    }
-
-    .cert-accent {
-        width: 3px;
-        border-radius: 2px;
-        flex: 1;
-        min-height: 20px;
-    }
-
-    .cert-name {
-        font-size: 14px;
-        font-weight: 600;
-        color: #0a0a0a;
-        margin-bottom: 6px;
-        line-height: 1.3;
-    }
-
-    .cert-meta {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 4px;
-        font-size: 12px;
-        color: #888780;
-    }
-
-    .cert-issuer { font-weight: 500; }
-    .cert-dot { color: #D3D1C7; }
-    .cert-category { color: #5F5E5A; }
-
-    /* Year as a small pill instead of plain text — gives it visual weight */
-    .cert-year-badge {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        color: #888780;
-        background: #F0EFEC;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 20px;
-        padding: 1px 7px;
-        margin-left: 2px;
-    }
-
-    /* ── ACHIEVEMENTS ──────────────────────────────────────────────────── */
-    .achievements-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .achievement-body {
-        width: 100%;
-    }
-
-    .achievement-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        padding: 14px 16px;
-        border-radius: 12px;
-        border: 0.5px solid #E8E6E0;
-        background: #ffffff;
-        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
-
-    .achievement-item:hover {
-        border-color: #B5D4F4;
-        box-shadow: 0 4px 16px rgba(0, 74, 173, 0.06);
-        transform: translateX(3px);
-    }
-
-    /* Featured: white + strong blue left border + subtle blue tint */
-    .achievement-item--featured {
-        border-left: 3px solid #ffe099;
-        background: #fffdf5;
-    }
-
-    .achievement-item--featured:hover {  
-        border-color: #ffd063;
-        box-shadow: 0 4px 16px rgba(180, 130, 20, 0.10);
-    }
-
-
-    /* Emoji replaces the SVG icon box entirely */
-    .achievement-emoji {
-        font-size: 22px;
-        line-height: 1;
-        flex-shrink: 0;
-        margin-top: 1px;
-        /* Pill container to visually anchor the emoji */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: #F0F5FF;
-        border-radius: 10px;
-        border: 0.5px solid #E0EBFF;
-    }
-
-    .achievement-item--featured .achievement-emoji {
-        background: #fef6dc;
-        border-color: #f0d98a;
-    }
-
-    .achievement-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 8px;
-        margin-bottom: 4px;
-    }
-
-    .achievement-title {
-        font-size: 14px;
-        font-weight: 700;
-        color: #0a0a0a;
-        line-height: 1.3;
-    }
-
-    /* Year as pill — consistent with cert-year-badge */
-    .achievement-year {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        color: #888780;
-        background: #F0EFEC;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 20px;
-        padding: 2px 8px;
-        white-space: nowrap;
-        flex-shrink: 0;
-        margin-top: 1px;
-    }
-
-    .achievement-item--featured .achievement-year {
-        background: #fef6dc;
-        color: #92650a;
-        border-color: #f0d98a;
-    }
-
-    .achievement-desc {
-        font-size: 13px;
-        color: #5F5E5A;
-        line-height: 1.55;
-    }
-
-    /* ── SCROLL REVEAL ─────────────────────────────────────────────────── */
-    .scroll-reveal {
-        opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 0.55s ease-out, transform 0.55s ease-out;
-        transition-delay: var(--delay, 0s);
-    }
-
-    .scroll-reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .scroll-reveal { opacity: 1; transform: none; transition: none; }
-        .edu-status-badge--active .edu-status-dot { animation: none; }
-    }
+  }
+  /*
+     * El resto de .scroll-reveal ya lo maneja global.css con
+     * @media (prefers-reduced-motion: reduce).
+     */
 </style>
 
 <script>
-    const els = document.querySelectorAll('#education .scroll-reveal');
-    const obs = new IntersectionObserver(
-        entries => entries.forEach(e => {
-            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-        }),
-        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    );
-    els.forEach(el => obs.observe(el));
+  const els = document.querySelectorAll("#education .scroll-reveal");
+  const obs = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          obs.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+  );
+  els.forEach((el) => obs.observe(el));
 </script>

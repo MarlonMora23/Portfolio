@@ -1,12 +1,12 @@
 ---
 import { languages } from "@/i18n/ui";
 import { Image } from "astro:assets";
-import menu_svg from "../../public/assets/menu-alt-01-svgrepo-com.svg";
-import close_menu_svg from "../../public/assets/close-bold-svgrepo-com.svg";
-import leftArrow from "../../public/assets/left-arrow.svg";
-import rightArrow from "../../public/assets/right-arrow.svg";
+import menu_svg from "public/assets/icons/menu-alt-01-svgrepo-com.svg";
+import close_menu_svg from "public/assets/icons/close-bold-svgrepo-com.svg";
+import leftArrow from "public/assets/icons/left-arrow.svg";
+import rightArrow from "public/assets/icons/right-arrow.svg";
 import LanguagePicker from "@/components/LenguagePicker.astro";
-import internationalIcon from "../../public/assets/international-svgrepo-com.svg";
+import internationalIcon from "public/assets/icons/international-svgrepo-com.svg";
 import {
     getLangFromUrl,
     useTranslations,
@@ -18,37 +18,31 @@ const translation = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<header
-    class="fixed w-full px-8 z-20 bg-transparent transition-all duration-300 ease-in-out"
-    id="top"
->
-    <!-- ① PROGRESS BAR — nuevo elemento, posicionado en el borde inferior del header -->
+<header class="site-header" id="top">
+
+    <!-- Progress bar — posicionado en el borde inferior del header -->
     <div
         id="progress-bar"
-        class="absolute bottom-0 left-0 h-[2px] w-0 z-30 pointer-events-none"
-        style="background: linear-gradient(90deg, #004aad, #1867ce); transition: width 0.1s linear;"
+        class="progress-bar"
         aria-hidden="true"
     ></div>
 
-    <div
-        class="flex justify-between items-center w-full mx-auto max-w-screen-xl py-4 transition-all duration-300"
-        id="nav-inner"
-    >
-        <!-- Logo — sin cambios -->
+    <div class="header-inner" id="nav-inner">
+
+        <!-- Logo -->
         <div class="flex md:flex-grow md:basis-0">
             <a href="/">
-                <span>
-                    <Image
-                        src="/assets/MarlonMoraLogo.svg"
-                        alt="Marlon Mora Icon"
-                        loading="eager"
-                        width={40}
-                        height={40}
-                    />
-                </span>
+                <Image
+                    src="/assets/profile/MarlonMoraLogo.svg"
+                    alt="Marlon Mora Icon"
+                    loading="eager"
+                    width={40}
+                    height={40}
+                />
             </a>
         </div>
 
+        <!-- Hamburger (mobile) -->
         <div class="w-10 h-10 md:hidden" id="menu_btn">
             <button class="cursor-pointer">
                 <Image
@@ -61,146 +55,183 @@ const translatePath = useTranslatedPath(lang);
             </button>
         </div>
 
-        <!-- ② NAV LINKS — añadidas clases para active state -->
-        <nav class="hidden md:flex md:flex-row md:gap-x-10 md:text-xl">
-            <a href="#hero"   class="nav-link" data-section="hero">{translation("nav.home")}</a>
-            <a href="#about"  class="nav-link" data-section="about">{translation("nav.about")}</a>
-            <a href="#proyects" class="nav-link" data-section="proyects">{translation("nav.proyects")}</a>
-            <a href="#contact" class="nav-link" data-section="contact">{translation("nav.contact")}</a>
+        <!-- Nav links (desktop) -->
+        <nav class="hidden md:flex md:flex-row md:gap-x-10">
+            <a href="#hero"      class="nav-link text-body" data-section="hero">{translation("nav.home")}</a>
+            <a href="#about"     class="nav-link text-body" data-section="about">{translation("nav.about")}</a>
+            <a href="#proyects"  class="nav-link text-body" data-section="proyects">{translation("nav.proyects")}</a>
+            <a href="#contact"   class="nav-link text-body" data-section="contact">{translation("nav.contact")}</a>
         </nav>
 
+        <!-- Language picker (desktop) -->
         <div class="hidden md:flex md:justify-end md:flex-grow md:basis-0">
             <LanguagePicker />
         </div>
     </div>
 
-    <!-- Mobile Menu — sin cambios -->
+    <!-- ── MOBILE MENU ──────────────────────────────────────────────────── -->
     <div
-        class="absolute top-0 left-0 w-full h-screen bg-white md:hidden z-10 pt-6 hidden"
+        class="mobile-menu md:hidden hidden"
         id="mobile_menu"
     >
         <section class="px-10" id="menu">
             <div class="flex justify-end w-full">
                 <button class="cursor-pointer">
                     <div class="w-6" id="close_btn">
-                        <Image
-                            src={close_menu_svg}
-                            alt="menu"
-                            loading="eager"
-                            width={24}
-                            height={24}
-                        />
+                        <Image src={close_menu_svg} alt="menu" loading="eager" width={24} height={24} />
                     </div>
                 </button>
             </div>
-            <nav
-                class="flex flex-col justify-center items-baseline gap-8 text-xl mt-8"
-            >
-                <a href="#hero" class="w-full flex justify-between">
+
+            <nav class="mobile-nav">
+                <a href="#hero"     class="mobile-nav-link text-body">
                     {translation("nav.home")}
-                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
+                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
                 </a>
-                <a href="#about" class="w-full flex justify-between">
+                <a href="#about"    class="mobile-nav-link text-body">
                     {translation("nav.about")}
-                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
+                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
                 </a>
-                <a href="#proyects" class="w-full flex justify-between">
+                <a href="#proyects" class="mobile-nav-link text-body">
                     {translation("nav.proyects")}
-                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
+                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
                 </a>
-                <a href="#contact" class="w-full flex justify-between">
+                <a href="#contact"  class="mobile-nav-link text-body">
                     {translation("nav.contact")}
-                    <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
+                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
                 </a>
-                <button
-                    class="md:hidden w-full flex justify-between cursor-pointer"
-                    id="change_language_btn"
-                >
+                <button class="mobile-nav-link text-body md:hidden cursor-pointer" id="change_language_btn">
                     <div class="flex justify-center items-center gap-2 lg:gap-4">
-                        <Image src={internationalIcon} class="w-6" alt="itenational" loading="eager" width={24} height={24} />
+                        <Image src={internationalIcon} class="w-6" alt="international" loading="eager" width={24} height={24} />
                         {languages[lang]}
                     </div>
-                    <div>
-                        <Image src={rightArrow} alt="menu" loading="eager" width={24} height={24} />
-                    </div>
+                    <Image src={rightArrow} alt="" loading="eager" width={24} height={24} />
                 </button>
             </nav>
         </section>
 
-        <!-- Language picker — sin cambios -->
+        <!-- Language selector panel -->
         <section class="hidden w-full px-10" id="select_language">
-            <div>
-                <div class="flex justify-between w-full">
-                    <button>
-                        <div class="w-6" id="back_btn">
-                            <Image src={leftArrow} alt="menu" loading="eager" width={24} height={24} />
-                        </div>
-                    </button>
-                    <p>{translation("nav.lang")}</p>
-                    <button class="cursor-pointer">
-                        <div class="w-6" id="close_btn2">
-                            <Image src={close_menu_svg} alt="menu" loading="eager" width={24} height={24} />
-                        </div>
-                    </button>
-                </div>
+            <div class="flex justify-between w-full">
+                <button>
+                    <div class="w-6" id="back_btn">
+                        <Image src={leftArrow} alt="back" loading="eager" width={24} height={24} />
+                    </div>
+                </button>
+                <p class="text-body">{translation("nav.lang")}</p>
+                <button class="cursor-pointer">
+                    <div class="w-6" id="close_btn2">
+                        <Image src={close_menu_svg} alt="close" loading="eager" width={24} height={24} />
+                    </div>
+                </button>
             </div>
-            <nav class="w-full mt-8 flex flex-col justify-center items-baseline gap-8 text-xl">
+
+            <nav class="w-full mt-8 flex flex-col justify-center items-baseline gap-8">
                 {
                     Object.entries(languages).map(([langKey, label]) => (
-                        <a href={translatePath("/", langKey)} class="w-full">
-                            <div class="flex justify-between w-full">
-                                <span class="inline-block">{label}</span>
-                                {lang === langKey && (
-                                    <img src="/assets/check-svgrepo-com.svg" class="w-4" alt="selected" />
-                                )}
-                            </div>
+                        <a href={translatePath("/", langKey)} class="mobile-nav-link text-body w-full">
+                            <span class="inline-block">{label}</span>
+                            {lang === langKey && (
+                                <img src="/assets/icons/check-svgrepo-com.svg" class="w-4" alt="selected" />
+                            )}
                         </a>
                     ))
                 }
             </nav>
         </section>
     </div>
+
 </header>
 
 <style>
-    /* ── Estado base ── */
-    header {
-        backdrop-filter: none;
+    /* ── HEADER BASE ───────────────────────────────────────────────────────── */
+    .site-header {
+        position: fixed;
+        width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        z-index: 20;
         background-color: transparent;
+        backdrop-filter: none;
         transition:
-            backdrop-filter 0.3s ease,
-            background-color 0.3s ease,
-            box-shadow 0.3s ease;
+            backdrop-filter var(--transition-slower) ease,
+            background-color var(--transition-slower) ease,
+            box-shadow var(--transition-slower) ease;
     }
 
-    /* ── Estado scrolled: blur + sombra sutil ── */
-    header.scrolled {
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.92);
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    /* Scrolled state — frosted glass */
+    .site-header.scrolled {
+        backdrop-filter: var(--backdrop-blur-header);
+        background-color: var(--color-surface-scrolled);
+        box-shadow: var(--shadow-header);
     }
 
-    /* ── Active section: link resaltado ── */
-    .nav-link {
-        position: relative;
-        transition: color 0.2s ease;
-    }
-
-    .nav-link::after {
-        content: '';
+    /* ── PROGRESS BAR ──────────────────────────────────────────────────────── */
+    .progress-bar {
         position: absolute;
-        bottom: -4px;
+        bottom: 0;
         left: 0;
+        height: var(--border-accent);
         width: 0;
-        height: 2px;
-        background: #004aad;
-        border-radius: 1px;
-        transition: width 0.25s ease;
+        z-index: 30;
+        pointer-events: none;
+        background: var(--gradient-top-accent);
+        transition: width 0.1s linear;
     }
 
-    .nav-link.active {
-        color: #004aad;
-        font-weight: 600;
+    /* ── INNER LAYOUT ──────────────────────────────────────────────────────── */
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1280px;
+        padding-top: var(--spacing-md);
+        padding-bottom: var(--spacing-md);
+        transition: padding var(--transition-slower) ease;
+    }
+
+    /* Compact inner on scroll */
+    .site-header.scrolled .header-inner {
+        padding-top: var(--spacing-sm);
+        padding-bottom: var(--spacing-sm);
+    }
+
+    /* ── MOBILE MENU ───────────────────────────────────────────────────────── */
+    .mobile-menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-bg-white);
+        z-index: 10;
+        padding-top: var(--spacing-xl);
+    }
+
+    /* ── MOBILE NAV ────────────────────────────────────────────────────────── */
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: baseline;
+        gap: var(--spacing-3xl);
+        margin-top: var(--spacing-2xl);
+    }
+
+    .mobile-nav-link {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        transition: color var(--transition-normal) ease;
+    }
+
+    .mobile-nav-link:hover {
+        color: var(--color-primary);
     }
 </style>
 
@@ -300,7 +331,7 @@ const translatePath = useTranslatedPath(lang);
                 if (!targetElement) return;
 
                 const offsetPosition =
-                    targetElement.getBoundingClientRect().top + window.scrollY - 60;
+                    targetElement.getBoundingClientRect().top + window.scrollY - 120;
 
                 window.scrollTo({ top: offsetPosition, behavior: "smooth" });
             });

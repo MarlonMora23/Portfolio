@@ -1,0 +1,10 @@
+{
+  "COMMON": {
+    "STATUS_COMPLETED": "Completado",
+    "STATUS_IN_PROGRESS": "En desarrollo",
+    "STATUS_MAINTENANCE": "En mantenimiento",
+    "LEVEL_ADVANCED": "Avanzado",
+    "LEVEL_INTERMEDIATE": "Intermedio",
+    "LEVEL_LEARNING": "Aprendiendo"
+  }
+}

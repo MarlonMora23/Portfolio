@@ -5,132 +5,125 @@ const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
 ---
 
-<div class="stats-bridge" aria-label="Estadísticas">
-    <div class="stats-bridge-inner">
-
-        <div class="bridge-stat">
-            <span class="bridge-number">3+</span>
-            <span class="bridge-label">{i18n.HERO.STAT_1_LABEL}</span>
-        </div>
-
-        <div class="bridge-divider" aria-hidden="true"></div>
-
-        <div class="bridge-stat">
-            <span class="bridge-number">2</span>
-            <span class="bridge-label">{i18n.HERO.STAT_2_LABEL}</span>
-        </div>
-
-        <div class="bridge-divider" aria-hidden="true"></div>
-
-        <div class="bridge-stat">
-            <span class="bridge-number">6+</span>
-            <span class="bridge-label">{i18n.HERO.STAT_3_LABEL}</span>
-        </div>
-
-        <div class="bridge-divider" aria-hidden="true"></div>
-
-        <div class="bridge-stat">
-            <span class="bridge-number">∞</span>
-            <span class="bridge-label">{i18n.HERO.STAT_4_LABEL}</span>
-        </div>
-
+<div class="stats-bridge reveal" aria-label="Estadísticas">
+  <div class="stats-bridge-inner">
+    <div class="bridge-stat">
+      <span class="text-stats-number bridge-number">10+</span>
+      <span class="text-label bridge-label">{i18n.HERO.STAT_1_LABEL}</span>
     </div>
+
+    <div class="bridge-divider" aria-hidden="true"></div>
+
+    <div class="bridge-stat">
+      <span class="text-stats-number bridge-number">5+</span>
+      <span class="text-label bridge-label">{i18n.HERO.STAT_2_LABEL}</span>
+    </div>
+
+    <div class="bridge-divider" aria-hidden="true"></div>
+
+    <div class="bridge-stat">
+      <span class="text-stats-number bridge-number">50+</span>
+      <span class="text-label bridge-label">{i18n.HERO.STAT_3_LABEL}</span>
+    </div>
+
+    <div class="bridge-divider" aria-hidden="true"></div>
+
+    <div class="bridge-stat">
+      <span class="text-stats-number bridge-number">350+</span>
+      <span class="text-label bridge-label">{i18n.HERO.STAT_4_LABEL}</span>
+    </div>
+  </div>
 </div>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  .stats-bridge {
+    width: 100%;
+    background: var(--color-bg-white);
+    border-top: var(--border-thin) solid var(--color-border-light);
+    border-bottom: var(--border-thin) solid var(--color-border-light);
+    position: relative;
+    z-index: 2;
+  }
 
-    .stats-bridge {
-        width: 100%;
-        background: #ffffff;
-        border-top: 0.5px solid #E8E6E0;
-        border-bottom: 0.5px solid #E8E6E0;
-        position: relative;
-        z-index: 2;
-    }
+  .stats-bridge-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 👈 mobile: 2x2 */
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
 
+  /* Tablet */
+  @media (min-width: 640px) {
     .stats-bridge-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 48px;
+      grid-template-columns: repeat(4, 1fr);
     }
+  }
 
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .stats-bridge-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--spacing-5xl);
+    }
+  }
+
+  .bridge-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-lg);
+    text-align: center;
+  }
+
+  /* Desktop spacing más aireado */
+  @media (min-width: 1024px) {
     .bridge-stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        padding: 24px 40px;
-        flex: 1;
+      padding: var(--spacing-xl) var(--spacing-3xl);
+      flex: 0 0 auto;
     }
+  }
 
-    @media (min-width: 1024px) {
-        .bridge-stat {
-            flex: 0 0 auto;
-        }
-    }
+  /* Tipografía responsive */
+  .bridge-number {
+    color: var(--color-primary-dark);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+  }
 
-    .bridge-number {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(26px, 3vw, 36px);
-        font-weight: 700;
-        color: #004aad;
-        line-height: 1;
-    }
+  /* Divider solo en desktop */
+  .bridge-divider {
+    display: none;
+  }
 
-    .bridge-label {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #888780;
-        white-space: nowrap;
-    }
-
+  @media (min-width: 1024px) {
     .bridge-divider {
-        width: 0.5px;
-        height: 36px;
-        background: #E8E6E0;
-        flex-shrink: 0;
+      display: block;
+      width: var(--border-thin);
+      height: 36px;
+      background: var(--color-border-light);
+      flex-shrink: 0;
     }
-
-    /* Scroll reveal */
-    .stats-bridge {
-        opacity: 0;
-        transform: translateY(12px);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    }
-
-    .stats-bridge.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .stats-bridge {
-            opacity: 1;
-            transform: none;
-            transition: none;
-        }
-    }
+  }
 </style>
 
 <script>
-    const bridge = document.querySelector('.stats-bridge');
-    if (bridge) {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    bridge.classList.add('visible');
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.2 }
-        );
-        observer.observe(bridge);
-    }
+  const bridge = document.querySelector(".stats-bridge");
+  if (bridge) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          bridge.classList.add("visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    observer.observe(bridge);
+  }
 </script>

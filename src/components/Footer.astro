@@ -16,7 +16,7 @@ const navLinks = [
     { href: "#about",    key: "nav.about" },
     { href: "#proyects", key: "nav.proyects" },
     { href: "#contact",  key: "nav.contact" },
-];
+] as const;
 ---
 
 <footer class="site-footer">
@@ -27,7 +27,7 @@ const navLinks = [
             <div class="footer-brand">
                 <a href="/" class="footer-logo" aria-label="Inicio">
                     <img
-                        src="/assets/MarlonMoraLogo.svg"
+                        src="/assets/profile/MarlonMoraLogo.svg"
                         alt="Marlon Mora"
                         width="32"
                         height="32"
@@ -89,9 +89,9 @@ const navLinks = [
 
 <style>
     .site-footer {
-        background: #ffffff;
-        border-top: 0.5px solid #E8E6E0;
-        padding: 40px 32px 28px;
+        background: var(--color-bg-white);
+        border-top: var(--border-thin) solid var(--color-border-light);
+        padding: var(--spacing-3xl) var(--spacing-2xl) var(--margin-footer-bottom);
     }
 
     .footer-inner {
@@ -119,13 +119,13 @@ const navLinks = [
     .footer-brand {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: var(--spacing-sm);
     }
 
     .footer-logo {
         display: flex;
         align-items: center;
-        transition: opacity 0.2s;
+        transition: opacity var(--transition-normal);
     }
 
     .footer-logo:hover { opacity: 0.75; }
@@ -139,13 +139,13 @@ const navLinks = [
     .footer-name {
         font-size: 14px;
         font-weight: 700;
-        color: #0a0a0a;
-        line-height: 1.2;
+        color: var(--color-text-dark);
+        line-height: var(--line-height-tight);
     }
 
     .footer-tagline {
-        font-size: 11px;
-        color: #888780;
+        font-size: var(--text-size-xxs);
+        color: var(--color-text-muted);
         letter-spacing: 0.03em;
     }
 
@@ -157,31 +157,31 @@ const navLinks = [
     }
 
     .footer-nav-link {
-        font-size: 13px;
+        font-size: var(--text-size-small);
         font-weight: 500;
-        color: #888780;
+        color: var(--color-text-muted);
         padding: 5px 12px;
         border-radius: 6px;
         text-decoration: none;
-        transition: color 0.15s, background 0.15s;
+        transition: color var(--transition-fast), background var(--transition-fast);
     }
 
     .footer-nav-link:hover {
-        color: #004aad;
+        color: var(--color-primary-dark);
         background: #E6F1FB;
     }
 
     .footer-nav-link.active {
-        color: #004aad;
+        color: var(--color-primary-dark);
         font-weight: 600;
         background: #E6F1FB;
     }
 
     /* ── DIVIDER ───────────────────────────────────────────────────────── */
     .footer-divider {
-        height: 0.5px;
-        background: #E8E6E0;
-        margin-bottom: 20px;
+        height: var(--border-thin);
+        background: var(--color-border-light);
+        margin-bottom: var(--spacing-lg);
     }
 
     /* ── BOTTOM ────────────────────────────────────────────────────────── */
@@ -189,13 +189,13 @@ const navLinks = [
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
+        gap: var(--spacing-md);
         flex-wrap: wrap;
     }
 
     .footer-copy {
-        font-size: 13px;
-        color: #888780;
+        font-size: var(--text-size-small);
+        color: var(--color-text-muted);
         display: flex;
         gap: 4px;
         flex-wrap: wrap;

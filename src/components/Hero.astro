@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Section from "@/components/Section.astro";
-import MarlonMoraPhoto from "public/assets/MarlonMoraPhoto.webp";
+import MarlonMoraPhoto from "public/assets/profile/MarlonMoraPhoto.webp";
 import LinkedInIcon from "@/Icons/LinkedInIcon.astro";
 import GithubIcon from "@/Icons/GithubIcon.astro";
 import SocialIcon from "@/components/SocialIcons.astro";
@@ -12,495 +12,412 @@ const i18n = getI18n({ currentLocale });
 ---
 
 <Section id="hero" class="hero-section" applyMargin={false}>
+  <!-- Ambient video background -->
+  <div class="hero-video-bg" aria-hidden="true">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      disablepictureinpicture
+      aria-hidden="true"
+    >
+      <source src="/assets/background/background_vid.webm" type="video/webm" />
+    </video>
+  </div>
 
-    <!-- Ambient video background: waves, low opacity so content stays protagonist -->
-    <div class="hero-video-bg" aria-hidden="true">
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            disablepictureinpicture
+  <!-- Blue accent line at the very top -->
+  <div class="hero-top-accent" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <!-- ── LEFT COLUMN ─────────────────────────────── -->
+    <div class="hero-content">
+      <!-- Greeting — italic serif, muted color -->
+      <p
+        class="text-subtitle-serif-italic hero-role animate-fade-up"
+        style="--delay: 0.1s"
+      >
+        {i18n.HERO.GREETING}
+      </p>
+
+      <!-- H1: name — gradient + shine animation, defined in globals -->
+      <h1
+        class="text-name text-gradient text-gradient-animated hero-name animate-fade-up"
+        style="--delay: 0.2s"
+      >
+        Marlon Mora
+      </h1>
+
+      <!-- Description -->
+      <h2
+        class="text-description hero-description animate-fade-up"
+        style="--delay: 0.35s"
+      >
+        {i18n.HERO.DESCRIPTION}
+      </h2>
+
+      <!-- CTA row -->
+      <div class="hero-actions animate-fade-up" style="--delay: 0.5s">
+        <a href="#proyects" class="btn btn-primary">
+          {i18n.HERO.CTA_TEXT}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
             aria-hidden="true"
+          >
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+
+        <a href="#contact" class="btn btn-secondary">
+          {i18n.HERO.SECONDARY_CTA}
+        </a>
+      </div>
+    </div>
+
+    <!-- ── RIGHT COLUMN: photo + overlays ────────────── -->
+    <div class="hero-photo-wrapper animate-fade-up" style="--delay: 0.4s">
+      <!-- Availability badge -->
+      <div
+        class="hero-availability-badge text-badge"
+        aria-label={i18n.HERO.OVERLINE}
+      >
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span class="badge-text badge-text-mobile">{i18n.HERO.OVERLINE_MOBILE}</span>
+        <span class="badge-text badge-text-desktop">{i18n.HERO.OVERLINE}</span>
+      </div>
+
+      <!-- Social icons: vertical stack -->
+      <nav class="hero-social-stack" aria-label="Redes sociales">
+        <SocialIcon
+          href="https://www.linkedin.com/in/marlonmora/"
+          class="social-link"
+          title="LinkedIn"
         >
-            <source src="/assets/background_vid.webm" type="video/webm" />
-        </video>
+          <LinkedInIcon class="size-5" />
+        </SocialIcon>
+
+        <SocialIcon
+          href="https://github.com/MarlonMora23"
+          class="social-link"
+          title="GitHub"
+        >
+          <GithubIcon class="size-5" />
+        </SocialIcon>
+      </nav>
+
+      <figure class="hero-figure">
+        <Image
+          class="hero-img"
+          src={MarlonMoraPhoto}
+          alt="Marlon Mora"
+          loading="eager"
+        />
+      </figure>
     </div>
-
-    <!-- Blue accent line at the very top -->
-    <div class="hero-top-accent" aria-hidden="true"></div>
-
-    <div class="hero-inner">
-
-        <!-- ── LEFT COLUMN ─────────────────────────────── -->
-        <div class="hero-content">
-
-            <!-- Greeting overline -->
-            <p class="hero-role hero-animate" style="--delay: 0.1s">
-                {i18n.HERO.GREETING}
-            </p>
-
-            <!-- H1: name -->
-            <h1 class="hero-name hero-animate" style="--delay: 0.2s">
-                Marlon Mora
-            </h1>
-
-            <!-- Description -->
-            <h2 class="hero-description hero-animate" style="--delay: 0.35s">
-                {i18n.HERO.DESCRIPTION}
-            </h2>
-
-            <!-- CTA row — only 2 buttons now, clean & focused -->
-            <div class="hero-actions hero-animate" style="--delay: 0.5s">
-                <a href="#proyects" class="hero-cta">
-                    {i18n.HERO.CTA_TEXT}
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-
-                <a href="#contact" class="hero-cta-ghost">
-                    {i18n.HERO.SECONDARY_CTA}
-                </a>
-            </div>
-        </div>
-
-        <!-- ── RIGHT COLUMN: photo + overlays ────────────── -->
-        <div class="hero-photo-wrapper hero-animate" style="--delay: 0.4s">
-
-            <!-- Availability badge: floating over the photo, top-left area -->
-            <div class="hero-availability-badge" aria-label={i18n.HERO.OVERLINE}>
-                <span class="badge-dot" aria-hidden="true"></span>
-                {i18n.HERO.OVERLINE}
-            </div>
-
-            <!-- Social icons: vertical stack on the left edge of the photo wrapper -->
-            <nav class="hero-social-stack" aria-label="Redes sociales">
-                <SocialIcon
-                    href="https://www.linkedin.com/in/marlon-mora-2a4309250/"
-                    class="social-link"
-                    title="LinkedIn"
-                >
-                    <LinkedInIcon class="size-5" />
-                </SocialIcon>
-
-                <SocialIcon
-                    href="https://github.com/MarlonMora23"
-                    class="social-link"
-                    title="GitHub"
-                >
-                    <GithubIcon class="size-5" />
-                </SocialIcon>
-            </nav>
-
-            <figure class="hero-figure">
-                <Image
-                    class="hero-img"
-                    src={MarlonMoraPhoto}
-                    alt="Marlon Mora"
-                    loading="eager"
-                />
-            </figure>
-        </div>
-    </div>
-
+  </div>
 </Section>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap");
 
-    /* ── SECTION BASE ──────────────────────────────────────────────────────── */
-    :global(.hero-section) {
-        position: relative;
-        background:
-            radial-gradient(circle at top left,  #f5f5f5 20%, transparent 40%),
-            radial-gradient(circle at top right, #f5f5f5 20%, transparent 40%),
-            linear-gradient(to bottom, #d5f5ff 0%, #f5f5f5 60%, #f5f5f5 100%);
-        overflow: hidden;
-        padding-top: 100px;
-        padding-bottom: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-bottom: 0;
-    }
+  /* ── SECTION ───────────────────────────────────────────────────────────── */
+  /* Background and overflow are hero-specific; everything else is global */
+  :global(.hero-section) {
+    position: relative;
+    background: var(--gradient-hero-bg);
+    overflow: hidden;
+    padding-top: var(--spacing-7xl);
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
 
-    /* ── VIDEO BACKGROUND ──────────────────────────────────────────────────── */
-    .hero-video-bg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
-    }
+  /* ── VIDEO BACKGROUND ──────────────────────────────────────────────────── */
+  .hero-video-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
 
-    .hero-video-bg video {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.10;
-    }
+  .hero-video-bg video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1;
+  }
 
-    /* ── TOP ACCENT LINE ───────────────────────────────────────────────────── */
-    .hero-top-accent {
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #004aad 0%, #1867ce 40%, transparent 100%);
-        z-index: 1;
-        pointer-events: none;
-    }
+  /* ── TOP ACCENT LINE ───────────────────────────────────────────────────── */
+  .hero-top-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--border-accent);
+    background: var(--gradient-top-accent);
+    z-index: 1;
+    pointer-events: none;
+  }
 
-    /* ── INNER LAYOUT ──────────────────────────────────────────────────────── */
+  /* ── INNER LAYOUT ──────────────────────────────────────────────────────── */
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-8xl);
+    padding: var(--spacing-xl);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1200px) {
     .hero-inner {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 120px;
-        padding: 48px 0 32px;
-        width: 100%;
-        margin: 0 auto;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--spacing-5xl);
+      padding: var(--spacing-9xl) 0 var(--spacing-2xl);
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-inner {
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 64px;
-            padding: 150px 0 32px;
-        }
-    }
+  /* ── LEFT COLUMN ───────────────────────────────────────────────────────── */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 540px;
+  }
 
-    /* ── LEFT: CONTENT ─────────────────────────────────────────────────────── */
+  @media (min-width: 1200px) {
     .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 540px;
+      align-items: flex-start;
+      padding-bottom: var(--spacing-2xl);
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-content {
-            align-items: flex-start;
-            padding-bottom: 32px;
-        }
-    }
+  /* Positioning / spacing overrides for text elements inside the hero */
+  .hero-role {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xs);
+    text-align: center;
+  }
 
-    /* Greeting — italic serif */
+  @media (min-width: 1200px) {
     .hero-role {
-        font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
-        font-size: clamp(22px, 2.8vw, 28px);
-        font-style: italic;
-        font-weight: 400;
-        color: #888780;
-        margin-bottom: 8px;
-        text-align: center;
-        line-height: 1.4;
+      text-align: left;
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-role { text-align: left; }
-    }
+  .hero-name {
+    /* line-height override: Agraham has tall ascenders/descenders that need extra room */
+    /* Do not use height: fit-content — it clips the font's visual overflow */
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    font-variant-ligatures: common-ligatures contextual-ligatures;
+    font-feature-settings:
+      "liga" 1,
+      "calt" 1;
+  }
 
-    /* H1: name */
+  @media (min-width: 1200px) {
     .hero-name {
-        font-family: 'Agraham', 'Playfair Display', Georgia, 'Times New Roman', serif;
-        font-size: clamp(48px, 8.5vw, 48px);
-        font-weight: bold;
-        line-height: 1.5;
-        letter-spacing: -2px;
-        /* Increased bottom margin for breathing room before description */
-        margin-bottom: 24px;
-        text-align: center;
-        height: fit-content;
-        font-variant-ligatures: common-ligatures contextual-ligatures;
-        font-feature-settings: "liga" 1, "calt" 1;
-        text-rendering: optimizeLegibility;
-        background: linear-gradient(
-            to right,
-            #1867ce 10%,
-            #1159b8 20%,
-            #004aad 30%,
-            #002168 40%,
-            #000000 50%,
-            #002168 60%,
-            #004aad 70%,
-            #1159b8 80%,
-            #1867ce 90%,
-            #1867ce 100%
-        );
-        background-size: 200%;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        animation: shine 8s linear infinite;
+      text-align: left;
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-name { text-align: left; }
-    }
+  .hero-description {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    max-width: 480px;
+  }
 
-    /* Description — darker and slightly larger for legibility */
+  @media (min-width: 1200px) {
     .hero-description {
-        font-size: 19px;           /* was 18px */
-        line-height: 1.85;
-        color: #3A3936;            /* was #5F5E5A — noticeably darker */
-        margin-bottom: 42px;
-        text-align: center;
-        max-width: 480px;
-        font-weight: 400;
+      text-align: left;
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-description { text-align: left; }
-    }
+  /* ── ACTIONS ROW ───────────────────────────────────────────────────────── */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+  }
 
-    /* ── ACTIONS ROW ───────────────────────────────────────────────────────── */
+  @media (min-width: 1200px) {
     .hero-actions {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
+      justify-content: flex-start;
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-actions { justify-content: flex-start; }
-    }
+  /* Lift effect on hover — hero buttons get a subtle translateY */
+  .hero-actions .btn:hover {
+    transform: translateY(-1px);
+  }
 
-    /* Primary CTA */
-    .hero-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: #004aad;
-        color: #ffffff;
-        font-size: 15px;
-        font-weight: 500;
-        padding: 11px 24px;
-        border-radius: 8px;
-        text-decoration: none;
-        letter-spacing: 0.01em;
-        transition: background 0.2s, transform 0.15s;
-    }
+  /* ── RIGHT COLUMN: PHOTO WRAPPER ───────────────────────────────────────── */
+  .hero-photo-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    z-index: 1;
+    margin: calc(-1 * var(--spacing-4xl)) calc(-1 * var(--spacing-md))
+      calc(-1 * var(--spacing-2xl)) calc(-1 * var(--spacing-md));
+  }
 
-    .hero-cta:hover {
-        background: #1867ce;
-        transform: translateY(-1px);
-    }
-
-    /* Ghost CTA */
-    .hero-cta-ghost {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: transparent;
-        color: #3A3936;
-        font-size: 15px;
-        font-weight: 500;
-        padding: 11px 20px;
-        border-radius: 8px;
-        border: 0.5px solid #D3D1C7;
-        text-decoration: none;
-        transition: border-color 0.2s, color 0.2s, transform 0.15s;
-    }
-
-    .hero-cta-ghost:hover {
-        border-color: #1867ce;
-        color: #1867ce;
-        transform: translateY(-1px);
-    }
-
-    /* ── RIGHT: PHOTO WRAPPER ──────────────────────────────────────────────── */
+  @media (min-width: 768px) {
     .hero-photo-wrapper {
-        position: relative;
-        flex-shrink: 0;
-        align-self: center;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: 400px;
-        z-index: 1;
-        margin: -48px -24px -32px -24px;
+      max-width: 500px;
     }
+  }
 
-    @media (min-width: 768px) {
-        .hero-photo-wrapper { max-width: 500px; }
+  @media (min-width: 1200px) {
+    .hero-photo-wrapper {
+      align-self: flex-end;
+      max-width: 530px;
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-photo-wrapper {
-            align-self: flex-end;
-            max-width: 530px;
-        }
-    }
+  /* ── AVAILABILITY BADGE ────────────────────────────────────────────────── */
+  /* Layout and color are hero-specific; typography uses .text-badge global */
+  .hero-availability-badge {
+    position: absolute;
+    top: 0px;
+    right: -12px;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--color-success-bg);
+    color: var(--color-success-text);
+    padding: 7px 14px 7px 10px;
+    border-radius: var(--radius-full);
+    border: var(--border-default) solid var(--color-border-success);
+    box-shadow: var(--shadow-success);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-8px);
+    animation: badgeSlideIn var(--duration-badge-in) ease-out 0.65s forwards;
+  }
 
-    /* ── AVAILABILITY BADGE ────────────────────────────────────────────────── */
-    /*
-     * Floats at the top-left of the photo wrapper.
-     * Green pill with a pulsing dot — reads as "currently available".
-     */
+  .badge-text-mobile {
+    display: inline;
+  }
+
+  .badge-text-desktop {
+    display: none;
+  }
+
+  @media (min-width: 480px) {
     .hero-availability-badge {
-        position: absolute;
-        top: 28px;
-        right: -12px;
-        z-index: 10;
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        background: #d6f5e0;
-        color: #1a7a3a;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-        padding: 7px 14px 7px 10px;
-        border-radius: 999px;
-        border: 1px solid #aee8c0;
-        box-shadow: 0 2px 12px rgba(26, 122, 58, 0.12);
-        white-space: nowrap;
-        /* Slide in slightly after the photo */
-        opacity: 0;
-        transform: translateX(-8px);
-        animation: badgeIn 0.5s ease-out 0.65s forwards;
+      display: flex;
+
     }
 
-    /* Pulsing green dot */
-    .badge-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #22c55e;
-        flex-shrink: 0;
-        position: relative;
+    .badge-text-mobile {
+      display: none;
     }
 
-    .badge-dot::after {
-        content: '';
-        position: absolute;
-        inset: -3px;
-        border-radius: 50%;
-        background: #22c55e;
-        opacity: 0.35;
-        animation: pulse-ring 2s ease-out infinite;
+    .badge-text-desktop {
+      display: inline;
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-availability-badge {
-            top: 0;
-            right: 0;
-            font-size: 13px;
-        }
+  @media (min-width: 1200px) {
+    .hero-availability-badge {
+      top: 0;
+      right: 0;
+      font-size: var(--text-size-small);
     }
+  }
 
-    /* ── SOCIAL STACK ──────────────────────────────────────────────────────── */
-    /*
-     * Vertical column of icon buttons anchored to the left edge of the
-     * photo wrapper, vertically centered. Subtle — doesn't compete with CTAs.
-     */
+  /* Pulsing dot — uses pulse-ring keyframe from globals */
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .badge-dot::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: var(--color-success);
+    opacity: 0.35;
+    animation: pulse-ring var(--duration-pulse) ease-out infinite;
+  }
+
+  /* ── SOCIAL STACK ──────────────────────────────────────────────────────── */
+  /* .social-link styles are in global.css — only positioning is local */
+  .hero-social-stack {
+    position: absolute;
+    left: -52px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  @media (min-width: 1200px) {
     .hero-social-stack {
-        position: absolute;
-        left: -52px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        /* Hide on small screens where there's no space */
-        display: none;
+      display: flex;
     }
+  }
 
-    @media (min-width: 1200px) {
-        .hero-social-stack {
-            display: flex;
-        }
-    }
+  /* ── PHOTO ─────────────────────────────────────────────────────────────── */
+  .hero-figure {
+    margin: 0;
+    display: flex;
+    width: 100%;
+  }
 
-    :global(.social-link) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        border-radius: 8px;
-        border: 0.5px solid #D3D1C7;
-        color: #5F5E5A;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(4px);
-        transition: border-color 0.2s, color 0.2s, transform 0.15s;
-    }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(var(--shadow-photo));
+  }
 
-    :global(.social-link:hover) {
-        border-color: #1867ce;
-        color: #1867ce;
-        transform: translateY(-2px);
+  /* ── REDUCED MOTION ────────────────────────────────────────────────────── */
+  /* .animate-fade-up and .text-gradient-animated are handled in global.css  */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-availability-badge {
+      animation: none;
+      opacity: 1;
+      transform: none;
     }
-
-    .hero-figure {
-        margin: 0;
-        display: flex;
-        width: 100%;
+    .badge-dot::after {
+      animation: none;
     }
-
-    .hero-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4));
-    }
-
-    /* ── ANIMATIONS ────────────────────────────────────────────────────────── */
-    .hero-animate {
-        opacity: 0;
-        transform: translateY(18px);
-        animation: heroFadeUp 0.6s ease-out forwards;
-        animation-delay: var(--delay, 0s);
-    }
-
-    @keyframes heroFadeUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes shine {
-        from { background-position: 0% center; }
-        to   { background-position: 200% center; }
-    }
-
-    @keyframes badgeIn {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes pulse-ring {
-        0%   { transform: scale(1);   opacity: 0.35; }
-        70%  { transform: scale(2.2); opacity: 0; }
-        100% { transform: scale(2.2); opacity: 0; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .hero-animate,
-        .hero-availability-badge {
-            animation: none;
-            opacity: 1;
-            transform: none;
-        }
-        .hero-name          { animation: none; }
-        .badge-dot::after   { animation: none; }
-    }
+  }
 </style>

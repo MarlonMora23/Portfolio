@@ -33,11 +33,11 @@ const opportunities = [
 
             <p class="section-overline">{i18n.CONTACT.OVERLINE}</p>
 
-            <h2 class="contact-headline">
+            <h2 class="text-headline contact-headline">
                 {i18n.CONTACT.TITLE}
             </h2>
 
-            <p class="contact-description">{i18n.CONTACT.DESCRIPTION}</p>
+            <p class="text-body contact-description">{i18n.CONTACT.DESCRIPTION}</p>
 
             <!-- Opportunities I'm open to -->
             <div class="opportunity-list">
@@ -57,7 +57,7 @@ const opportunities = [
             <div class="contact-actions">
                 <a
                     href="mailto:marlonmora@ieee.org"
-                    class="contact-cta"
+                    class="btn btn-primary"
                 >
                     {i18n.CONTACT.BUTTON}
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
@@ -129,59 +129,32 @@ const opportunities = [
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap');
 
     :global(.contact-section) {
-        background: #F7F7F5;
+        background: var(--color-bg-section);
     }
 
     /* ── LAYOUT ────────────────────────────────────────────────────────── */
     .contact-inner {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: var(--spacing-4xl);
         align-items: start;
     }
 
     @media (min-width: 1024px) {
         .contact-inner {
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: var(--spacing-6xl);
         }
     }
 
     /* ── LEFT ──────────────────────────────────────────────────────────── */
-    .section-overline {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        color: #1867ce;
-        margin-bottom: 16px;
-    }
-
-    .section-overline::before {
-        content: '';
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        background: #1867ce;
-        border-radius: 1px;
-    }
 
     .contact-headline {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(28px, 4vw, 42px);
-        font-weight: 700;
-        color: #0a0a0a;
-        line-height: 1.15;
-        margin-bottom: 20px;
+        margin-bottom: var(--spacing-lg);
     }
 
     .contact-description {
-        font-size: 16px;
-        color: #5F5E5A;
-        line-height: 1.75;
+        margin-top: var(--spacing-md);
         margin-bottom: 28px;
         max-width: 440px;
     }
@@ -199,7 +172,7 @@ const opportunities = [
         align-items: center;
         gap: 10px;
         font-size: 14px;
-        color: #2C2C2A;
+        color: var(--color-text-label);
         font-weight: 500;
     }
 
@@ -211,7 +184,7 @@ const opportunities = [
         height: 30px;
         background: #E6F1FB;
         border-radius: 7px;
-        color: #1867ce;
+        color: var(--color-primary);
         flex-shrink: 0;
     }
 
@@ -219,32 +192,32 @@ const opportunities = [
     .contact-actions {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: var(--spacing-md);
         flex-wrap: wrap;
     }
 
     .contact-cta {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        background: #004aad;
-        color: #ffffff;
-        font-size: 15px;
+        gap: var(--spacing-xs);
+        background: var(--color-primary-dark);
+        color: var(--color-bg-white);
+        font-size: var(--text-size-body);
         font-weight: 500;
         padding: 12px 26px;
-        border-radius: 8px;
+        border-radius: var(--radius-sm);
         text-decoration: none;
-        transition: background 0.2s, transform 0.15s;
+        transition: background var(--transition-normal), transform var(--transition-fast);
     }
 
     .contact-cta:hover {
-        background: #1867ce;
+        background: var(--color-primary);
         transform: translateY(-1px);
     }
 
     .contact-socials {
         display: flex;
-        gap: 8px;
+        gap: var(--spacing-xs);
     }
 
     :global(.contact-social-link) {
@@ -253,23 +226,23 @@ const opportunities = [
         justify-content: center;
         width: 46.5px;
         height: 46.5px;
-        border-radius: 8px;
-        border: 0.5px solid #D3D1C7;
-        color: #5F5E5A;
-        background: #ffffff;
-        transition: border-color 0.2s, color 0.2s, transform 0.15s;
+        border-radius: var(--radius-sm);
+        border: var(--border-thin) solid var(--color-border-default);
+        color: var(--color-text-tertiary);
+        background: var(--color-bg-white);
+        transition: border-color var(--transition-normal), color var(--transition-normal), transform var(--transition-fast);
     }
 
     :global(.contact-social-link:hover) {
-        border-color: #1867ce;
-        color: #1867ce;
+        border-color: var(--color-primary);
+        color: var(--color-primary);
         transform: translateY(-2px);
     }
 
     /* ── RIGHT CARD ────────────────────────────────────────────────────── */
     .contact-card {
-        background: #ffffff;
-        border: 0.5px solid #E8E6E0;
+        background: var(--color-bg-white);
+        border: var(--border-thin) solid var(--color-border-light);
         border-radius: 16px;
         overflow: hidden;
         align-self: center;
@@ -278,10 +251,10 @@ const opportunities = [
     .contact-card-header {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: var(--spacing-xs);
         padding: 16px 24px;
-        border-bottom: 0.5px solid #E8E6E0;
-        background: #F7F7F5;
+        border-bottom: var(--border-thin) solid var(--color-border-light);
+        background: var(--color-bg-section);
     }
 
     /* Animated availability pulse */
@@ -289,7 +262,7 @@ const opportunities = [
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: #22c55e;
+        background: var(--color-success);
         position: relative;
         flex-shrink: 0;
     }
@@ -299,9 +272,9 @@ const opportunities = [
         position: absolute;
         inset: -3px;
         border-radius: 50%;
-        border: 1.5px solid #22c55e;
+        border: 1.5px solid var(--color-success);
         opacity: 0;
-        animation: pulse 2.5s ease-in-out infinite;
+        animation: pulse var(--duration-pulse) ease-in-out infinite;
     }
 
     @keyframes pulse {
@@ -311,7 +284,7 @@ const opportunities = [
     }
 
     .availability-text {
-        font-size: 12px;
+        font-size: var(--text-size-xs);
         font-weight: 600;
         color: #16a34a;
         letter-spacing: 0.03em;
@@ -328,49 +301,49 @@ const opportunities = [
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        gap: 16px;
+        gap: var(--spacing-md);
         padding: 11px 0;
-        border-bottom: 0.5px solid #F0EEE8;
+        border-bottom: var(--border-thin) solid #F0EEE8;
     }
 
     .contact-detail-row:last-child { border-bottom: none; }
 
     .contact-detail-label {
-        font-size: 11px;
+        font-size: var(--text-size-xxs);
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: #B4B2A9;
+        color: var(--color-text-tertiary);
         flex-shrink: 0;
     }
 
     .contact-detail-value {
         font-size: 14px;
-        color: #2C2C2A;
+        color: var(--color-text-label);
         font-weight: 500;
         text-align: right;
     }
 
     .contact-detail-link {
-        color: #1867ce;
+        color: var(--color-primary);
         text-decoration: none;
-        transition: color 0.15s;
+        transition: color var(--transition-fast);
     }
 
-    .contact-detail-link:hover { color: #004aad; }
+    .contact-detail-link:hover { color: var(--color-primary-dark); }
 
     /* Personal note */
     .contact-note {
         padding: 16px 24px;
-        border-top: 0.5px solid #E8E6E0;
-        background: #F7F7F5;
+        border-top: var(--border-thin) solid var(--color-border-light);
+        background: var(--color-bg-section);
     }
 
     .contact-note-text {
-        font-family: 'Playfair Display', Georgia, serif;
+        font-family: var(--font-serif);
         font-style: italic;
         font-size: 14px;
-        color: #888780;
+        color: var(--color-text-muted);
         line-height: 1.6;
     }
 

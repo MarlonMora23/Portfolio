@@ -1,0 +1,10 @@
+{
+  "SKILLS": {
+    "OVERLINE": "Tech stack",
+    "TITLE": "Skills & Tools",
+    "GROUP_ML":"Machine Learning",
+    "GROUP_BACKEND":"Backend Development",
+    "GROUP_FRONTEND":"Frontend Development",
+    "GROUP_DEVOPS":"DevOps"
+  }
+}

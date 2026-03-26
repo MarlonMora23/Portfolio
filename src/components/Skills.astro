@@ -55,46 +55,46 @@ const skillGroups = [
 
 <style>
     :global(.skills-section) {
-        background: #F7F7F5;
+        background: var(--color-bg-section);
     }
 
     .skills-header {
-        margin-bottom: 40px;
+        margin-bottom: var(--spacing-3xl);
     }
 
     .section-overline {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        font-size: 11px;
+        gap: var(--spacing-xs);
+        font-size: var(--text-size-xxs);
         font-weight: 600;
         letter-spacing: 0.13em;
         text-transform: uppercase;
-        color: #1867ce;
-        margin-bottom: 12px;
+        color: var(--color-primary);
+        margin-bottom: var(--spacing-sm);
     }
 
     .section-overline::before {
         content: '';
         display: inline-block;
         width: 20px;
-        height: 2px;
-        background: #1867ce;
+        height: var(--border-accent);
+        background: var(--color-primary);
         border-radius: 1px;
     }
 
     .section-headline {
-        font-size: clamp(22px, 3vw, 30px);
+        font-size: var(--text-size-h3);
         font-weight: 700;
-        color: #0a0a0a;
-        line-height: 1.2;
+        color: var(--color-text-dark);
+        line-height: var(--line-height-tight);
     }
 
     /* ── GRID ──────────────────────────────────────────────────────────── */
     .skills-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: var(--gap-skill-grid);
     }
 
     @media (min-width: 640px) {
@@ -107,15 +107,15 @@ const skillGroups = [
 
     /* ── GROUP CARD ────────────────────────────────────────────────────── */
     .skill-group {
-        background: #ffffff;
-        border: 0.5px solid #E8E6E0;
-        border-radius: 12px;
+        background: var(--color-bg-white);
+        border: var(--border-thin) solid var(--color-border-light);
+        border-radius: var(--radius-md);
         padding: 18px 20px;
-        transition: border-color 0.2s, transform 0.2s;
+        transition: border-color var(--transition-normal), transform var(--transition-normal);
     }
 
     .skill-group:hover {
-        border-color: #B5D4F4;
+        border-color: var(--color-border-primary);
         transform: translateY(-2px);
     }
 
@@ -123,16 +123,16 @@ const skillGroups = [
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 8px;
+        gap: var(--spacing-xs);
         margin-bottom: 14px;
     }
 
     .skill-group-label {
-        font-size: 12px;
+        font-size: var(--text-size-xs);
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: #2C2C2A;
+        color: var(--color-text-label);
     }
 
     .skill-level-badge {
@@ -154,20 +154,20 @@ const skillGroups = [
 
     .skill-tag {
         font-family: var(--font-mono, monospace);
-        font-size: 12px;
+        font-size: var(--text-size-xs);
         font-weight: 500;
         padding: 4px 10px;
         border-radius: 6px;
         background: #E6F1FB;
         color: #0C447C;
-        border: 0.5px solid #B5D4F4;
-        transition: background 0.15s, color 0.15s;
+        border: var(--border-thin) solid var(--color-border-primary);
+        transition: background var(--transition-fast), color var(--transition-fast);
     }
 
     .skill-tag:hover {
-        background: #004aad;
-        color: #ffffff;
-        border-color: #004aad;
+        background: var(--color-primary-dark);
+        color: var(--color-bg-white);
+        border-color: var(--color-primary-dark);
     }
 
     /* ── SCROLL REVEAL ─────────────────────────────────────────────────── */

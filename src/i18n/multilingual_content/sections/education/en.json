@@ -1,0 +1,28 @@
+{
+  "EDUCATION": {
+    "OVERLINE": "Education & Achievements",
+    "TITLE": "Education and Academic Path",
+    "PRESENT": "Present",
+    "IN_PROGRESS": "In progress",
+    "GPA": "Average",
+    "SCHOLARSHIP": "Academic excellence scholarship",
+    "BLOCK_EDUCATION": "Academic training",
+    "BLOCK_CERTS": "Certifications",
+    "BLOCK_ACHIEVEMENTS": "Notable achievements",
+    "DEGREE_SYSTEMS": "Systems Engineering",
+    "DEGREE_BUSINESS": "Business Administration",
+    "CERT_CAT_LANGUAGE": "Languages",
+    "CERT_CAT_METHODOLOGY": "Methodology",
+    "CERT_CAT_SECURITY": "Cybersecurity",
+    "ACH_SCHOLARSHIP_TITLE": "Scholarship for Academic Excellence",
+    "ACH_SCHOLARSHIP_DESC": "Average of 4.8/5.0 — Universidad de San Buenaventura Cali, 2026-1",
+    "ACH_PAPER_TITLE": "Co-author — Applied Artificial Intelligence (Taylor & Francis)",
+    "ACH_PAPER_DESC": "Exploration and interpretability of deep learning models for EEG analysis in alcoholism detection. Paper in drafting.",
+    "ACH_SPEAKER_TITLE": "Speaker — Seminar «Goodbye to the token»",
+    "ACH_SPEAKER_DESC": "Presentation of methodology and findings on efficient tokenization of inputs in LLMs. Universidad de San Buenaventura Cali.",
+    "ACH_IEEE_TITLE": "Vice President — IEEE Branch USB Cali",
+    "ACH_IEEE_DESC": "Support for academic and inter-institutional processes with universities such as Santiago de Cali.",
+    "ACH_HACKATHON_TITLE": "Participant in Hackathons",
+    "ACH_HACKATHON_DESC": "Experience in development competitions under pressure and teamwork."
+  }
+}

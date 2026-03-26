@@ -1,0 +1,19 @@
+{
+  "ABOUT": {
+    "TITLE": "Sobre mi",
+    "STATEMENT": "Donde la lógica de negocio y el código convergen.",
+    "PARAGRAPH1": "Soy estudiante de la Universidad de San Buenaventura de Cali, donde comencé mis estudios en Administración de Negocios en el segundo semestre de 2021. En el segundo semestre de 2022, decidí ampliar mis horizontes académicos al optar por una doble titulación en Ingeniería de Sistemas. Esta decisión me ha brindado una perspectiva integral, combinando la lógica empresarial con el uso de herramientas informáticas para la resolución efectiva de problemas.",
+    "PARAGRAPH2": "Mi formación académica me ha permitido desarrollar habilidades en programación, así como en la toma de decisiones estratégicas y la gestión de recursos. Mi objetivo es integrar mis conocimientos técnicos y empresariales para contribuir al desarrollo de soluciones innovadoras en el campo de la tecnología.",
+    "PARAGRAPH3": "Mi lenguaje de programación favorito es Python, con el cual tengo mayor experiencia. Además, tengo conocimientos en JavaScript, C++ y Java, y he resuelto problemas con estos lenguajes. También he trabajado con frameworks web como Astro, Django y Angular, lo que me ha permitido desarrollar aplicaciones robustas y eficientes.",
+    "COL_ACADEMIC_LABEL": "Trayectoria académica",
+    "COL_HIGHLIGHTS_LABEL": "Lo que me define",
+    "HIGHLIGHT_1_TITLE": "Doble titulación",
+    "HIGHLIGHT_1_DESC": "Administración de Negocios + Ingeniería de Sistemas, USB Cali",
+    "HIGHLIGHT_2_TITLE": "Enfoque técnico-estratégico",
+    "HIGHLIGHT_2_DESC": "Combino decisiones de negocio con soluciones de software",
+    "HIGHLIGHT_3_TITLE": "Proyectos reales",
+    "HIGHLIGHT_3_DESC": "Aplicaciones web completas usando tecnologías modernas",
+    "SKILLS_HEADER": "Habilidades y Tecnologías",
+    "SKILLS_DESC": "Herramientas que uso para convertir ideas en sistemas."
+  }
+}
