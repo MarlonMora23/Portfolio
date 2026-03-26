@@ -18,6 +18,7 @@ const getProjectData = (projectId: string) => {
 
 const projects = baseProjects.map((p) => ({
   ...p,
+  title: getProjectData(p.id)?.title || "",
   subtitle: getProjectData(p.id)?.subtitle || "",
   description: getProjectData(p.id)?.description || "",
   role: getProjectData(p.id)?.role || null,
@@ -87,7 +88,7 @@ const statusConfig = {
               </div>
 
               <h3 class="project-title project-title--featured">{p.title}</h3>
-              <p class="project-subtitle">{p.subtitle}</p>
+              <p class="project-desc">{p.description}</p>
 
               <div class="project-actions">
                 {p.links.live && (
@@ -377,14 +378,6 @@ const statusConfig = {
 
   .project-title--featured {
     font-size: var(--text-size-h3);
-  }
-
-  .project-subtitle {
-    font-size: var(--text-size-small);
-    color: var(--color-text-tertiary);
-    line-height: var(--line-height-relaxed);
-    margin-bottom: var(--spacing-md);
-    flex: 1;
   }
 
   .project-desc {

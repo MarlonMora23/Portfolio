@@ -782,3 +782,63 @@
   font-style: italic;
   color: var(--color-text-muted);
 }
+
+/* ── SCREENSHOT CARD ─────────────────────────────────────────────────── */
+
+.screenshot-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-light, #e2e8f0);
+  background: var(--color-bg-section, #f8fafc);
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
+}
+ 
+.screenshot-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+ 
+/* Hover overlay */
+.screenshot-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease;
+}
+ 
+.screenshot-zoom-icon {
+  opacity: 0;
+  transform: scale(0.75);
+  transition: opacity 0.2s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary, #0f172a);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
+}
+ 
+.screenshot-item:hover img {
+  transform: scale(1.04);
+}
+ 
+.screenshot-item:hover .screenshot-overlay {
+  background: rgba(15, 23, 42, 0.2);
+}
+ 
+.screenshot-item:hover .screenshot-zoom-icon {
+  opacity: 1;
+  transform: scale(1);
+}

@@ -18,8 +18,7 @@
       {
         "id": "neuroscreen",
         "title": "NeuroScreen",
-        "subtitle": "Aplicación web full-stack para la detección temprana de alcoholismo mediante análisis de registros EEG y modelos de machine learning.",
-        "description": "Desarrollada en Flask, NeuroScreen es una aplicación web que permite la detección temprana de trastornos por consumo de alcohol mediante el análisis de datos EEG y machine learning. La aplicación ofrece funcionalidades como autenticación de usuarios, gestión de pacientes, carga de archivos EEG para predicciones en tiempo real, y un dashboard con visualización de interpretabilidad.",
+        "description": "Aplicación web full-stack para la detección temprana de alcoholismo mediante análisis de registros EEG y modelos de machine learning. Desarrollada en Flask, NeuroScreen es una aplicación web que permite la detección temprana de trastornos por consumo de alcohol mediante el análisis de datos EEG y machine learning. La aplicación ofrece funcionalidades como autenticación de usuarios, gestión de pacientes, carga de archivos EEG para predicciones en tiempo real, y un dashboard con visualización de interpretabilidad.",
         "role": "Desarrollador full-stack e investigador principal",
         "problem": "Necesidad de herramientas clínicas accesibles para detección temprana de trastornos por consumo de alcohol usando biomarcadores neurológicos.",
         "features": [
@@ -29,17 +28,17 @@
           "Dashboard con visualización de interpretabilidad",
           "Responsive design con indicadores de carga"
         ],
-        "status": "completed"
+        "status": "in-progress"
       },
       {
         "id": "leetcode-clone",
         "title": "Clon de LeetCode",
-        "subtitle": "Plataforma de ejercicios de programación inspirada en LeetCode",
-        "description": "Una aplicación web para probar ejercicios, creada con Flask e inspirada en LeetCode. Permite a los usuarios resolver problemas de programación, enviar soluciones y ver sus resultados.",
-        "role": "Desarrollador full-stack — proyecto individual",
+        "description": "Plataforma web de ejercicios de programación inspirada en LeetCode. Desarrollada con Flask, permite a los usuarios resolver problemas de programación, enviar soluciones y ver sus resultados.",
+        "role": "Desarrollador full-stack — proyecto en equipos de 3 personas",
         "problem": "Crear un entorno local de práctica de algoritmos con editor de código y evaluación automática de soluciones.",
         "features": [
           "Lista de ejercicios con páginas individuales",
+          "Practicar ejercicios con Python, Ruby o Java",
           "Editor de código con submit y evaluación automática",
           "Autenticación y registro de usuarios",
           "Visualización de resultados de tests"
@@ -49,8 +48,7 @@
       {
         "id": "calinema",
         "title": "CaliNema",
-        "subtitle": "Cartelera de cines de Cali en tiempo real",
-        "description": "Desarrollada en Astro, CaliNema es la página web prototipo que permite mostrar todas las películas y funciones del día disponibles en los cines de la ciudad de Cali. La información de las películas es obtenida por la API de CaliNema.",
+        "description": "Encuentra las películas y funciones de todos los cines de Cali en un solo lugar. Desarrollada en Astro, CaliNema es la página web prototipo que permite mostrar todas las películas y funciones del día disponibles en los cines de la ciudad de Cali. La información de las películas es obtenida por la API de CaliNema.",
         "role": "Desarrollador full-stack",
         "problem": "Necesidad de una plataforma centralizada para consultar estrenos y horarios de cines locales en tiempo real.",
         "features": [
@@ -64,7 +62,6 @@
       {
         "id": "calinema-api",
         "title": "API de CaliNema",
-        "subtitle": "Backend para obtener cartelera de cines de Cali",
         "description": "Desarrollada en Django REST Framework, la API de CaliNema realiza web scraping de las páginas de los cinco cines de la ciudad de Cali para obtener todas las películas y funciones disponibles.",
         "role": "Desarrollador backend",
         "problem": "Centralizar y normalizar datos de carteleras de cines dispersos en múltiples sitios web.",
@@ -78,11 +75,10 @@
       },
       {
         "id": "pokedex",
-        "title": "Pokédex 3D",
-        "subtitle": "Explorador interactivo con modelos 3D",
-        "description": "Aplicación web desarrollada con Vite y React que consume la PokéAPI para mostrar información detallada de distintos Pokémon. Integra React Three Fiber para renderizar modelos y elementos en 3D, ofreciendo una experiencia visual dinámica.",
+        "title": "Pokédex",
+        "description": "Explorador interactivo de Pokémon. Esta aplicación web fue desarrollada con Vite y React, consume la PokéAPI para mostrar información detallada de distintos Pokémon. Integra React Three Fiber para renderizar modelos y elementos en 3D, ofreciendo una experiencia visual dinámica.",
         "role": "Desarrollador full-stack",
-        "problem": "Crear una experiencia interactiva de exploración de Pokémon con visualización 3D moderna.",
+        "problem": "Crear una experiencia interactiva de exploración de Pokémon con visualización de elementos en 3D.",
         "features": [
           "Renderizado 3D con Three.js y React Three Fiber",
           "Búsqueda y filtrado de Pokémon",
@@ -94,8 +90,7 @@
       {
         "id": "radioapp",
         "title": "RadioApp",
-        "subtitle": "Explorador de estaciones de radio globales",
-        "description": "Aplicación web construida con Vite y React que utiliza la API pública de Radio Browser para mostrar estaciones de radio de todo el mundo. Destaca las emisoras de Colombia en la página principal.",
+        "description": "Explorador de estaciones de radio globales, desarrollada con Vite y React, utiliza la API pública de Radio Browser para mostrar estaciones de radio de todo el mundo. Destaca las emisoras de Colombia en la página principal.",
         "role": "Desarrollador full-stack",
         "problem": "Proporcionar una interfaz centralizada y sencilla para descubrir y reproducir emisoras de radio en vivo.",
         "features": [
@@ -109,8 +104,7 @@
       {
         "id": "xrays",
         "title": "Clasificación de Radiografías",
-        "subtitle": "Sistema de clasificación automática con deep learning",
-        "description": "Repositorio con un proyecto de machine learning enfocado en la clasificación automática de radiografías de tórax utilizando redes neuronales convolucionales (CNN) y modelos de transferencia de aprendizaje (VGG16 y ResNet50).",
+        "description": "Repositorio con un proyecto de machine learning enfocado en la exploración de diferentes técnicas de clasificación automática de radiografías de tórax utilizando redes neuronales convolucionales (CNN) y modelos de transferencia de aprendizaje (VGG16 y ResNet50).",
         "role": "Científico de datos - Desarrollador ML",
         "problem": "Automatizar la detección y clasificación de patologías en radiografías de tórax para segundas opiniones clínicas.",
         "features": [
@@ -124,8 +118,7 @@
       {
         "id": "menuusb",
         "title": "Menú USB",
-        "subtitle": "Portal de menús de tiendas universitarias",
-        "description": "Desarrollado en Django, MenuUSB es una página web que permite consultar todos los menús de las tiendas de la Universidad San Buenaventura en un solo lugar, facilitando la consulta diaria.",
+        "description": "Desarrollado en Django, MenuUSB es una página web prototipo, con información no oficial que permite consultar todos los menús de las tiendas de la Universidad San Buenaventura en un solo lugar, facilitando la consulta diaria de los estudiantes, directivos y trabajadores de la universidad.",
         "role": "Desarrollador full-stack",
         "problem": "Centralizar información de menús distribuidos entre múltiples tiendas universitarias.",
         "features": [
@@ -139,8 +132,7 @@
       {
         "id": "democracia-elite",
         "title": "Democracia de Élite",
-        "subtitle": "Análisis educativo sobre sistemas democráticos",
-        "description": "Página web desarrollada como proyecto académico sobre constitución y democracia. Describe características y proporciona ejemplos de what elite democracy es, con contenido educativo estructurado.",
+        "description": "Página web desarrollada como proyecto académico de la asignatura constitución y democracia. Describe características y proporciona ejemplos de lo que signafica la democracia de élite, con contenido educativo estructurado.",
         "role": "Desarrollador web educativo",
         "problem": "Presentar conceptos complejos de ciencia política de manera clara y accesible para estudiantes.",
         "features": [

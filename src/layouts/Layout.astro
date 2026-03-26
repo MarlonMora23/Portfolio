@@ -22,7 +22,7 @@ const { currentLocale } = Astro;
   <meta name="description" content={description} />
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://marlonmora.vercel.app" />
+  <link rel="canonical" href={Astro.url.href} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -30,7 +30,7 @@ const { currentLocale } = Astro;
   <!-- Open Graph -->
   <meta property="og:title" content={title + " | Marlon Mora"} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content="https://marlonmora.vercel.app/assets/web_portada.webp" />
+  <meta property="og:image" content="https://marlonmora.vercel.app/assets/profile/web_portada.webp" />
   <meta property="og:url" content="https://marlonmora.vercel.app" />
   <meta property="og:type" content="website" />
 
