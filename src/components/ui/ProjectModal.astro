@@ -831,7 +831,9 @@ const statusConfig = {
   async function openModal(p) {
     const st = statusConfig[p.status] || statusConfig["in-progress"];
  
-    document.getElementById("modal-img").src = p.image.src ?? p.image;
+    const modalImg = document.getElementById("modal-img");
+    modalImg.src = p.image.src ?? p.image;
+    modalImg.loading = "lazy";
  
     const statusEl = document.getElementById("modal-status");
     statusEl.innerHTML = `<span class="status-dot" style="background:${st.dot}"></span>${st.label}`;

@@ -3,6 +3,7 @@ import Section from "@/components/layout/Section.astro";
 import { projects as baseProjects } from "@/data/projects";
 import { getI18n } from "@/i18n";
 import { getProjectById } from "@/i18n/helpers";
+import { Image } from "astro:assets";
 
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
@@ -63,10 +64,14 @@ const statusConfig = {
               tabindex="0"
               aria-label={`Ver detalles de ${p.title}`}
             >
-              <img
+              <Image
                 src={p.image}
                 alt={p.imageAlt}
+                width={1600}
+                height={900}
                 class="project-img"
+                quality="high"
+                loading="lazy"
               />
               <div class="project-overlay" aria-hidden="true">
                 <span class="overlay-cta">{i18n.PROYECTS.VIEW_DETAILS} →</span>
@@ -148,10 +153,14 @@ const statusConfig = {
               tabindex="0"
               aria-label={`Ver detalles de ${p.title}`}
             >
-              <img
+              <Image
                 src={p.image}
                 alt={p.imageAlt}
+                width={1600}
+                height={900}
                 class="project-img"
+                quality="high"
+                loading="lazy"
               />
               <div class="project-overlay" aria-hidden="true">
                 <span class="overlay-cta">{i18n.PROYECTS.VIEW_DETAILS} →</span>

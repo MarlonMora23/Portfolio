@@ -4,6 +4,7 @@ import LinkedInIcon from "@/Icons/LinkedInIcon.astro";
 import GithubIcon from "@/Icons/GithubIcon.astro";
 import SocialIcon from "@/components/ui/SocialIcons.astro";
 import { getI18n } from "@/i18n";
+import { Image } from "astro:assets";
 
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
@@ -113,10 +114,14 @@ const i18n = getI18n({ currentLocale });
       </nav>
 
       <figure class="hero-figure">
-        <img
-          class="hero-img"
+        <Image
           src="/assets/profile/MarlonMoraPhoto.webp"
           alt="Marlon Mora"
+          width={600}
+          height={600}
+          format="webp"
+          quality="high"
+          class="hero-img"
           loading="eager"
         />
       </figure>
