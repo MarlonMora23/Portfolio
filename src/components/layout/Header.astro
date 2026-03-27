@@ -25,7 +25,7 @@ const translatePath = useTranslatedPath(lang);
 
         <!-- Logo -->
         <div class="flex md:flex-grow md:basis-0">
-            <a href="/">
+            <a href="#hero">
                 <img
                     src="/assets/profile/MarlonMoraLogo.svg"
                     alt="Marlon Mora Icon"
@@ -51,9 +51,9 @@ const translatePath = useTranslatedPath(lang);
 
         <!-- Nav links (desktop) -->
         <nav class="hidden md:flex md:flex-row md:gap-x-10">
-            <a href="#hero"      class="nav-link text-body" data-section="hero">{translation("nav.home")}</a>
             <a href="#about"     class="nav-link text-body" data-section="about">{translation("nav.about")}</a>
             <a href="#proyects"  class="nav-link text-body" data-section="proyects">{translation("nav.proyects")}</a>
+            <a href="#education" class="nav-link text-body" data-section="education">{translation("nav.education")}</a>
             <a href="#contact"   class="nav-link text-body" data-section="contact">{translation("nav.contact")}</a>
         </nav>
 
@@ -78,16 +78,16 @@ const translatePath = useTranslatedPath(lang);
             </div>
 
             <nav class="mobile-nav">
-                <a href="#hero"     class="mobile-nav-link text-body">
-                    {translation("nav.home")}
-                    <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
-                </a>
                 <a href="#about"    class="mobile-nav-link text-body">
                     {translation("nav.about")}
                     <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
                 </a>
                 <a href="#proyects" class="mobile-nav-link text-body">
                     {translation("nav.proyects")}
+                    <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
+                </a>
+                <a href="#education" class="mobile-nav-link text-body">
+                    {translation("nav.education")}
                     <img src="/assets/icons/right-arrow.svg" alt="" loading="eager" width={24} height={24} />
                 </a>
                 <a href="#contact"  class="mobile-nav-link text-body">
@@ -259,9 +259,9 @@ const translatePath = useTranslatedPath(lang);
         const sections = document.querySelectorAll("section[id], div[id='hero'], div[id='about'], div[id='proyects'], div[id='contact']");
         const navLinks = document.querySelectorAll<HTMLAnchorElement>(".nav-link[data-section]");
 
-        function setActiveLink(sectionId: string) {
+        function setActiveLink(sectionId?: string) {
             navLinks.forEach((link) => {
-                const isActive = link.dataset.section === sectionId;
+                const isActive = sectionId ? link.dataset.section === sectionId : false;
                 link.classList.toggle("active", isActive);
             });
         }
@@ -279,12 +279,14 @@ const translatePath = useTranslatedPath(lang);
                     }
                 });
 
-                // Activar el link de la sección más visible
+                // Activar el link de la sección más visible o quitar active si no hay ninguna
                 if (visibleSections.size > 0) {
                     const mostVisible = [...visibleSections.entries()].reduce((a, b) =>
                         a[1] > b[1] ? a : b
                     );
                     setActiveLink(mostVisible[0]);
+                } else {
+                    setActiveLink();
                 }
             },
             {

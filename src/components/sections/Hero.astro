@@ -14,12 +14,15 @@ const i18n = getI18n({ currentLocale });
   <!-- Ambient video background -->
   <div class="hero-video-bg" aria-hidden="true">
     <video
+      id="hero-bg-video"
       autoplay
       muted
       loop
       playsinline
-      preload="metadata"
-      disablepictureinpicture
+      webkit-playsinline="true"
+      preload="auto"
+      disablepictureinpicture="true"
+      poster="/assets/background/background_vid_poster.webp"
       aria-hidden="true"
     >
       <source src="/assets/background/background_vid.webm" type="video/webm" />
@@ -27,7 +30,7 @@ const i18n = getI18n({ currentLocale });
   </div>
 
   <!-- Blue accent line at the very top -->
-  <div class="hero-top-accent" aria-hidden="true"></div>
+  <!-- <div class="hero-top-accent" aria-hidden="true"></div> -->
 
   <div class="hero-inner">
     <!-- ── LEFT COLUMN ─────────────────────────────── -->
@@ -90,7 +93,9 @@ const i18n = getI18n({ currentLocale });
         aria-label={i18n.HERO.OVERLINE}
       >
         <span class="badge-dot" aria-hidden="true"></span>
-        <span class="badge-text badge-text-mobile">{i18n.HERO.OVERLINE_MOBILE}</span>
+        <span class="badge-text badge-text-mobile"
+          >{i18n.HERO.OVERLINE_MOBILE}</span
+        >
         <span class="badge-text badge-text-desktop">{i18n.HERO.OVERLINE}</span>
       </div>
 
@@ -153,6 +158,29 @@ const i18n = getI18n({ currentLocale });
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
+    opacity: 0.1;
+  }
+
+  .hero-video-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/background/background_vid_poster.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .hero-video-bg.video-playing::before,
+  .hero-video-bg.loading::before {
+    visibility: hidden;
+  }
+
+  .hero-video-bg.video-fallback::before {
+    visibility: visible;
   }
 
   .hero-video-bg video {
@@ -161,7 +189,17 @@ const i18n = getI18n({ currentLocale });
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.1;
+    opacity: 1;
+    visibility: hidden;
+  }
+
+  .hero-video-bg.video-playing video {
+    visibility: visible;
+  }
+
+  .hero-video-bg.video-fallback video {
+    opacity: 0;
+    visibility: hidden;
   }
 
   /* ── TOP ACCENT LINE ───────────────────────────────────────────────────── */
@@ -338,7 +376,6 @@ const i18n = getI18n({ currentLocale });
   @media (min-width: 480px) {
     .hero-availability-badge {
       display: flex;
-
     }
 
     .badge-text-mobile {
@@ -424,3 +461,34 @@ const i18n = getI18n({ currentLocale });
     }
   }
 </style>
+
+<script>
+  const video = document.getElementById("hero-bg-video") as HTMLVideoElement;
+  const heroVideoBg = document.querySelector(".hero-video-bg") as HTMLElement;
+
+  if (heroVideoBg) {
+    heroVideoBg.classList.add("loading");
+  }
+
+  if (video && heroVideoBg) {
+    // Intentar reproducir manualmente (refuerza autoplay en iOS)
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          heroVideoBg.classList.remove("loading", "video-fallback");
+          heroVideoBg.classList.add("video-playing");
+        })
+        .catch(() => {
+          heroVideoBg.classList.remove("loading", "video-playing");
+          heroVideoBg.classList.add("video-fallback");
+        });
+    }
+
+    video.addEventListener("error", () => {
+      heroVideoBg.classList.remove("loading", "video-playing");
+      heroVideoBg.classList.add("video-fallback");
+    });
+  }
+</script>

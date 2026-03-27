@@ -11,6 +11,7 @@ export const languages = {
       'nav.home': 'Inicio',
       'nav.about': 'Sobre mi',
       'nav.proyects': 'Proyectos',
+      'nav.education': 'Educación',
       'nav.contact': 'Contacto'
     },
     en: {
@@ -18,6 +19,7 @@ export const languages = {
       'nav.home': 'Home',
       'nav.about': 'About',
       'nav.proyects': 'Proyects',
+      'nav.education': 'Education',
       'nav.contact': 'Contact'
     },
   } as const;

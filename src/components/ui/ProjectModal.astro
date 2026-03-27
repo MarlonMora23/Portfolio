@@ -1,36 +1,61 @@
 ---
 import { getI18n } from "@/i18n";
 import { techIconMap } from "@/data/techIcons";
- 
+
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
- 
+
 const statusConfig = {
-  completed: { label: i18n.COMMON?.STATUS_COMPLETED || "Completed", dot: "#22c55e", bg: "#f0fdf4", text: "#15803d" },
-  "in-progress": { label: i18n.COMMON?.STATUS_IN_PROGRESS || "In progress", dot: "#f59e0b", bg: "#fffbeb", text: "#b45309" },
-  maintenance: { label: i18n.COMMON?.STATUS_MAINTENANCE || "Maintenance", dot: "#3b82f6", bg: "#eff6ff", text: "#1d4ed8" },
+  completed: {
+    label: i18n.COMMON?.STATUS_COMPLETED || "Completed",
+    dot: "#22c55e",
+    bg: "#f0fdf4",
+    text: "#15803d",
+  },
+  "in-progress": {
+    label: i18n.COMMON?.STATUS_IN_PROGRESS || "In progress",
+    dot: "#f59e0b",
+    bg: "#fffbeb",
+    text: "#b45309",
+  },
+  maintenance: {
+    label: i18n.COMMON?.STATUS_MAINTENANCE || "Maintenance",
+    dot: "#3b82f6",
+    bg: "#eff6ff",
+    text: "#1d4ed8",
+  },
 };
 ---
- 
-<div class="modal-backdrop" id="proj-modal" aria-modal="true" role="dialog" hidden>
+
+<div
+  class="modal-backdrop"
+  id="proj-modal"
+  aria-modal="true"
+  role="dialog"
+  hidden
+>
   <div class="modal-panel">
- 
-    <!-- CLOSE -->
-    <button class="modal-close" id="modal-close" aria-label="Cerrar">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
- 
+    <!-- CLOSE — sticky wrapper que no ocupa altura -->
+    <div class="modal-close-wrapper">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path
+            d="M1 1L13 13M13 1L1 13"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+
     <!-- HERO -->
     <div class="modal-hero">
       <img id="modal-img" class="modal-hero-img" alt="" />
       <div class="modal-hero-gradient"></div>
     </div>
- 
+
     <!-- BODY -->
     <div class="modal-body">
- 
       <!-- HEADER -->
       <div class="modal-header">
         <div class="modal-header-meta">
@@ -43,16 +68,14 @@ const statusConfig = {
         </div>
         <div class="modal-links-top" id="modal-links"></div>
       </div>
- 
+
       <!-- DIVIDER -->
       <div class="modal-divider"></div>
- 
+
       <!-- CONTENT GRID (2 cols) -->
       <div class="modal-content-grid">
- 
         <!-- LEFT -->
         <div class="modal-content-left">
- 
           <!-- PROBLEM -->
           <div id="modal-problem-wrap" class="modal-section">
             <p class="text-label">
@@ -63,7 +86,7 @@ const statusConfig = {
               <p id="modal-problem"></p>
             </div>
           </div>
- 
+
           <!-- ROLE -->
           <div id="modal-role-wrap" class="modal-section">
             <p class="text-label">
@@ -72,7 +95,7 @@ const statusConfig = {
             </p>
             <p id="modal-role" class="modal-body-text"></p>
           </div>
- 
+
           <!-- FEATURES -->
           <div id="modal-features-wrap" class="modal-section">
             <p class="text-label">
@@ -81,21 +104,20 @@ const statusConfig = {
             </p>
             <ul id="modal-features" class="features-list"></ul>
           </div>
- 
         </div>
- 
+
         <!-- RIGHT -->
         <div class="modal-content-right">
- 
           <!-- STACK -->
           <div id="modal-stack" class="modal-section modal-stack-section"></div>
- 
         </div>
- 
       </div>
- 
+
       <!-- SCREENSHOTS — full width, below the 2-col grid -->
-      <div id="modal-screenshots-wrap" class="modal-section modal-screenshots-section">
+      <div
+        id="modal-screenshots-wrap"
+        class="modal-section modal-screenshots-section"
+      >
         <div class="modal-divider screenshots-divider"></div>
         <p class="text-label">
           <span class="section-icon">🖼</span>
@@ -103,614 +125,687 @@ const statusConfig = {
         </p>
         <div id="modal-screenshots" class="screenshots-gallery"></div>
       </div>
- 
     </div>
   </div>
 </div>
- 
+
 <!-- LIGHTBOX — outside the modal panel so it overlays everything -->
 <div class="lightbox-backdrop" id="lightbox" hidden>
   <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">
     <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-      <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path
+        d="M1 1L13 13M13 1L1 13"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
     </svg>
   </button>
-  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Anterior">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 18l-6-6 6-6"/>
+  <button
+    class="lightbox-nav lightbox-prev"
+    id="lightbox-prev"
+    aria-label="Anterior"
+  >
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M15 18l-6-6 6-6"></path>
     </svg>
   </button>
   <div class="lightbox-stage">
     <img id="lightbox-img" alt="" />
     <p class="lightbox-counter" id="lightbox-counter"></p>
   </div>
-  <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Siguiente">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 18l6-6-6-6"/>
+  <button
+    class="lightbox-nav lightbox-next"
+    id="lightbox-next"
+    aria-label="Siguiente"
+  >
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M9 18l6-6-6-6"></path>
     </svg>
   </button>
 </div>
 
 <style>
-/* ── BACKDROP ──────────────────────────────────────────────────────────── */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(8, 8, 12, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 100;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-md);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
- 
-.modal-backdrop:not([hidden]) { display: flex; }
-.modal-backdrop.modal-open { opacity: 1; }
- 
-/* ── PANEL ─────────────────────────────────────────────────────────────── */
-.modal-panel {
-  position: relative;
-  width: 100%;
-  max-width: 920px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: var(--radius-md, 16px);
-  background: var(--color-bg-white, #ffffff);
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.06),
-    0 24px 64px rgba(0,0,0,0.18),
-    0 8px 24px rgba(0,0,0,0.1);
-  transform: translateY(24px) scale(0.97);
-  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border-light, #e2e8f0) transparent;
-}
- 
-.modal-backdrop.modal-open .modal-panel {
-  transform: translateY(0) scale(1);
-}
- 
-/* ── CLOSE BUTTON ──────────────────────────────────────────────────────── */
-.modal-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 20;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(0,0,0,0.1);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #374151;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-}
- 
-.modal-close:hover {
-  background: #ffffff;
-  transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.16);
-}
- 
-/* ── HERO ──────────────────────────────────────────────────────────────── */
-.modal-hero {
-  position: relative;
-  aspect-ratio: 16/6;
-  overflow: hidden;
-  border-radius: var(--radius-md, 16px) var(--radius-md, 16px) 0 0;
-}
- 
-.modal-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
- 
-.modal-hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 30%,
-    rgba(255,255,255,0.6) 70%,
-    rgba(255,255,255,1) 100%
-  );
-}
- 
-/* ── BODY ──────────────────────────────────────────────────────────────── */
-.modal-body {
-  padding: var(--spacing-xl, 32px) var(--spacing-xl, 32px) var(--spacing-2xl, 48px);
-}
- 
-/* ── HEADER ────────────────────────────────────────────────────────────── */
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--spacing-lg, 24px);
-  margin-bottom: var(--spacing-lg, 24px);
-}
- 
-.modal-header-meta {
-  flex: 1;
-  min-width: 0;
-}
-
-@media (min-width: 640px) {
-  .modal-header-meta {
-      max-width: 70%;
+  /* ── BACKDROP ─────────────────────────────── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 12, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    opacity: 0;
+    transition: opacity 0.25s ease;
   }
-}
- 
-.modal-header-badges {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
- 
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
- 
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
- 
-.year-badge {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-text-muted, #94a3b8);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
- 
-.modal-title {
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--color-text-primary, #0f172a);
-  margin: 0 0 6px;
-  letter-spacing: -0.02em;
-}
- 
-.modal-subtitle {
-  font-size: 14px;
-  color: var(--color-text-tertiary, #64748b);
-  line-height: 1.5;
-  margin: 0;
-}
- 
-.modal-links-top {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex-shrink: 0;
-  align-self: center;
-}
- 
-/* ── DIVIDER ───────────────────────────────────────────────────────────── */
-.modal-divider {
-  height: 1px;
-  background: var(--color-border-light, #e2e8f0);
-  margin-bottom: var(--spacing-xl, 32px);
-}
- 
-/* ── CONTENT GRID ──────────────────────────────────────────────────────── */
-.modal-content-grid {
-  display: grid;
-  gap: var(--spacing-xl, 32px);
-}
- 
-@media (min-width: 640px) {
-  .modal-content-grid {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: var(--spacing-2xl, 48px);
-  }
-}
- 
-/* ── SECTIONS ──────────────────────────────────────────────────────────── */
-.modal-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
- 
-.modal-content-left,
-.modal-content-right {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl, 32px);
-}
- 
-.section-icon {
-  font-size: 13px;
-  line-height: 1;
-}
- 
-/* ── PROBLEM ───────────────────────────────────────────────────────────── */
-.modal-problem-box {
-  background: #f8faff;
-  border-left: 3px solid var(--color-primary, #3b82f6);
-  border-radius: 0 8px 8px 0;
-  padding: 14px 16px;
-}
- 
-.modal-problem-box p {
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--color-text-secondary, #334155);
-  margin: 0;
-}
- 
-/* ── ROLE ──────────────────────────────────────────────────────────────── */
-.modal-body-text {
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--color-text-secondary, #334155);
-  margin: 0;
-}
- 
-/* ── FEATURES ──────────────────────────────────────────────────────────── */
-.features-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
- 
-.features-list li {
-  position: relative;
-  padding: 10px 12px 10px 34px;
-  background: var(--color-bg-section, #f8fafc);
-  border: 1px solid var(--color-border-light, #e2e8f0);
-  border-radius: 8px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--color-text-secondary, #334155);
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
-}
- 
-.features-list li::before {
-  content: "✔";
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  color: var(--color-primary, #3b82f6);
-}
- 
-.features-list li:hover {
-  background: #eff6ff;
-  border-color: #a5b4fc;
-  transform: translateY(-1px);
-}
- 
-/* ── STACK ─────────────────────────────────────────────────────────────── */
-.modal-stack-section {
-  background: var(--color-bg-section, #f8fafc);
-  border: 1px solid var(--color-border-light, #e2e8f0);
-  border-radius: 12px;
-  padding: 16px;
-  gap: 14px;
-}
- 
-.stack-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
- 
-.stack-group + .stack-group {
-  padding-top: 14px;
-  border-top: 1px solid var(--color-border-light, #e2e8f0);
-}
- 
-.stack-group-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-text-label);
-}
- 
-.stack-group-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
- 
-.tech-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: var(--text-size-xs);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  background: #0f172a;
-  color: var(--color-primary-tint-text);
-  border: var(--border-thin) solid var(--color-border-primary);
-  transition: transform var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
-}
- 
-.tech-pill:hover {
-  transform: translateY(-1px);
-  border-color: var(--color-border-primary-strong);
-  opacity: 0.95;
-}
- 
-.tech-pill-icon,
-.tech-pill-dot {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
- 
-.tech-pill-icon img,
-.tech-pill-icon svg {
-  width: 14px;
-  height: 14px;
-  object-fit: contain;
-  opacity: 0.85;
-}
- 
-.tech-pill-label { line-height: 1; }
- 
-.tech-pill-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary, #3b82f6);
-  flex-shrink: 0;
-}
- 
-/* ── BUTTONS ───────────────────────────────────────────────────────────── */
-.btn-sm {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
- 
-.btn-primary {
-  background: var(--color-primary, #3b82f6);
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(59,130,246,0.35);
-}
- 
-.btn-primary:hover {
-  filter: brightness(1.08);
-  box-shadow: 0 4px 12px rgba(59,130,246,0.4);
-  transform: translateY(-1px);
-}
- 
-.btn-secondary {
-  background: var(--color-bg-section, #f8fafc);
-  color: var(--color-text-secondary, #334155);
-  border: 1px solid var(--color-border-light, #e2e8f0);
-}
- 
-.btn-secondary:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
-}
- 
-/* ── SCREENSHOTS — FULL WIDTH GALLERY ─────────────────────────────────── */
-.modal-screenshots-section {
-  margin-top: var(--spacing-xl, 32px);
-}
- 
-.screenshots-divider {
-  margin-bottom: var(--spacing-lg, 24px);
-}
- 
-.screenshots-gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 4px;
-}
- 
-/* Multi-image layout: auto-fill with min 240px columns */
-.screenshots-gallery.gallery-multi {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-}
- 
-/* Two-image layout: exactly 2 columns */
-.screenshots-gallery.gallery-two {
-  grid-template-columns: repeat(2, 1fr);
-}
- 
-/* First image in a multi-image gallery: span full width as a featured shot */
-.screenshots-gallery.gallery-multi .screenshot-item:first-child {
-  grid-column: 1 / -1;
-  aspect-ratio: 16 / 7;
-}
 
- 
-/* ── LIGHTBOX ──────────────────────────────────────────────────────────── */
-.lightbox-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(8, 8, 12, 0.93);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  z-index: 200;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 80px;
-  gap: 20px;
-  opacity: 0;
-  transition: opacity 0.22s ease;
-}
- 
-.lightbox-backdrop:not([hidden]) { display: flex; }
-.lightbox-backdrop.lightbox-open { opacity: 1; }
- 
-.lightbox-stage {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  /* Fill available space between nav buttons */
-  flex: 1;
-  min-width: 0;
-  max-height: 100%;
-}
- 
-#lightbox-img {
-  max-width: 100%;
-  max-height: calc(100vh - 140px);
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
-  display: block;
-  transition: opacity 0.18s ease, transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
-}
- 
-.lightbox-counter {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 0;
-  min-height: 16px;
-}
- 
-/* Nav arrows */
-.lightbox-nav {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
-}
- 
-.lightbox-nav:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-}
- 
-.lightbox-prev:hover { transform: translateX(-2px); }
-.lightbox-next:hover { transform: translateX(2px); }
- 
-/* Hide arrows when only 1 image */
-.lightbox-backdrop.single .lightbox-nav {
-  visibility: hidden;
-  pointer-events: none;
-}
- 
-/* Close */
-.lightbox-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
- 
-.lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-  transform: scale(1.08);
-}
- 
-/* ── RESPONSIVE ────────────────────────────────────────────────────────── */
-@media (max-width: 640px) {
+  .modal-backdrop:not([hidden]) {
+    display: flex;
+  }
+  .modal-backdrop.modal-open {
+    opacity: 1;
+  }
+
+  /* ── PANEL ─────────────────────────────────────────────────────────────── */
+  .modal-panel {
+    position: relative;
+    width: 100%;
+    max-width: 920px;
+    max-height: 90dvh;
+    overflow-y: auto;
+    border-radius: var(--radius-md, 16px);
+    background: var(--color-bg-white, #ffffff);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.06),
+      0 24px 64px rgba(0, 0, 0, 0.18),
+      0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-light, #e2e8f0) transparent;
+  }
+
+  .modal-backdrop.modal-open .modal-panel {
+    transform: translateY(0) scale(1);
+  }
+
+  /* ── CLOSE BUTTON ──────────────────────────────────────────────────────── */
+  .modal-close-wrapper {
+    position: sticky;
+    top: 14px;
+    height: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 14px;
+  }
+
+  .modal-close {
+    /* quita position: sticky, top, right, z-index — los hereda del wrapper */
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition:
+      background 0.15s ease,
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .modal-close:hover {
+    background: #ffffff;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  }
+
+  /* ── HERO ──────────────────────────────────────────────────────────────── */
+  .modal-hero {
+    position: relative;
+    aspect-ratio: 16/6;
+    overflow: hidden;
+    border-radius: var(--radius-md, 16px) var(--radius-md, 16px) 0 0;
+  }
+
+  .modal-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .modal-hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 30%,
+      rgba(255, 255, 255, 0.6) 70%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+
+  /* ── BODY ──────────────────────────────────────────────────────────────── */
   .modal-body {
-    padding: var(--spacing-lg, 24px) var(--spacing-md, 16px);
+    padding: var(--spacing-xl, 32px) var(--spacing-xl, 32px)
+      var(--spacing-2xl, 48px);
   }
- 
+
+  /* ── HEADER ────────────────────────────────────────────────────────────── */
   .modal-header {
-    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-lg, 24px);
+    margin-bottom: var(--spacing-lg, 24px);
   }
- 
+
+  .modal-header-meta {
+    flex: 1;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .modal-header-meta {
+      max-width: 70%;
+    }
+  }
+
+  .modal-header-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .year-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-muted, #94a3b8);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .modal-title {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-text-primary, #0f172a);
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+  }
+
+  .modal-subtitle {
+    font-size: 14px;
+    color: var(--color-text-tertiary, #64748b);
+    line-height: 1.5;
+    margin: 0;
+  }
+
   .modal-links-top {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 640px) {
+    .modal-links-top {
+      align-self: center;
+    }
+  }
+
+  /* ── DIVIDER ───────────────────────────────────────────────────────────── */
+  .modal-divider {
+    height: 1px;
+    background: var(--color-border-light, #e2e8f0);
+    margin-bottom: var(--spacing-xl, 32px);
+  }
+
+  /* ── CONTENT GRID ──────────────────────────────────────────────────────── */
+  .modal-content-grid {
+    display: grid;
+    gap: var(--spacing-xl, 32px);
+  }
+
+  @media (min-width: 640px) {
+    .modal-content-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--spacing-2xl, 48px);
+    }
+  }
+
+  /* ── SECTIONS ──────────────────────────────────────────────────────────── */
+  .modal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-content-left,
+  .modal-content-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl, 32px);
+  }
+
+  .section-icon {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  /* ── PROBLEM ───────────────────────────────────────────────────────────── */
+  .modal-problem-box {
+    background: #f8faff;
+    border-left: 3px solid var(--color-primary, #3b82f6);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+  }
+
+  .modal-problem-box p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--color-text-secondary, #334155);
+    margin: 0;
+  }
+
+  /* ── ROLE ──────────────────────────────────────────────────────────────── */
+  .modal-body-text {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--color-text-secondary, #334155);
+    margin: 0;
+  }
+
+  /* ── FEATURES ──────────────────────────────────────────────────────────── */
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .features-list li {
+    position: relative;
+    padding: 10px 12px 10px 34px;
+    background: var(--color-bg-section, #f8fafc);
+    border: 1px solid var(--color-border-light, #e2e8f0);
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-secondary, #334155);
+    transition:
+      border-color 0.15s ease,
+      background 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .features-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: var(--color-primary, #3b82f6);
+  }
+
+  .features-list li:hover {
+    background: #eff6ff;
+    border-color: #a5b4fc;
+    transform: translateY(-1px);
+  }
+
+  /* ── STACK ─────────────────────────────────────────────────────────────── */
+  .modal-stack-section {
+    background: var(--color-bg-section, #f8fafc);
+    border: 1px solid var(--color-border-light, #e2e8f0);
+    border-radius: 12px;
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .stack-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .stack-group + .stack-group {
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border-light, #e2e8f0);
+  }
+
+  .stack-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-label);
+  }
+
+  .stack-group-tags {
+    display: flex;
     flex-wrap: wrap;
+    gap: 8px;
   }
- 
+
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--text-size-xs);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    background: #0f172a;
+    color: var(--color-primary-tint-text);
+    border: var(--border-thin) solid var(--color-border-primary);
+    transition:
+      transform var(--transition-fast),
+      border-color var(--transition-fast),
+      opacity var(--transition-fast);
+  }
+
+  .tech-pill:hover {
+    transform: translateY(-1px);
+    border-color: var(--color-border-primary-strong);
+    opacity: 0.95;
+  }
+
+  .tech-pill-icon,
+  .tech-pill-dot {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tech-pill-icon img,
+  .tech-pill-icon svg {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+
+  .tech-pill-label {
+    line-height: 1;
+  }
+
+  .tech-pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary, #3b82f6);
+    flex-shrink: 0;
+  }
+
+  /* ── BUTTONS ───────────────────────────────────────────────────────────── */
+  .btn-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--color-primary, #3b82f6);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.35);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: var(--color-bg-section, #f8fafc);
+    color: var(--color-text-secondary, #334155);
+    border: 1px solid var(--color-border-light, #e2e8f0);
+  }
+
+  .btn-secondary:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+  }
+
+  /* ── SCREENSHOTS — FULL WIDTH GALLERY ─────────────────────────────────── */
+  .modal-screenshots-section {
+    margin-top: var(--spacing-xl, 32px);
+  }
+
+  .screenshots-divider {
+    margin-bottom: var(--spacing-lg, 24px);
+  }
+
+  .screenshots-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  /* Multi-image layout: auto-fill with min 240px columns */
+  .screenshots-gallery.gallery-multi {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  /* Two-image layout: exactly 2 columns */
+  .screenshots-gallery.gallery-two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* First image in a multi-image gallery: span full width as a featured shot */
+  .screenshots-gallery.gallery-multi .screenshot-item:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 7;
+  }
+
+  /* ── LIGHTBOX ──────────────────────────────────────────────────────────── */
   .lightbox-backdrop {
-    padding: 56px 16px 16px;
-    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 12, 0.93);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.22s ease;
   }
- 
-  .lightbox-nav {
-    width: 40px;
-    height: 40px;
+
+  .lightbox-backdrop:not([hidden]) {
+    display: flex;
   }
- 
-  /* On mobile, stack nav buttons horizontally below the image */
-  .lightbox-backdrop {
-    flex-direction: column;
+  .lightbox-backdrop.lightbox-open {
+    opacity: 1;
   }
- 
+
   .lightbox-stage {
-    order: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    /* Fill available space between nav buttons */
+    flex: 1;
+    min-width: 0;
+    max-height: 100%;
   }
- 
-  .lightbox-prev,
-  .lightbox-next {
-    position: static;
-    transform: none !important;
-    order: 1;
+
+  #lightbox-img {
+    max-width: 100%;
+    max-height: calc(100vh - 140px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    display: block;
+    transition:
+      opacity 0.18s ease,
+      transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
   }
- 
-  .lightbox-backdrop:not(.single) .lightbox-stage {
-    gap: 12px;
+
+  .lightbox-counter {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+    min-height: 16px;
   }
-}
+
+  /* Nav arrows */
+  .lightbox-nav {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background 0.15s ease,
+      transform 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+  }
+
+  .lightbox-prev:hover {
+    transform: translateX(-2px);
+  }
+  .lightbox-next:hover {
+    transform: translateX(2px);
+  }
+
+  /* Hide arrows when only 1 image */
+  .lightbox-backdrop.single .lightbox-nav {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Close */
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  /* ── RESPONSIVE ────────────────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .modal-body {
+      padding: var(--spacing-lg, 24px) var(--spacing-md, 16px);
+    }
+
+    .modal-header {
+      flex-direction: column;
+    }
+
+    .modal-links-top {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .lightbox-backdrop {
+      padding: 56px 16px 16px;
+      flex-direction: column;
+    }
+
+    .lightbox-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* On mobile, stack nav buttons horizontally below the image */
+    .lightbox-backdrop {
+      flex-direction: column;
+    }
+
+    .lightbox-stage {
+      order: 0;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: static;
+      transform: none !important;
+      order: 1;
+    }
+
+    .lightbox-backdrop:not(.single) .lightbox-stage {
+      gap: 12px;
+    }
+  }
 </style>
 
 <script
@@ -724,7 +819,7 @@ const statusConfig = {
 >
   // ── ICONIFY LOADER ────────────────────────────────────────────────────
   const iconCache = new Map();
- 
+
   async function fetchIcon(iconName) {
     if (iconCache.has(iconName)) return iconCache.get(iconName);
     try {
@@ -739,15 +834,15 @@ const statusConfig = {
       return null;
     }
   }
- 
+
   async function buildTechPill(techName) {
     const iconName = techIconMap[techName];
     const pill = document.createElement("span");
     pill.className = "tech-pill";
- 
+
     const iconEl = document.createElement("span");
     iconEl.className = "tech-pill-icon";
- 
+
     if (iconName) {
       const svg = await fetchIcon(iconName);
       if (svg) {
@@ -760,7 +855,7 @@ const statusConfig = {
     } else {
       iconEl.className = "tech-pill-dot";
     }
- 
+
     pill.appendChild(iconEl);
     const label = document.createElement("span");
     label.className = "tech-pill-label";
@@ -768,33 +863,37 @@ const statusConfig = {
     pill.appendChild(label);
     return pill;
   }
- 
+
   // ── LIGHTBOX STATE ────────────────────────────────────────────────────
-  const lightbox    = document.getElementById("lightbox");
-  const lbImg       = document.getElementById("lightbox-img");
-  const lbCounter   = document.getElementById("lightbox-counter");
-  const lbClose     = document.getElementById("lightbox-close");
-  const lbPrev      = document.getElementById("lightbox-prev");
-  const lbNext      = document.getElementById("lightbox-next");
- 
-  let lbSrcs  = [];
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  const lbCounter = document.getElementById("lightbox-counter");
+  const lbClose = document.getElementById("lightbox-close");
+  const lbPrev = document.getElementById("lightbox-prev");
+  const lbNext = document.getElementById("lightbox-next");
+
+  let lbSrcs = [];
   let lbIndex = 0;
- 
+
   function lbRender(animate = true) {
     if (animate) {
       lbImg.style.opacity = "0";
       lbImg.style.transform = "scale(0.94)";
     }
-    setTimeout(() => {
-      lbImg.src = lbSrcs[lbIndex];
-      lbCounter.textContent = lbSrcs.length > 1 ? `${lbIndex + 1} / ${lbSrcs.length}` : "";
-      lbImg.style.opacity = "1";
-      lbImg.style.transform = "scale(1)";
-    }, animate ? 90 : 0);
+    setTimeout(
+      () => {
+        lbImg.src = lbSrcs[lbIndex];
+        lbCounter.textContent =
+          lbSrcs.length > 1 ? `${lbIndex + 1} / ${lbSrcs.length}` : "";
+        lbImg.style.opacity = "1";
+        lbImg.style.transform = "scale(1)";
+      },
+      animate ? 90 : 0,
+    );
   }
- 
+
   function lbOpen(srcs, index) {
-    lbSrcs  = srcs;
+    lbSrcs = srcs;
     lbIndex = index;
     lightbox.removeAttribute("hidden");
     lightbox.classList.toggle("single", srcs.length === 1);
@@ -803,46 +902,65 @@ const statusConfig = {
     // Prevent body scroll but keep modal scroll intact
     document.documentElement.style.overflow = "hidden";
   }
- 
+
   function closeLightbox() {
     lightbox.classList.remove("lightbox-open");
-    lightbox.addEventListener("transitionend", () => {
-      lightbox.setAttribute("hidden", "");
-      document.documentElement.style.overflow = "";
-    }, { once: true });
+    lightbox.addEventListener(
+      "transitionend",
+      () => {
+        lightbox.setAttribute("hidden", "");
+        document.documentElement.style.overflow = "";
+      },
+      { once: true },
+    );
   }
- 
+
   lbClose.addEventListener("click", closeLightbox);
-  lbPrev.addEventListener("click", () => { lbIndex = (lbIndex - 1 + lbSrcs.length) % lbSrcs.length; lbRender(); });
-  lbNext.addEventListener("click", () => { lbIndex = (lbIndex + 1) % lbSrcs.length; lbRender(); });
-  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
- 
+  lbPrev.addEventListener("click", () => {
+    lbIndex = (lbIndex - 1 + lbSrcs.length) % lbSrcs.length;
+    lbRender();
+  });
+  lbNext.addEventListener("click", () => {
+    lbIndex = (lbIndex + 1) % lbSrcs.length;
+    lbRender();
+  });
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
   document.addEventListener("keydown", (e) => {
     if (lightbox.hasAttribute("hidden")) return;
-    if (e.key === "Escape")      closeLightbox();
-    if (e.key === "ArrowLeft")  { lbIndex = (lbIndex - 1 + lbSrcs.length) % lbSrcs.length; lbRender(); }
-    if (e.key === "ArrowRight") { lbIndex = (lbIndex + 1) % lbSrcs.length; lbRender(); }
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") {
+      lbIndex = (lbIndex - 1 + lbSrcs.length) % lbSrcs.length;
+      lbRender();
+    }
+    if (e.key === "ArrowRight") {
+      lbIndex = (lbIndex + 1) % lbSrcs.length;
+      lbRender();
+    }
   });
- 
+
   // ── MODAL ────────────────────────────────────────────────────────────
   const backdrop = document.getElementById("proj-modal");
   const closeBtn = document.getElementById("modal-close");
- 
+
   async function openModal(p) {
     const st = statusConfig[p.status] || statusConfig["in-progress"];
- 
+
     const modalImg = document.getElementById("modal-img");
     modalImg.src = p.image.src ?? p.image;
     modalImg.loading = "lazy";
- 
+
     const statusEl = document.getElementById("modal-status");
     statusEl.innerHTML = `<span class="status-dot" style="background:${st.dot}"></span>${st.label}`;
     statusEl.style.cssText = `background:${st.bg};color:${st.text};`;
- 
+
     document.getElementById("modal-year").textContent = p.year;
     document.getElementById("modal-title").textContent = p.title;
-    document.getElementById("modal-subtitle").textContent = p.subtitle || p.description;
- 
+    document.getElementById("modal-subtitle").textContent =
+      p.subtitle || p.description;
+
     // Problem
     const problemWrap = document.getElementById("modal-problem-wrap");
     if (p.problem) {
@@ -851,7 +969,7 @@ const statusConfig = {
     } else {
       problemWrap.style.display = "none";
     }
- 
+
     // Role
     const roleWrap = document.getElementById("modal-role-wrap");
     if (p.role) {
@@ -860,7 +978,7 @@ const statusConfig = {
     } else {
       roleWrap.style.display = "none";
     }
- 
+
     // Stack
     const stackEl = document.getElementById("modal-stack");
     stackEl.innerHTML = `
@@ -876,11 +994,11 @@ const statusConfig = {
       const tagsEl = document.createElement("div");
       tagsEl.className = "stack-group-tags";
       const pills = await Promise.all(techs.map(buildTechPill));
-      pills.forEach(pill => tagsEl.appendChild(pill));
+      pills.forEach((pill) => tagsEl.appendChild(pill));
       group.appendChild(tagsEl);
       stackEl.appendChild(group);
     }
- 
+
     // Features
     const featWrap = document.getElementById("modal-features-wrap");
     if (p.features?.length) {
@@ -891,7 +1009,7 @@ const statusConfig = {
     } else {
       featWrap.style.display = "none";
     }
- 
+
     // Links
     const linksEl = document.getElementById("modal-links");
     linksEl.innerHTML = "";
@@ -904,19 +1022,19 @@ const statusConfig = {
         GitHub
       </a>`;
     }
- 
+
     // Screenshots — full width gallery
     const ssWrap = document.getElementById("modal-screenshots-wrap");
     const ssGrid = document.getElementById("modal-screenshots");
     ssGrid.innerHTML = "";
- 
+
     if (p.screenshots?.length) {
       ssWrap.style.display = "";
- 
-      const srcs = p.screenshots.map((img) =>
-        typeof img === "string" ? img : (img?.src || "")
-      ).filter(Boolean);
- 
+
+      const srcs = p.screenshots
+        .map((img) => (typeof img === "string" ? img : img?.src || ""))
+        .filter(Boolean);
+
       let className = "screenshots-gallery";
       if (srcs.length === 2) {
         className += " gallery-two";
@@ -924,20 +1042,20 @@ const statusConfig = {
         className += " gallery-multi";
       }
       ssGrid.className = className;
- 
+
       srcs.forEach((src, idx) => {
         const item = document.createElement("div");
         item.className = "screenshot-item";
         item.setAttribute("role", "button");
         item.setAttribute("tabindex", "0");
         item.setAttribute("aria-label", `Captura ${idx + 1} de ${srcs.length}`);
- 
+
         const img = document.createElement("img");
         img.src = src;
         img.loading = "lazy";
         img.alt = `Screenshot ${idx + 1}`;
         img.draggable = false;
- 
+
         const overlay = document.createElement("div");
         overlay.className = "screenshot-overlay";
         overlay.innerHTML = `
@@ -950,43 +1068,59 @@ const statusConfig = {
             </svg>
           </div>
         `;
- 
+
         item.appendChild(img);
         item.appendChild(overlay);
- 
+
         const open = () => lbOpen(srcs, idx);
         item.addEventListener("click", open);
         item.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            open();
+          }
         });
- 
+
         ssGrid.appendChild(item);
       });
     } else {
       ssWrap.style.display = "none";
     }
- 
+
     backdrop.removeAttribute("hidden");
     requestAnimationFrame(() => backdrop.classList.add("modal-open"));
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     document.querySelector(".modal-panel").scrollTop = 0;
   }
- 
+
   function closeModal() {
     backdrop.classList.remove("modal-open");
-    backdrop.addEventListener("transitionend", () => {
-      backdrop.setAttribute("hidden", "");
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-    }, { once: true });
+    backdrop.addEventListener(
+      "transitionend",
+      () => {
+        backdrop.setAttribute("hidden", "");
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+      },
+      { once: true },
+    );
   }
- 
+
   // ── EVENTS ────────────────────────────────────────────────────────────
-  document.addEventListener("open-project-modal", (e) => openModal(e.detail.project));
+  document.addEventListener("open-project-modal", (e) =>
+    openModal(e.detail.project),
+  );
   closeBtn.addEventListener("click", closeModal);
-  backdrop.addEventListener("click", (e) => { if (e.target === backdrop) closeModal(); });
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeModal();
+  });
   document.addEventListener("keydown", (e) => {
-    if (!backdrop.hasAttribute("hidden") && lightbox.hasAttribute("hidden") && e.key === "Escape") closeModal();
+    if (
+      !backdrop.hasAttribute("hidden") &&
+      lightbox.hasAttribute("hidden") &&
+      e.key === "Escape"
+    )
+      closeModal();
   });
 </script>
