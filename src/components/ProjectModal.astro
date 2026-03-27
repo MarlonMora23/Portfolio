@@ -243,7 +243,12 @@ const statusConfig = {
 .modal-header-meta {
   flex: 1;
   min-width: 0;
-  max-width: 70%;
+}
+
+@media (min-width: 640px) {
+  .modal-header-meta {
+      max-width: 70%;
+  }
 }
  
 .modal-header-badges {
@@ -541,6 +546,11 @@ const statusConfig = {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
  
+/* Two-image layout: exactly 2 columns */
+.screenshots-gallery.gallery-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+ 
 /* First image in a multi-image gallery: span full width as a featured shot */
 .screenshots-gallery.gallery-multi .screenshot-item:first-child {
   grid-column: 1 / -1;
@@ -560,6 +570,7 @@ const statusConfig = {
   align-items: center;
   justify-content: center;
   padding: 60px 80px;
+  gap: 20px;
   opacity: 0;
   transition: opacity 0.22s ease;
 }
@@ -656,7 +667,7 @@ const statusConfig = {
 }
  
 /* ── RESPONSIVE ────────────────────────────────────────────────────────── */
-@media (max-width: 540px) {
+@media (max-width: 640px) {
   .modal-body {
     padding: var(--spacing-lg, 24px) var(--spacing-md, 16px);
   }
@@ -904,9 +915,13 @@ const statusConfig = {
         typeof img === "string" ? img : (img?.src || "")
       ).filter(Boolean);
  
-      ssGrid.className = srcs.length > 1
-        ? "screenshots-gallery gallery-multi"
-        : "screenshots-gallery";
+      let className = "screenshots-gallery";
+      if (srcs.length === 2) {
+        className += " gallery-two";
+      } else if (srcs.length > 2) {
+        className += " gallery-multi";
+      }
+      ssGrid.className = className;
  
       srcs.forEach((src, idx) => {
         const item = document.createElement("div");

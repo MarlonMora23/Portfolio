@@ -1,9 +1,6 @@
 ---
 import { languages } from "@/i18n/ui";
 import { getLangFromUrl, useTranslatedPath } from "@/i18n/utils";
-// import { Image } from "astro:assets";
-// import internationalIcon from "../../public/assets/icons/international-svgrepo-com.svg";
-// import downArrow from "../../public/assets/icons/down-arrow-5-svgrepo-com.svg";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);

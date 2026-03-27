@@ -1,28 +1,12 @@
 ---
 import Section from "@/components/Section.astro";
 import { getI18n } from "@/i18n";
+import { getSkillGroupsSimple } from "@/data/skills";
 
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
 
-const skillGroups = [
-    {
-        label: i18n.SKILLS.GROUP_ML,
-        skills: ["Python", "TensorFlow", "Keras", "pandas", "NumPy", "scikit-learn", "Jupyter"],
-    },
-    {
-        label: i18n.SKILLS.GROUP_BACKEND,
-        skills: ["Flask", "SQLAlchemy", "PostgreSQL", "REST APIs"],
-    },
-    {
-        label: i18n.SKILLS.GROUP_FRONTEND,
-        skills: ["React", "Angular", "TailwindCSS", "TypeScript", "Vite", "Astro", "JavaScript", "HTML/CSS"],
-    },
-    {
-        label: i18n.SKILLS.GROUP_DEVOPS,
-        skills: ["Git", "Github", "Docker", "Linux"],
-    },
-];
+const skillGroups = getSkillGroupsSimple(i18n);
 
 ---
 
