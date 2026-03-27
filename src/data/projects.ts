@@ -8,8 +8,8 @@ export const projects = [
     status: "in-progress",
     year: "2026",
     stack: {
-      Frontend: ["React 18", "TypeScript", "Vite", "TailwindCSS", "React Query", "Framer Motion"],
-      Backend: ["Flask", "SQLAlchemy", "PostgreSQL", "Celery"],
+      Frontend: ["React 18", "TypeScript", "Vite", "TailwindCSS"],
+      Backend: ["Flask", "SQLAlchemy", "PostgreSQL", "Celery", "Redis"],
       ML: ["TensorFlow", "Keras"],
       Infra: ["JWT", "CORS"],
     },

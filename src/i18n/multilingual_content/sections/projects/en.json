@@ -2,14 +2,15 @@
   "PROYECTS": {
     "TITLE": "Not just ideas, but facts.",
     "DESCRIPTION": "These are some of the projects I have developed",
-    "OVERLINE": "Featured projects",
+    "OVERLINE": "Projects",
     "VIEW_PROJECT": "View Project",
-    "VIEW_CODE": "View Code",
+    "VIEW_CODE": "View code",
     "VIEW_DETAILS": "View details",
     "MODAL_PROBLEM_LABEL": "Problem it solves",
     "MODAL_ROLE_LABEL": "My role",
     "MODAL_STACK_LABEL": "Tech stack",
     "MODAL_FEATURES_LABEL": "Features",
+    "MODAL_CONTRIBUTIONS_LABEL": "Contributions",
     "MODAL_SCREENSHOTS_LABEL": "Screenshots",
     "STATUS_COMPLETED": "Completed",
     "STATUS_IN_PROGRESS": "In Progress",
@@ -17,10 +18,9 @@
     "items": [
       {
         "id": "neuroscreen",
-        "title": "NeuroScreen",
-        "subtitle": "Early detection of alcoholism through EEG analysis and machine learning",
-        "description": "Developed in Flask, NeuroScreen is a web application that enables early detection of alcohol use disorders through EEG data analysis and machine learning. The application offers features such as user authentication, patient management, EEG file upload for real-time predictions, and a dashboard with interpretability visualization.",
-        "role": "Full-stack developer and principal researcher",
+        "title": "NeuroScreen-A",
+        "description": "Full-stack web application for the early detection of alcoholism through the analysis of EEG records and a deep learning model. The application offers features such as user authentication, patient management, EEG file uploading for real-time predictions, and a dashboard with interpretability visualization of the results. This project was developed as part of my undergraduate thesis in Systems Engineering, with the goal of providing an accessible clinical tool for the early detection of alcohol use disorders using neurological biomarkers.",
+        "role": "Full-stack developer (team of 2, backend focus)",
         "problem": "Need for accessible clinical tools for early detection of alcohol use disorders using neurological biomarkers.",
         "features": [
           "Login/Logout with JWT and session persistence",
@@ -29,120 +29,157 @@
           "Dashboard with interpretability visualization",
           "Responsive design with loading indicators"
         ],
+        "contributions": [
+          "Database model design and backend architecture",
+          "Implementation of authentication and security with JWT",
+          "Development of the critical flow: EEG upload → prediction → interpretability",
+          "Application of best practices and system structure",
+          "Support in UX/UI improvements for key components"
+        ],
         "status": "in-progress"
       },
       {
         "id": "leetcode-clone",
         "title": "LeetCode Clone",
-        "subtitle": "Programming exercises platform inspired by LeetCode",
-        "description": "A web application for testing exercises, built using Flask and inspired by LeetCode. It allows users to solve programming problems, submit solutions, and view their results.",
-        "role": "Full-stack developer — individual project",
-        "problem": "Create a local environment for algorithm practice with code editor and automatic solution evaluation.",
+        "description": "Web platform for programming exercises inspired by LeetCode. Developed with Flask, it allows users to solve programming problems, submit solutions, and view their results.",
+        "role": "Full-stack developer (team of 3, frontend focus)",
+        "problem": "Create a local environment for algorithm practice with a code editor and automatic solution evaluation.",
         "features": [
           "Exercise list with individual pages",
+          "Practice exercises with Python, Ruby, or Java",
           "Code editor with submit and automatic evaluation",
           "User authentication and registration",
           "Test results visualization"
+        ],
+        "contributions": [
+          "Modern, clean interface design focused on user experience",
+          "Implementation of the code submission flow from the frontend",
+          "Integration with the backend for execution and evaluation of solutions"
         ],
         "status": "completed"
       },
       {
         "id": "calinema",
         "title": "CaliNema",
-        "subtitle": "Real-time cinema billboard for Cali",
-        "description": "Developed in Astro, CaliNema is a prototype website that displays all current movies and showtimes available in Cali's cinemas. Movie information is obtained through the CaliNema API.",
-        "role": "Full-stack developer",
-        "problem": "Need for a centralized platform to check local movie releases and showtimes in real time.",
+        "description": "Find movies and showtimes for all theaters in Cali in one place. Developed in Astro, CaliNema is a prototype website that displays all movies and daily showtimes available in Cali's theaters. Movie information is obtained through the CaliNema API.",
+        "role": "Full-stack developer (individual project)",
+        "problem": "Need for a centralized platform to check local cinema releases and schedules in real-time.",
         "features": [
-          "Real-time data consumption from CaliNema API",
-          "Movie listing with details and showtimes",
-          "Filtering by cinema and genre",
+          "Consumption of CaliNema API for real-time data",
+          "Movie listing with details and schedules",
+          "Filtering by theater and genre",
           "Responsive and fast interface"
+        ],
+        "contributions": [
+          "Full design and implementation of the frontend",
+          "Consumption and integration of own API",
+          "Definition of user experience and visual structure"
         ],
         "status": "completed"
       },
       {
         "id": "calinema-api",
         "title": "CaliNema API",
-        "subtitle": "Backend for Cali cinema billboard data",
-        "description": "Developed in Django REST Framework, the CaliNema API performs web scraping of the five major cinemas in Cali to obtain all available movies and showtimes.",
-        "role": "Backend developer",
-        "problem": "Centralize and normalize cinema billboard data scattered across multiple websites.",
+        "description": "Developed in Django REST Framework, the CaliNema API performs web scraping of the websites of the five cinema chains in the city of Cali to obtain all available movies and showtimes.",
+        "role": "Backend developer (individual project)",
+        "problem": "Centralize and normalize cinema listing data scattered across multiple websites.",
         "features": [
-          "Automated web scraping of cinema websites",
+          "Automatic web scraping of cinema sites",
           "REST API for data consumption",
-          "Automatic billboard updates",
+          "Automatic update of listings",
           "Data normalization from multiple sources"
+        ],
+        "contributions": [
+          "Implementation of web scraping system for multiple cinemas",
+          "Database design and information normalization",
+          "Development of REST endpoints for external consumption",
+          "Automation of listing updates"
         ],
         "status": "completed"
       },
       {
         "id": "pokedex",
-        "title": "Pokédex 3D",
-        "subtitle": "Interactive explorer with 3D models",
-        "description": "A web application developed with Vite and React that uses the PokéAPI to display detailed information about various Pokémon. It integrates React Three Fiber to render 3D models and elements with a dynamic visual experience.",
-        "role": "Full-stack developer",
-        "problem": "Create an interactive Pokémon exploration experience with modern 3D visualization.",
+        "title": "Pokédex",
+        "description": "Interactive Pokémon explorer. This web application was developed with Vite and React, consuming the PokéAPI to show detailed information about different Pokémon. It integrates React Three Fiber to render 3D models and elements, offering a dynamic visual experience.",
+        "role": "Frontend developer (individual project)",
+        "problem": "Create an interactive Pokémon exploration experience with 3D element visualization.",
         "features": [
           "3D rendering with Three.js and React Three Fiber",
-          "Search and filtering of Pokémon",
+          "Pokémon search and filtering",
           "Detailed statistics visualization",
           "Responsive and intuitive interface"
+        ],
+        "contributions": [
+          "Interactive interface design",
+          "Integration with PokéAPI",
+          "Implementation of data visualization and user experience"
         ],
         "status": "completed"
       },
       {
         "id": "radioapp",
         "title": "RadioApp",
-        "subtitle": "Global radio station explorer",
-        "description": "A web application built with Vite and React that uses the Radio Browser public API to display radio stations from around the world. Highlights Colombian stations on the homepage.",
-        "role": "Full-stack developer",
+        "description": "Global radio station explorer, developed with Vite and React, using the public Radio Browser API to display radio stations from around the world. It highlights Colombian stations on the main page.",
+        "role": "Frontend developer (individual project)",
         "problem": "Provide a centralized and simple interface to discover and play live radio stations.",
         "features": [
-          "Search stations by country and genre",
+          "Station search by country and genre",
           "Live radio playback",
-          "Radio Browser API integration",
+          "Integration with Radio Browser API",
           "Minimalist and responsive interface"
+        ],
+        "contributions": [
+          "Complete user interface design",
+          "Integration with Radio Browser API",
+          "Implementation of live radio playback"
         ],
         "status": "completed"
       },
       {
         "id": "xrays",
-        "title": "X-Ray Classification",
-        "subtitle": "Automatic classification system using deep learning",
-        "description": "Repository with a machine learning project focused on automatic chest X-ray classification using convolutional neural networks (CNN) and transfer learning models (VGG16 and ResNet50).",
-        "role": "Data scientist - ML developer",
-        "problem": "Automate pathology detection and classification in chest X-rays for clinical second opinions.",
+        "title": "X-ray Classification",
+        "description": "Repository with a machine learning project focused on exploring different automatic classification techniques for chest X-rays using convolutional neural networks (CNN) and transfer learning models (VGG16 and ResNet50).",
+        "role": "Data Scientist / ML (team of 2)",
+        "problem": "Automate the detection and classification of pathologies in chest X-rays for clinical second opinions.",
         "features": [
           "Trained CNN models (VGG16, ResNet50)",
           "Transfer learning for optimization",
           "Image processing pipeline",
           "Accuracy analysis and cross-validation"
         ],
+        "contributions": [
+          "Training and evaluation of CNN models (VGG16, ResNet50)",
+          "Parallel experimentation for best-performing model selection",
+          "Metrics analysis and results validation",
+          "Technical paper writing in IEEE format"
+        ],
         "status": "completed"
       },
       {
         "id": "menuusb",
-        "title": "MenuUSB",
-        "subtitle": "University store menu portal",
-        "description": "Developed in Django, MenuUSB is a website that allows viewing all menus from the stores of San Buenaventura University in one place, facilitating daily consultation.",
-        "role": "Full-stack developer",
-        "problem": "Centralize menu information distributed among multiple university stores.",
+        "title": "Menu USB",
+        "description": "Developed in Django, MenuUSB is a prototype website with unofficial information that allows users to consult all menus from the San Buenaventura University shops in one place, facilitating daily consultation for students, executives, and university workers.",
+        "role": "Frontend developer (team of 4)",
+        "problem": "Centralize menu information distributed among multiple university shops.",
         "features": [
-          "Menu visualization by store",
+          "Menu visualization by shop",
           "Weekly information updates",
           "Filtering by food type",
           "Simple and accessible interface"
+        ],
+        "contributions": [
+          "UI design for landing page and dashboard",
+          "Implementation of key visual components",
+          "Support in the development of CRUD functionalities"
         ],
         "status": "completed"
       },
       {
         "id": "democracia-elite",
         "title": "Elite Democracy",
-        "subtitle": "Educational analysis of democratic systems",
-        "description": "Website developed as an academic project on constitution and democracy. Describes characteristics and provides examples of elite democracy with structured educational content.",
+        "description": "Web page developed as an academic project for the Constitution and Democracy subject. It describes characteristics and provides examples of what elite democracy means, with structured educational content.",
         "role": "Educational web developer",
-        "problem": "Present complex concepts of political science in a clear and accessible way for students.",
+        "problem": "Present complex political science concepts in a clear and accessible way for students.",
         "features": [
           "Structured content on elite democracy",
           "Historical and contemporary examples",

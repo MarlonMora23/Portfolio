@@ -22,6 +22,7 @@ const projects = baseProjects.map((p) => ({
   role: getProjectData(p.id)?.role || null,
   problem: getProjectData(p.id)?.problem || null,
   features: getProjectData(p.id)?.features || [],
+  contributions: getProjectData(p.id)?.contributions || [],
 }));
 
 const featuredProjects = projects.filter((p) => p.featured);

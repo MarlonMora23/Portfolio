@@ -10,6 +10,7 @@
     "MODAL_ROLE_LABEL": "Mi rol",
     "MODAL_STACK_LABEL": "Stack tecnológico",
     "MODAL_FEATURES_LABEL": "Funcionalidades",
+    "MODAL_CONTRIBUTIONS_LABEL": "Contribuciones",
     "MODAL_SCREENSHOTS_LABEL": "Screenshots",
     "STATUS_COMPLETED": "Completado",
     "STATUS_IN_PROGRESS": "En Progreso",
@@ -17,16 +18,23 @@
     "items": [
       {
         "id": "neuroscreen",
-        "title": "NeuroScreen",
-        "description": "Aplicación web full-stack para la detección temprana de alcoholismo mediante análisis de registros EEG y modelos de machine learning. Desarrollada en Flask, NeuroScreen es una aplicación web que permite la detección temprana de trastornos por consumo de alcohol mediante el análisis de datos EEG y machine learning. La aplicación ofrece funcionalidades como autenticación de usuarios, gestión de pacientes, carga de archivos EEG para predicciones en tiempo real, y un dashboard con visualización de interpretabilidad.",
-        "role": "Desarrollador full-stack e investigador principal",
+        "title": "NeuroScreen-A",
+        "description": "Aplicación web full-stack para la detección temprana de alcoholismo mediante análisis de registros EEG y un modelo de deep learning. La aplicación ofrece funcionalidades como autenticación de usuarios, gestión de pacientes, carga de archivos EEG para predicciones en tiempo real, y un dashboard con visualización de interpretabilidad de los resultados. Este proyecto se desarrolló como parte de mi tesis de pregrado en Ingeniería de Sistemas, con el objetivo de proporcionar una herramienta clínica accesible para la detección temprana de trastornos por consumo de alcohol utilizando biomarcadores neurológicos.",
+        "role": "Desarrollador full-stack (equipo de 2, enfoque backend)",
         "problem": "Necesidad de herramientas clínicas accesibles para detección temprana de trastornos por consumo de alcohol usando biomarcadores neurológicos.",
         "features": [
           "Login/Logout con JWT y persistencia de sesión",
           "CRUD de pacientes y gestión de usuarios",
           "Carga de archivos EEG y predicciones en tiempo real",
           "Dashboard con visualización de interpretabilidad",
-          "Responsive design con indicadores de carga"
+          "Responsive design con indicadores de carga",
+          "Proyecto completamente dockerizado para despliegue sencillo",
+          "Desplegado en servidor institucional"
+        ],
+        "contributions": [
+          "Diseño de modelos de base de datos y arquitectura backend",
+          "Implementación de autenticación y seguridad con JWT",
+          "Desarrollo del flujo crítico de carga de EEG, predicciones y interpretabilidad"
         ],
         "status": "in-progress"
       },
@@ -34,7 +42,7 @@
         "id": "leetcode-clone",
         "title": "Clon de LeetCode",
         "description": "Plataforma web de ejercicios de programación inspirada en LeetCode. Desarrollada con Flask, permite a los usuarios resolver problemas de programación, enviar soluciones y ver sus resultados.",
-        "role": "Desarrollador full-stack — proyecto en equipos de 3 personas",
+        "role": "Desarrollador full-stack (equipo de 3, enfoque frontend)",
         "problem": "Crear un entorno local de práctica de algoritmos con editor de código y evaluación automática de soluciones.",
         "features": [
           "Lista de ejercicios con páginas individuales",
@@ -43,13 +51,18 @@
           "Autenticación y registro de usuarios",
           "Visualización de resultados de tests"
         ],
+        "contributions": [
+          "Diseño de interfaz moderna, limpia y enfocada en experiencia de usuario",
+          "Implementación del flujo de envío de código desde el frontend",
+          "Integración con backend para ejecución y evaluación de soluciones"
+        ],
         "status": "completed"
       },
       {
         "id": "calinema",
         "title": "CaliNema",
         "description": "Encuentra las películas y funciones de todos los cines de Cali en un solo lugar. Desarrollada en Astro, CaliNema es la página web prototipo que permite mostrar todas las películas y funciones del día disponibles en los cines de la ciudad de Cali. La información de las películas es obtenida por la API de CaliNema.",
-        "role": "Desarrollador full-stack",
+        "role": "Desarrollador full-stack (proyecto individual)",
         "problem": "Necesidad de una plataforma centralizada para consultar estrenos y horarios de cines locales en tiempo real.",
         "features": [
           "Consumo de API de CaliNema para datos en tiempo real",
@@ -57,13 +70,18 @@
           "Filtrado por cine y género",
           "Interfaz responsiva y rápida"
         ],
+        "contributions": [
+          "Diseño e implementación completa del frontend",
+          "Consumo e integración de API propia",
+          "Definición de experiencia de usuario y estructura visual"
+        ],
         "status": "completed"
       },
       {
         "id": "calinema-api",
         "title": "API de CaliNema",
         "description": "Desarrollada en Django REST Framework, la API de CaliNema realiza web scraping de las páginas de los cinco cines de la ciudad de Cali para obtener todas las películas y funciones disponibles.",
-        "role": "Desarrollador backend",
+        "role": "Desarrollador backend (proyecto individual)",
         "problem": "Centralizar y normalizar datos de carteleras de cines dispersos en múltiples sitios web.",
         "features": [
           "Web scraping automático de sitios de cines",
@@ -71,13 +89,19 @@
           "Actualización automática de carteleras",
           "Normalización de datos de múltiples fuentes"
         ],
+        "contributions": [
+          "Implementación de sistema de web scraping para múltiples cines",
+          "Diseño de base de datos y normalización de información",
+          "Desarrollo de endpoints REST para consumo externo",
+          "Automatización de actualización de carteleras"
+        ],
         "status": "completed"
       },
       {
         "id": "pokedex",
         "title": "Pokédex",
         "description": "Explorador interactivo de Pokémon. Esta aplicación web fue desarrollada con Vite y React, consume la PokéAPI para mostrar información detallada de distintos Pokémon. Integra React Three Fiber para renderizar modelos y elementos en 3D, ofreciendo una experiencia visual dinámica.",
-        "role": "Desarrollador full-stack",
+        "role": "Desarrollador frontend (proyecto individual)",
         "problem": "Crear una experiencia interactiva de exploración de Pokémon con visualización de elementos en 3D.",
         "features": [
           "Renderizado 3D con Three.js y React Three Fiber",
@@ -85,13 +109,18 @@
           "Visualización detallada de estadísticas",
           "Interfaz responsiva e intuitiva"
         ],
+        "contributions": [
+          "Diseño de interfaz interactiva",
+          "Integración con PokéAPI",
+          "Implementación de visualización de datos y experiencia de usuario"
+        ],
         "status": "completed"
       },
       {
         "id": "radioapp",
         "title": "RadioApp",
         "description": "Explorador de estaciones de radio globales, desarrollada con Vite y React, utiliza la API pública de Radio Browser para mostrar estaciones de radio de todo el mundo. Destaca las emisoras de Colombia en la página principal.",
-        "role": "Desarrollador full-stack",
+        "role": "Desarrollador frontend (proyecto individual)",
         "problem": "Proporcionar una interfaz centralizada y sencilla para descubrir y reproducir emisoras de radio en vivo.",
         "features": [
           "Búsqueda de estaciones por país y género",
@@ -99,13 +128,18 @@
           "Integración con Radio Browser API",
           "Interfaz minimalista y responsiva"
         ],
+        "contributions": [
+          "Diseño de interfaz de usuario completa",
+          "Integración con API de Radio Browser",
+          "Implementación de reproducción de radio en vivo"
+        ],
         "status": "completed"
       },
       {
         "id": "xrays",
         "title": "Clasificación de Radiografías",
         "description": "Repositorio con un proyecto de machine learning enfocado en la exploración de diferentes técnicas de clasificación automática de radiografías de tórax utilizando redes neuronales convolucionales (CNN) y modelos de transferencia de aprendizaje (VGG16 y ResNet50).",
-        "role": "Científico de datos - Desarrollador ML",
+        "role": "Científico de datos / ML (equipo de 2)",
         "problem": "Automatizar la detección y clasificación de patologías en radiografías de tórax para segundas opiniones clínicas.",
         "features": [
           "Modelos CNN entrenados (VGG16, ResNet50)",
@@ -113,19 +147,30 @@
           "Pipeline de procesamiento de imágenes",
           "Análisis de precisión y validación cruzada"
         ],
+        "contributions": [
+          "Entrenamiento y evaluación de modelos CNN (VGG16, ResNet50)",
+          "Experimentación paralela para selección de modelos de mejor rendimiento",
+          "Análisis de métricas y validación de resultados",
+          "Redacción de paper técnico con formato IEEE"
+        ],
         "status": "completed"
       },
       {
         "id": "menuusb",
         "title": "Menú USB",
         "description": "Desarrollado en Django, MenuUSB es una página web prototipo, con información no oficial que permite consultar todos los menús de las tiendas de la Universidad San Buenaventura en un solo lugar, facilitando la consulta diaria de los estudiantes, directivos y trabajadores de la universidad.",
-        "role": "Desarrollador full-stack",
+        "role": "Desarrollador frontend (equipo de 4)",
         "problem": "Centralizar información de menús distribuidos entre múltiples tiendas universitarias.",
         "features": [
           "Visualización de menús por tienda",
           "Actualización semanal de información",
           "Filtrado por tipo de comida",
           "Interfaz simple y accesible"
+        ],
+        "contributions": [
+          "Diseño de UI para landing page y dashboard",
+          "Implementación de componentes visuales clave",
+          "Apoyo en desarrollo de funcionalidades CRUD"
         ],
         "status": "completed"
       },

@@ -11,6 +11,7 @@ interface ProjectData {
   role?: string;
   problem?: string;
   features?: string[];
+  contributions?: string[];
   status?: string;
 }
 
