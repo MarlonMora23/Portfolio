@@ -134,7 +134,7 @@
   font-style: italic;
   color: var(--color-text-label);
   line-height: var(--line-height-heading);
-  max-width: 760px;
+  max-width: 700px;
   margin-bottom: var(--spacing-6xl);
   border-left: var(--border-accent-heavy) solid var(--color-primary-dark);
   padding-left: var(--spacing-xl);
